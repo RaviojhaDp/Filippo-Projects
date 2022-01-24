@@ -1,0 +1,21 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<!--@subject {{trans "Request received"}} @-->
+<!--@vars {
+"var this.getUrl($store, 'customer/account/')":"Customer Account URL",
+"var customer.email":"Customer Email",
+"var customer.name":"Customer Name",
+"var customer.password":"Customer Password"
+
+} @-->
+ 
+{{template config_path="design/email/header_template"}}
+
+<p class="greeting" style="font-size:15px;">{{trans "Dear Customer,"}}</p>
+<p style="font-size:15px;">{{trans "your notification of loss has been successfully uploaded.To consult your data, please access to the website www.damianigroupcustomercare.com"}}</p>
+
+{{template config_path="design/email/footer_template"}}

@@ -1,0 +1,18 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+
+	<head>
+        <title>Claim</title>
+    </head> 
+    <body>
+<!-- 
+        <referenceContainer name="sidebar.main">
+            <block class="Dolphin\Claim\Block\Index\Sidebar" name="claim_index_sidebar" before="-" template="Dolphin_Claim::claim_index_sidebar.phtml"/>
+        </referenceContainer> -->
+
+        <referenceContainer name="content">
+            <block class="Dolphin\Claim\Block\Index\Index" name="claim_index_index" template="Dolphin_Claim::claim_index_index.phtml"/>
+        </referenceContainer>
+
+
+    </body>
+</page>

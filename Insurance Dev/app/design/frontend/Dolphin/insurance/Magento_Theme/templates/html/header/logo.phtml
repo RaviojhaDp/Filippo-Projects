@@ -1,0 +1,189 @@
+<?php
+/**
+ * Copyright ¬© Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/**
+ * @var \Magento\Theme\Block\Html\Header\Logo $block
+ */
+$_objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$storeManager = $_objectManager->get('\Magento\Store\Model\StoreManagerInterface');
+$base_url_config = $_objectManager->get('Magento\Framework\App\Config\ScopeConfigInterface')->getValue("web/unsecure/base_url");
+
+?>
+<div class="header-contact-static">
+<a class="header-email" href="mailto:ecustomerservice@damiani.com"></a>
+<?php
+$ip = $_SERVER['REMOTE_ADDR']; 
+$ipdat = json_decode(file_get_contents("http://www.geoplugin.net/json.gp?ip=" . $ip)); 
+if($storeManager->getStore()->getId() != '2'){
+if(strtolower($ipdat->geoplugin_countryName) == "italy"){ //italy
+    echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('header-contact')->toHtml();
+  }
+}
+?> 
+<a class="header-faq" href="<?php echo $storeManager->getStore()->getBaseUrl();?>faq">FAQ</a>
+</div>
+<?php 
+if($this->getRequest()->getFullActionName() == "catalog_category_view"){
+
+    $category = $_objectManager->get('Magento\Framework\Registry')->registry('current_category');
+	$categories = $_objectManager->create('Magento\Catalog\Model\Category')
+	->load($category->getId());
+
+	 if($categories->getData('level') == '3'){
+			$parent_id = $categories->getParentId();
+            $cat = $_objectManager->create('Magento\Catalog\Model\Category')
+			->load($parent_id);
+			$src_url = $cat->getImageUrl();
+		}
+		if($categories->getData('level') == '2'){
+			$src_url = $categories->getImageUrl();
+		 }
+		 ?>
+<?php $storeName = $block->getThemeName() ? $block->getThemeName() : $block->getLogoAlt();?>
+<?php 
+if(isset($_GET['flag']) && $_GET['flag']!=''){
+		$redhref = $base_url_config.$_GET['brand'].".html?ecom=true&brand=".$_GET['brand'];
+}elseif(isset($_GET['ecom']) && $_GET['ecom']!=''){
+	$redhref = $base_url_config.$_GET['brand'].".html?ecom=true&brand=".$_GET['brand'];
+}
+else{
+	$redhref = $block->getUrl('');
+}
+?>
+<span data-action="toggle-nav" class="action nav-toggle"><span><?= /* @escapeNotVerified */ __('Toggle Nav') ?></span></span>
+<a class="logo" href="<?= $redhref ?>" title="<?= /* @escapeNotVerified */ $storeName ?>">
+    <img src="<?= /* @escapeNotVerified */ $src_url ?>"
+         title="<?= $block->escapeHtmlAttr($block->getLogoAlt()) ?>"
+         alt="<?= $block->escapeHtmlAttr($block->getLogoAlt()) ?>"
+         <?= $block->getLogoWidth() ? 'width="' . $block->getLogoWidth() . '"' : '' ?>
+         <?= $block->getLogoHeight() ? 'height="' . $block->getLogoHeight() . '"' : '' ?>
+    />
+</a><?php
+}
+elseif($this->getRequest()->getFullActionName() == "certificato_index_success" || $this->getRequest()->getFullActionName() == "claim_index_success"){
+	if(isset($_REQUEST['bid']) && $_REQUEST['bid']!= ""){
+	?>
+<script>
+var brandNw = "<?php echo strtolower($_REQUEST['bid']);?>";
+require(['jquery', 'jquery/ui'], function($){
+  $(document).ready( function() {
+    $("body").addClass(brandNw);
+  });
+});
+</script>
+<?php if(strtolower($_REQUEST['bid']) == "damiani"){
+	$src_url = $base_url_config."media/catalog/logo-damiani.svg";
+}elseif(strtolower($_REQUEST['bid']) == "bliss"){
+	$src_url = $base_url_config."media/catalog/logos-bliss.svg";
+}
+elseif(strtolower($_REQUEST['bid']) == "rocca"){
+	$src_url = $base_url_config."media/catalog/logo-rocca.svg";
+}
+elseif(strtolower($_REQUEST['bid']) == "salvini"){
+	$src_url = $base_url_config."media/catalog/logos_salvini.svg";
+}
+else{
+	$src_url = $base_url_config."media/catalog/calderoni_logo_white.svg";	
+}
+$storeName = $block->getThemeName() ? $block->getThemeName() : $block->getLogoAlt();?>
+<span data-action="toggle-nav" class="action nav-toggle"><span><?= /* @escapeNotVerified */ __('Toggle Nav') ?></span></span>
+<a class="logo" href="<?= $block->getUrl('') ?>" title="<?= /* @escapeNotVerified */ $storeName ?>">
+    <img src="<?= /* @escapeNotVerified */ $src_url ?>"
+         title="<?= $block->escapeHtmlAttr($block->getLogoAlt()) ?>"
+         alt="<?= $block->escapeHtmlAttr($block->getLogoAlt()) ?>"
+         <?= $block->getLogoWidth() ? 'width="' . $block->getLogoWidth() . '"' : '' ?>
+         <?= $block->getLogoHeight() ? 'height="' . $block->getLogoHeight() . '"' : '' ?>
+    />
+</a><?php
+	}
+}else{
+	?>
+<?php $storeName = $block->getThemeName() ? $block->getThemeName() : $block->getLogoAlt();?>
+<span data-action="toggle-nav" class="action nav-toggle"><span><?= /* @escapeNotVerified */ __('Toggle Nav') ?></span></span>
+<a class="logo" href="<?= $block->getUrl('') ?>" title="<?= /* @escapeNotVerified */ $storeName ?>">
+    <img src="<?= /* @escapeNotVerified */ $block->getLogoSrc() ?>"
+         title="<?= $block->escapeHtmlAttr($block->getLogoAlt()) ?>"
+         alt="<?= $block->escapeHtmlAttr($block->getLogoAlt()) ?>"
+         <?= $block->getLogoWidth() ? 'width="' . $block->getLogoWidth() . '"' : '' ?>
+         <?= $block->getLogoHeight() ? 'height="' . $block->getLogoHeight() . '"' : '' ?>
+    />
+</a>
+<?php } ?>
+ 
+<script type="text/javascript">
+require([ 'jquery'], function($){
+$(document).ready(function($) {
+   if($('body').hasClass('calderoni')){
+  $('.header-faq').attr('href','https://certificato.luxmadein.it/it/faq?fb=calderoni');
+}
+}); 
+});
+
+
+	function showzopimen() {
+
+	<!--Start of Zendesk Chat Script-->
+	window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+	d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+	_.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute("charset","utf-8");
+	$.src="https://v2.zopim.com/?40dlmLbi7mj4UofPHukFCRQ0PsOB7IPU";z.t=+new Date;$.
+	type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");
+	$zopim(function() {
+	    $zopim.livechat.setGreetings({
+	          'online': ' e-mail us',
+	          'offline': ' e-mail us'
+	      });
+	$zopim.livechat.offlineForm.setGreetings('Please leave a message and we will contact you as soon as possible.');
+	$zopim.livechat.setLanguage('en');
+	  });
+	<!--End of Zendesk Chat Script-->
+
+	}
+
+	function showzopimit() {
+
+	<!--Start of Zendesk Chat Script-->
+	window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+	d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+	_.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute("charset","utf-8");
+	$.src="https://v2.zopim.com/?40dlmLbi7mj4UofPHukFCRQ0PsOB7IPU";z.t=+new Date;$.
+	type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");
+	$zopim(function() {
+	    $zopim.livechat.setGreetings({
+	          'online': 'Hai una domanda?',
+	          'offline': 'Hai una domanda?'
+	      });
+	$zopim.livechat.offlineForm.setGreetings('Si prega di lasciare un messaggio e ti contatteremo al più presto possibile.');
+	$zopim.livechat.setLanguage('it');
+	  });
+	<!--End of Zendesk Chat Script-->
+
+	}
+
+	
+
+	
+</script>
+<?php 
+$objectManager =  \Magento\Framework\App\ObjectManager::getInstance();
+$storeManager  = $objectManager->get('\Magento\Store\Model\StoreManagerInterface');
+$storeID       = $storeManager->getStore()->getStoreId();
+if ($storeID == '1')
+{ ?>
+	<script type="text/javascript">
+		setTimeout(showzopimit,7000);
+	</script>
+	
+<?php } 
+else 
+{ ?>
+	<script type="text/javascript">
+		setTimeout(showzopimen,7000);
+	</script>
+<?php }
+?>

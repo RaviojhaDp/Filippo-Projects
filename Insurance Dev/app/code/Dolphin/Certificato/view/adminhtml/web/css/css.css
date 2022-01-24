@@ -1,0 +1,3 @@
+.certificato-index-index .admin__field.admin__field-option:nth-child(1), .certificato-index-index .admin__field.admin__field-option:nth-child(2) {
+    display: none;
+}

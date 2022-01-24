@@ -1,0 +1,35 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+<body>
+<referenceBlock name="customer_account_navigation">
+
+<block class="Magento\Framework\View\Element\Html\Link\Current" name="customer-account-navigation-subscription"> 
+<arguments>
+<argument name="path" xsi:type="string"></argument>
+<argument name="label" xsi:type="string">SUBSCRIPTION</argument>
+</arguments>
+</block>
+
+<block class="Magento\Framework\View\Element\Html\Link\Current" name="customer-account-navigation-custom">
+<arguments>
+<argument name="path" xsi:type="string">certificato/customer/index</argument>
+<argument name="label" xsi:type="string" translate="true">WARRANTIES</argument>
+</arguments>
+</block>
+
+<!-- <block class="Magento\Framework\View\Element\Html\Link\Current" name="customer-account-navigation-status"> 
+<arguments>
+<argument name="path" xsi:type="string">certificato/customer/status</argument>
+<argument name="label" xsi:type="string">STATUS CERTIFICATE</argument>
+</arguments>
+</block> -->
+
+<block class="Magento\Framework\View\Element\Html\Link\Current" name="customer-account-navigation-claim"> 
+<arguments>
+<argument name="path" xsi:type="string">claim/customer/index</argument>
+<argument name="label" xsi:type="string">CLAIMS</argument>
+</arguments>
+</block>
+
+</referenceBlock>
+</body>
+</page>

@@ -1,0 +1,59 @@
+<?php 
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$groupRepository  = $objectManager->create('\Magento\Customer\Api\GroupRepositoryInterface');
+$customerSession = $objectManager->create('Magento\Customer\Model\Session');
+if ($customerSession->isLoggedIn()) {
+    //echo 'Customer Id: ' . $customerSession->getCustomer()->getId() . '<br/>';
+    //echo 'Customer Name: ' . $customerSession->getCustomer()->getName() . '<br/>';
+    //echo 'Customer Email: ' . $customerSession->getCustomer()->getEmail() . '<br/>';
+    //echo 'Customer Group Id: ' .  $customerSession->getCustomer()->getGroupId() . '<br/>';
+	if($customerSession->getCustomer()->getGroupId() == '3'){
+		$collection = $block->getCertificatoList()->addFieldToFilter('customer_group_id','3');
+	}
+	if($customerSession->getCustomer()->getGroupId() == '4'){
+		$collection = $block->getCertificatoList()->addFieldToFilter('customer_group_id','4');
+	}
+	if($customerSession->getCustomer()->getGroupId() == '5'){
+		$collection = $block->getCertificatoList()->addFieldToFilter('customer_group_id','5')
+		->addFieldToFilter('customer_id',$customerSession->getCustomer()->getId());
+	}
+	 
+?>
+<div class="table-wrapper order-items">
+    <table class="data table table-order-items" id="my-orders-table" summary="<?= /* @escapeNotVerified */ __('Items Ordered') ?>">
+        <caption class="table-caption"><?= /* @escapeNotVerified */ __('Items Ordered') ?></caption>
+        <thead>
+ 
+                
+            <tr>
+                <th class="col name"><?= /* @escapeNotVerified */ __('Surname') ?></th>
+                <th class="col subtotal"><?= /* @escapeNotVerified */ __('Status') ?></th>
+            </tr>
+        </thead>
+       
+        <tbody>
+		<?php foreach($collection as $certilist){
+			$group = $groupRepository->getById($certilist->getCustomerGroupId());
+			?>
+					<tr>
+                        <td>
+                          <?php echo $certilist->getName();?>  
+                        </td>
+						
+						<td>
+                          <?php 
+						  if($certilist->getStatus() == '1'){
+							  echo __('Activated');
+						  }else{
+							   echo __('Deactivated');
+						  }
+						 ?>  
+                        </td>
+						
+                    </tr>
+		<?php }?>
+        </tbody>
+        
+    </table>
+</div>
+<?php } ?>

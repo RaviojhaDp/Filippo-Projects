@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+      <head>
+       <!-- for css file -->
+       <css src="Dolphin_Insurance::css/jquery.steps.css"/>
+ 
+       <!-- for js file -->
+       <!--script src="Dolphin_Insurance::js/jquery.steps.js"/-->
+		
+</head>
+</page>

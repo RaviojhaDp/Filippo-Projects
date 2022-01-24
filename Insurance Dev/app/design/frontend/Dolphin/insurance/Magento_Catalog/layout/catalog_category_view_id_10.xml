@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+   <head>
+          <css src="Dolphin_Certificato::css/certificato-style.css"/>
+		  <script src="Dolphin_Certificato::js/certificato.js"/>
+         
+     </head> 
+    <body>
+        <referenceBlock name="breadcrumbs" remove="true" />
+        <referenceBlock name="product_list_toolbar" display="false" />
+        <referenceBlock name="page.main.title" remove="true"/>
+       
+        <!--referenceContainer name="content"> 
+		<block class="Dolphin\Certificato\Block\Index\Index" name="certificato_form" template="Dolphin_Certificato::Certificato/Certificato.phtml">
+		</block> 
+		</referenceContainer-->
+
+    </body>
+</page>

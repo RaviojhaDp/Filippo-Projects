@@ -1,0 +1,51 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<!--@subject {{trans "Warrantyactivation" store_name=$store.getFrontendName()}} @-->
+<!--@vars {
+"var this.getUrl($store, 'customer/account/')":"Customer Account URL",
+"var customer.email":"Customer Email",
+"var customer.urla":"Customer Url",
+"var customer.firstname":"Customer Firstname",
+"var customer.lastname":"Customer Lastname",
+
+} @-->
+
+{{template config_path="design/email/header_template"}}
+
+<p class="greeting">Dear {{trans "%firstname %lastname," firstname=$customer.firstname lastname=$customer.lastname}}</p>
+<p>regarding your orderplaced on our e-shop, we inform you that from now you can activate your <strong>Warranty</strong> by following these two simple steps:</p>
+<p>1. Click on the following <a href="{{trans "%urla," urla=$customer.urla}}">link</a></p>
+<p>2. Fill out the form</p>
+<p>We remind you that the certificate is valid for 36 months from the date of issue, subject to activation.</p>
+
+   </td>
+                </tr>
+                <tr>
+                    <td class="footer">
+                        <table>
+                            <tr>
+                                <td>
+                                    <p> 
+                                        {{trans "Thankyou for choosing" }}<br>
+                                         {{if customer.parent_cat}}
+                                        {{var customer.parent_cat}}
+                                        {{else}}
+                                              {{trans "Damiani Group"}}
+                                         {{/if}}
+                                    </p>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+<!-- End wrapper table -->
+</body>
+

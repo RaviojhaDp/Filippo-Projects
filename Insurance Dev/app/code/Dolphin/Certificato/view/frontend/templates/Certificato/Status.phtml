@@ -1,0 +1,288 @@
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$category = $objectManager->get('Magento\Framework\Registry')->registry('current_category');
+$customerSession = $objectManager->create('Magento\Customer\Model\Session');
+$storeManager = $objectManager->get('\Magento\Store\Model\StoreManagerInterface');
+
+//$storeName     = $storeManager->getStore()->getName();
+if (!$customerSession->isLoggedIn()) {
+    ?>
+    <div class="have-an-account-main">   
+        <div class="have-an-account">   
+            <p><?php echo __('Do you have an account?') ?></p><a class="trigger-auth-popup" href="javascript:void(0);"><span><?php echo __('Access') ?></span></a></p>    
+        </div>    
+    </div>  
+<?php } else { ?>
+    <?php if ($customerSession->getCustomer()->getGroupId() == '5') { ?>
+        <div class="client_status">
+            <select id="name_boutique_retailer_status"  name="name_boutique_retailer" title="<?php echo __('Name of the Boutique / Jewelry Store') ?>" class="validate-select">
+                <?php
+                $RBDetails = $this->getLayout()->getBlockSingleton('Dolphin\Certificato\Block\Index');
+                echo $RBDetails->getStatusRBDetails();
+                ?>
+            </select> 
+        </div>
+    <?php } else { ?>
+        <div class="autofill-contain-status">
+            <div class="field required">
+                <div class="control">
+                    <input type="text" name="cusotmername" id="customername_status" value="" title="<?php echo __('Search Customer Name*') ?>" placeholder="<?php echo __('Search Customer Name*') ?>" class="input-text" data-validate="{required:true}">
+                    <div class="icon-search"><span style="display: none;"><?php echo __('SEARCH') ?></span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="show-status" style="display: none;"> 
+            <div id="autosuggest_close">
+               <h1><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">X</font></font></font></font></h1>
+            </div>
+            <ul name="autosuggest" id="autosuggests"></ul>
+        </div>
+        <div class="client_status">
+            <div class="field required">
+                <div class="control">
+                    <select id="active-insurance_rb"  name="active-insurance" title="<?php echo __('Active Insurance') ?>" class="validate-select active-insurance">
+                    </select>
+                </div>
+            </div>
+        </div>
+
+    <?php } ?>
+
+    <div class="insert-code-main">
+        <div class="insert-code">
+            <input type="text" name="certi_code" id="certi_code" value="" title="<?php echo __('Insert Code') ?>" placeholder="<?php echo __('Insert Code') ?>" class="input-text" data-validate="{required:true}">
+            <button id="certi_status"><?php echo __('Search') ?></button>
+        </div>
+
+        <div class="show_status"> 
+        </div> 
+    </div> 
+
+<?php } ?>
+<script type="text/javascript">
+    require(['jquery', 'Magento_Ui/js/modal/confirm', 'mage/translate', 'jquery/ui'], function ($, confirmation) {
+        var BaseUrl  =  "<?php echo $storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_WEB);?>";
+        //select certificate
+        $('#active-insurance_rb').on('keyup paste change', function () {
+            var param = $(this).val();
+            var cat_name = "<?php echo $category->getParentCategory()->getName(); ?>";
+            var customer_group_id = "<?php echo $customerSession->getCustomer()->getGroupId(); ?>";
+            var storename = "<?php echo$storeManager->getStore()->getName(); ?>";
+            
+
+            var AjaxUrl = BaseUrl + $('html')[0].lang +"/certificato/index/certistatusclient/";
+            $.ajax({
+                showLoader: true,
+                url: AjaxUrl,
+                data: {data: param, cat_name: cat_name, customer_group_id: customer_group_id, storename: storename},
+                type: "POST"
+            }).done(function (data) {
+                $(".show_status").html(data);
+                var certificato_code = $("#certificato_code").text();
+                $("#certi_code").val(certificato_code);
+
+                $("#return").on('click', function () {
+                    confirmation({
+                        title: $.mage.__('<?php echo __("Disable Certificate"); ?>'),
+                        content: $('#return-con'),
+                        clickableOverlay: false,
+                        actions: {
+                            confirm: function () {
+                                var param1 = $("#certificato_id").text();
+
+                                var AjaxUrl = BaseUrl + $('html')[0].lang +"/certificato/index/deactivatecerti/";
+                                $.ajax({
+                                    showLoader: true,
+                                    url: AjaxUrl,
+                                    data: {data: param1},
+                                    type: "POST"
+                                }).done(function (data) {
+                                    //$("#active-insurance_rb option[value*="+param+"]").prop('disabled',true);
+                                    $("#active-insurance_rb option[value*=" + param + "]").remove();
+                                    $("#certi_code").val('');
+                                    $(".show_status").html(data);
+                                });
+                            },
+                            cancel: function () {
+                                $(".confirmation-modal-content").append("<p id='return-con'><?php echo __('Are you sure? You are going to deactivate the Warranty'); ?></p>");
+                                return false;
+                            },
+                            always: function () {
+                                return false;
+                            }
+                        },
+                        buttons: [{
+                                text: $.mage.__('<?php echo __("Yes, I confirm"); ?>'),
+                                class: 'action-primary action-accept',
+                                click: function (event) {
+                                    this.closeModal(event, true);
+                                }
+                            }]
+                    });
+                });
+                $("#renewal").click(function () {
+                    var param = $("#certi_code").val();
+                    var AjaxUrl = BaseUrl + $('html')[0].lang +"/certificato/index/certistatus/";
+                    $.ajax({
+                        showLoader: true,
+                        url: AjaxUrl,
+                        data: {data: param},
+                        type: "POST"
+                    }).done(function (data) {
+                        $(".show_status").html(data);
+                    });
+                });
+
+            });
+
+        });
+        //search by customer name
+        $('#customername_status').on('keyup paste change', function () {
+            var key = $(this).val();
+            var AjaxUrl = BaseUrl + $('html')[0].lang +"/claim/index/autosuggestcerti/";
+            var cat_name = "<?php echo $category->getParentCategory()->getName(); ?>";
+            $.ajax({
+                showLoader: true,
+                url: AjaxUrl,
+                data: {key: key, cat_name: cat_name},
+                type: "POST"
+            }).done(function (data) {
+                $(".show-status").show();
+                $("#autosuggests").html(data);
+                $(".result").click(function (e) {
+                    e.preventDefault();
+                    AjaxUrl2 = BaseUrl + $('html')[0].lang +"/claim/index/autoload/";
+                    var text = $(this).text();
+                    var val = $(this).attr("data-value");
+                    $("#customername_status").val(text);
+                    $(".show-status").hide();
+                    $.ajax({
+                        showLoader: true,
+                        url: AjaxUrl2,
+                        data: {param: val, cat_name: cat_name},
+                        type: "POST"
+                    }).done(function (data) {
+                        $("#active-insurance_rb").html(data);
+                    });
+                    $(".loading-mask").css('display', 'none');
+                });
+            });
+        });
+
+        $("#name_boutique_retailer_status").on('keyup paste change', function () {
+            var param = $(this).val();
+            var cat_name = "<?php echo $category->getParentCategory()->getName(); ?>";
+            var customer_group_id = "<?php echo $customerSession->getCustomer()->getGroupId(); ?>";
+            var storename = "<?php echo$storeManager->getStore()->getName(); ?>";
+            var AjaxUrl = BaseUrl + $('html')[0].lang +"/certificato/index/certistatusclient/";
+            $.ajax({
+                showLoader: true,
+                url: AjaxUrl,
+                data: {data: param, cat_name: cat_name, customer_group_id: customer_group_id, storename: storename},
+                type: "POST"
+            }).done(function (data) {
+                $(".show_status").html(data);
+                $("#renewal").click(function () {
+                    var param = $("#certi_code").val();
+                    var AjaxUrl = BaseUrl + $('html')[0].lang +"/certificato/index/certistatus/";
+                    $.ajax({
+                        showLoader: true,
+                        url: AjaxUrl,
+                        data: {data: param},
+                        type: "POST"
+                    }).done(function (data) {
+                        $(".show_status").html(data);
+                    });
+                });
+            });
+
+        });
+
+
+        $("#certi_status").click(function () {
+            var param = $("#certi_code").val();
+            var storename = "<?php echo$storeManager->getStore()->getName(); ?>";
+            var cat_name = "<?php echo $category->getParentCategory()->getName(); ?>";
+            var customer_group_id = "<?php echo $customerSession->getCustomer()->getGroupId(); ?>";
+            var AjaxUrl =BaseUrl + $('html')[0].lang +"/certificato/index/certistatus/";
+            $.ajax({
+                showLoader: true,
+                url: AjaxUrl,
+                data: {data: param, cat_name: cat_name, customer_group_id: customer_group_id, storename: storename},
+                type: "POST"
+            }).done(function (data) {
+                $(".show_status").html(data);
+                $("#renewal").click(function () {
+                    var param = $("#certi_code").val();
+                    var AjaxUrl = BaseUrl + $('html')[0].lang +"/certificato/index/certistatus/";
+                    $.ajax({
+                        showLoader: true,
+                        url: AjaxUrl,
+                        data: {data: param},
+                        type: "POST"
+                    }).done(function (data) {
+                        $(".show_status").html(data);
+                    });
+                });
+                $("#return").click(function () {
+                    confirmation({
+                        title: 'Delete Certificate',
+                        content: $('#return-con'),
+                        clickableOverlay: false,
+                        actions: {
+                            confirm: function () {
+                                var param1 = $("#certificato_id").text();
+
+                                var AjaxUrl = BaseUrl + $('html')[0].lang +"/certificato/index/deactivatecerti/";
+                                $.ajax({
+                                    showLoader: true,
+                                    url: AjaxUrl,
+                                    data: {data: param1},
+                                    type: "POST"
+                                }).done(function (data) {
+                                    $("#active-insurance_rb option[value*=" + param + "]").remove();
+                                    $("#certi_code").val('');
+                                    $(".show_status").html(data);
+                                });
+                            },
+                            cancel: function () {
+                                $(".confirmation-modal-content").append("<p id='return-con'><?php echo __('Are you sure? You are going to deactivate the Warranty'); ?></p>");
+                                return false;
+                            },
+                            always: function () {
+                                return false;
+                            }
+
+
+                        },
+                        buttons: [{
+                                text: $.mage.__('Yes, I confirm'),
+                                class: 'action-primary action-accept',
+                                click: function (event) {
+                                    this.closeModal(event, true);
+                                }
+                            }]
+
+                    });
+
+                });
+
+                $("#renewal").click(function () {
+
+                    var param = $("#certi_code").val();
+
+                    var AjaxUrl = BaseUrl + $('html')[0].lang +"/certificato/index/renewal/";
+                    $.ajax({
+                        showLoader: true,
+                        url: AjaxUrl,
+                        data: {data: param},
+                        type: "POST"
+                    }).done(function (data) {
+                        //$(".show_status").html(data);
+                    });
+                });
+            });
+        });
+    });
+</script>

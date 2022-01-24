@@ -1,0 +1,38 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+		<referenceBlock name="page.main.title">
+               <action method="setPageTitle">
+                  <argument translate="true" name="title" xsi:type="string">REGISTRATION</argument>
+               </action>
+            </referenceBlock>
+
+        <!--referenceContainer name="form.additional.info">
+            <block class="Magento\Framework\View\Element\Template" name="customer_groups_additional_info_customer" template="Dolphin_Insurance::addcustomergroup.phtml"/>
+        </referenceContainer-->
+		
+		<referenceContainer name="content">
+			<!--referenceBlock name="customer_form_register">
+            <arguments>
+                <argument name="show_address_fields" xsi:type="boolean">true</argument>
+            </arguments>
+        </referenceBlock-->
+		<block class="Magento\Framework\View\Element\Template" name="customer_groups_additional_info_customer" template="Dolphin_Insurance::addcustomergroup.phtml"  before="customer_form_register"/>
+            <block class="Magento\Customer\Block\Form\Register" name="customer_form_register" template="Dolphin_Insurance::client.phtml">
+                <arguments>
+				  <!--argument name="show_address_fields" xsi:type="boolean">true</argument-->
+                    <argument name="attribute_data" xsi:type="object">Magento\Customer\Block\DataProviders\AddressAttributeData</argument>
+                </arguments>
+                <container name="form.additional.info" as="form_additional_info"/>
+                <container name="customer.form.register.fields.before" as="form_fields_before" label="Form Fields Before" htmlTag="div" htmlClass="customer-form-before"/>
+            </block>
+            <block class="Magento\Cookie\Block\RequireCookie" name="require-cookie" template="Magento_Cookie::require_cookie.phtml">
+                <arguments>
+                    <argument name="triggers" xsi:type="array">
+                        <item name="registerSubmitButton" xsi:type="string">.action.submit</item>
+                    </argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+        
+    </body>
+</page> 

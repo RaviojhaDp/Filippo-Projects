@@ -1,0 +1,17 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+
+	<head>
+        <title>Insurance</title>
+    </head> 
+    <body>
+      <!--   <referenceContainer name="sidebar.main">
+            <block class="Dolphin\Insurance\Block\Index\Sidebar" name="insurance_index_sidebar" before="-" template="Dolphin_Insurance::insurance_index_sidebar.phtml"/>
+        </referenceContainer> -->
+
+        <referenceContainer name="content">
+            <block class="Dolphin\Insurance\Block\Index\Index" name="insurance_index_index" template="Dolphin_Insurance::insurance_index_index.phtml"/>
+        </referenceContainer>
+
+
+    </body>
+</page>

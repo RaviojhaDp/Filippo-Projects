@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:Magento:module:Magento_Email:etc/email_templates.xsd">
+    <template id="dolphin_certificato_template" label="email" file="email_template.html" type="html" module="Dolphin_Certificato" area="frontend"/>
+	<template id="dolphin_expire_email_template" label="email" file="dolphin_expire_email_template.html" type="html" module="Dolphin_Certificato" area="frontend"/>
+	<template id="email_template_register_success" label="email" file="email_template_register_success.html" type="html" module="Dolphin_Certificato" area="frontend"/>
+	<template id="claim_email_template_register_success" label="email" file="claim_email_template_register_success.html" type="html" module="Dolphin_Certificato" area="frontend"/>
+	<template id="dolphin_insuranceorder_email_template" label="email" file="dolphin_insuranceorder_email_template.html" type="html" module="Dolphin_Certificato" area="frontend"/>
+	<template id="dolphin_certificato_weekly_report_cron" label="email" file="dolphin_certificato_weekly_report_cron.html" type="html" module="Dolphin_Certificato" area="frontend"/>
+	<template id="deactivate_insurance_notify" label="email" file="deactivate_insurance_notify.html" type="html" module="Dolphin_Certificato" area="frontend"/>
+</config>

@@ -1,0 +1,109 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/**
+ * @var \Magento\Theme\Block\Html\Header $block
+ */
+$obj = \Magento\Framework\App\ObjectManager::getInstance();
+$customerSession = $obj->get('Magento\Customer\Model\Session');
+
+$welcomeMessage = $block->getWelcome();
+?>
+<?php switch ($block->getShowPart()):
+    case 'welcome': ?>
+        <li class="greet welcome">
+           
+            <span class="logged-in"> <?php if($customerSession->isLoggedIn()) {
+            if($customerSession->getCustomer()->getData("group_id") == '5'){
+                 echo $customerSession->getCustomer()->getName();// get  Full Name
+            }else
+            {
+                 echo $customerSession->getCustomer()->getData("firstname");  
+            }
+          
+          /* echo "<pre>";
+           print_r($customerSession->getCustomer()->getData());
+           die;*/
+        } ?>
+            </span>
+           
+            
+        </li>
+        <script type="text/x-magento-init">
+        {
+            "*": {
+                "Magento_Ui/js/core/app": {
+                    "components": {
+                        "customer": {
+                            "component": "Magento_Customer/js/view/customer"
+                        }
+                    }
+                }
+            }
+        }
+        </script>
+    <?php break; ?>
+
+    <?php case 'other': ?>
+        <?= $block->getChildHtml() ?>
+    <?php break; ?>
+
+<?php endswitch; ?>
+
+<script>
+require(['jquery','Magento_Ui/js/modal/modal'],
+    function($,modal) {
+         var sPageURL = window.location.search.substring(1),
+                        sURLVariables = sPageURL.split('&'),
+                        sParameterName,
+                        i;
+
+                    for (i = 0; i < sURLVariables.length; i++) {
+                        sParameterName = sURLVariables[i].split('=');
+
+                        if (sParameterName[0] === "popup") {
+                             sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+                             var popupvar = sParameterName[1];
+             if ($('html')[0].lang == "it") {
+                var tex = $.mage.__('Chiudi');
+            }else{
+                var tex = $.mage.__('Close');
+            }
+
+         if(popupvar == "true"){
+
+        var options = {
+            type: 'popup',
+            responsive: true,
+            innerScroll: true,
+            title: '',
+            modalClass: 'see-detail-modal',
+            buttons: [{
+                text: tex,
+                class: 'product-popup-hide',
+                click: function () {
+                    this.closeModal();
+                }
+            }]
+        };
+
+      
+            var popup = modal(options, $('#see-details-popup'));            
+            $('#see-details-popup').modal('openModal');
+            if ($('html')[0].lang == "it") {    
+            $("#see-details-popup").html('<div class="equipment"><p>Gentile Cliente,</p><p> le informazioni inserite per la sottoscrizione del Assicurazione, come richiesto dalla normativa vigente per la gestione e il trattamento dei dati personali, non sono state salvate. La invitiamo a contattare il Customer Service dedicato (ecustomerservice@damiani.come) per avere maggiori informazioni.</p><br><p>Cordiali Saluti</p><br><p>Gruppo Damiani</p></div>');
+        }else{
+            $("#see-details-popup").html('<div class="equipment"><p>Gentile Cliente,</p><p> the subscription Insurance entered information has not been saved as required by current legislation for personal data management and processing. We kindly invite you to contact the dedicated Customer Service for more information at the address below:</p><br><p>ecustomerservice@damiani.com</p><br><p>Yours sincerely,</p><br><p>Damiani Group</p></div>');  
+        }
+
+                 }
+            }
+        }
+    }
+);
+</script>

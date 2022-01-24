@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+<preference for="Magento\Customer\Controller\Account\CreatePost" type="Dolphin\Insurance\Controller\Index\ExtendCreate" /> 
+<preference for="Magento\Customer\Model\CustomerExtractor" type="Dolphin\Insurance\Model\ExtendModel" />
+<preference for="Magento\Customer\Controller\Account\LoginPost" type="Dolphin\Insurance\Controller\Account\LoginPost" />
+</config>
+

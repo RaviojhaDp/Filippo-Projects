@@ -1,0 +1,29 @@
+<?php
+if(isset($_REQUEST['brand'])){
+	$websiteUrl = " ";
+      if(strtolower($_REQUEST['brand']) == "damiani"){
+        $websiteUrl = "www.damiani.com";
+      }
+      if(strtolower($_REQUEST['brand']) == "salvini"){
+       $websiteUrl = "www.salvini.com";  
+      }
+      if(strtolower($_REQUEST['brand']) == "rocca"){
+       $websiteUrl = "www.rocca1794.com"; 
+      }
+      if(strtolower($_REQUEST['brand']) == "bliss"){
+       $websiteUrl = "www.bliss.it";
+      }
+      if(strtolower($_REQUEST['brand']) == "calderoni"){
+       $websiteUrl = "www.calderoni.com";
+      }
+}
+if(isset($_REQUEST) && isset($_REQUEST['certi']) && isset($_REQUEST['create_at'])){
+	$certid = $_REQUEST['certi'];
+	$create_at = rtrim($_REQUEST['create_at'],"/");
+	?><p><?php 
+      echo $certid." - ".$create_at;
+      ?>
+</p>
+<p><span class="tornaa"><?= __("TORNA A")?></span> <a href="<?php echo "https://".$websiteUrl; ?>"><?= $websiteUrl ?></a></p>
+<?php 
+} ?>

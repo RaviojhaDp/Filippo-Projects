@@ -1,0 +1,2253 @@
+/*@import url('https://fonts.googleapis.com/css?family=Nunito+Sans:400,600,700,800&display=swap');*/
+@font-face {
+    font-family: 'Nunito Sans', sans-serif;
+    src: url('../fonts/SFProDisplay-Regular.woff2') format('woff2'),
+        url('../fonts/SFProDisplay-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@media (min-width: 768px) {
+.choose-brand .col-sm-12:first-child {
+    padding-left: 0;
+}
+.choose-brand .col-sm-12:last-child {
+    padding-right: 0;
+}
+.sections.nav-sections {
+    display: none;
+}
+.actions.dropdown.options.switcher-options.active ul.dropdown.switcher-dropdown {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    position: absolute;
+    top: -8px;
+    left: calc(100% + 10px);
+    z-index: 200;
+    overflow: hidden;
+    width: 0;
+    height: 37px;
+    background-color: #f1e4db;
+    transition: width .3s;
+	margin-top: 0;
+}
+}
+@media (max-width: 767px) {
+.nav-sections-item-content li.authorization-link a:before {    display: none;}
+.nav-sections-item-content span.customer-name button.action.switch {
+    display: none;
+}
+}
+.section-item-title.nav-sections-item-title a.nav-sections-item-switch {
+    color: #000;
+    font-size: 16px;
+    font-weight: bold;
+	font-family: 'Nunito Sans', sans-serif;
+}
+.required::-webkit-input-placeholder:after {
+    content: " *";
+    color: red;
+}
+.choose-brand {
+    width: 100%;
+	display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+div#autosuggest_close h1 {
+    margin: 0 auto;
+    float: right;
+    font-size: 16px;
+    margin-top: -25px;
+    margin-right: 15px;
+}
+.account .table-wrapper {
+    overflow-x: unset;
+}
+.autofill-contain {
+    max-width: 440px;
+    margin: 0 auto;
+    background: no-repeat;
+    width: 100%;
+    padding: 12px;
+	position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 99;
+}
+.autofill-contain.retailer.activeon, .autofill-contain.client.activeon {
+	top: 120px;
+}
+
+fieldset#claim-p-0 {
+   margin-top: 115px;
+}
+.autofill-contain.client + form#claim fieldset#claim-p-0 {
+    margin-top: 70px;
+}
+.autofill-contain .icon-search:before{
+	top: 15px;	
+	
+}
+.category-status-certificato .client_status {
+    margin-bottom: 20px;
+}
+.autofill-contain-status input#customername_status {margin-bottom: 20px !important;}
+.autofill-contain select#active-insurance_rb {margin-top: 20px !important;}
+.autofill-contain input#customername-2, .autofill-contain select#active-insurance_rb, .client_status select#name_boutique_retailer_status, .autofill-contain-status input#customername_status, .client_status select#active-insurance_rb {
+    width: 100% !important;
+    height: 37px !important;
+    margin: 0 auto;
+    font-size: 14px;
+    font-family: 'Nunito Sans', sans-serif;
+}
+fieldset#example-advanced-form-p-1 select option:first-child , fieldset#example-advanced-form-p-0 select option:first-child {
+    font-weight: bold;
+    font-size: 16px;
+	font-family: 'Nunito Sans', sans-serif;
+	display: none;
+}
+.required:-moz-placeholder:after {
+    content: " *";
+    color: red;  
+}
+
+fieldset#claim-p-2 textarea {
+    font-size: 14px;
+	color: #696767;
+	font-family: 'Nunito Sans', sans-serif;
+}
+
+.required:-ms-input-placeholder:after {  
+    content: " *";
+    color: red;  
+}
+
+fieldset#example-advanced-form-p-3 button.action.submit.primary{
+    float: left;
+    background: no-repeat;
+    margin-top: 10px;
+    border: 1px solid #000;
+    padding: 12px 0;
+    width: 100%;
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: #000000;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: bold;
+}
+fieldset#claim-p-3 button.click-m, fieldset#example-advanced-form-p-3 button.click-m{
+	
+	float: left;
+    background: no-repeat;
+    margin-top: 10px;
+    padding: 12px 0;
+    width: 100%;
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: #000000;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: bold;
+}
+fieldset#example-advanced-form-p-3 button.click-m a#click-mes {
+  color: #000000;
+      
+}
+fieldset#example-advanced-form-p-3 button.click-m a#click-mes:hover{
+	color: #876c62;
+	text-decoration: none;
+}
+fieldset#claim-p-3 label, fieldset#example-advanced-form-p-3 label {
+    font-size: 14px;
+    letter-spacing: 0px;
+    color: #000000;
+    font-family: 'Nunito Sans', sans-serif;
+}
+fieldset#example-advanced-form-p-3 input#acceptTerms-2 {
+    width: 20px;
+    height: 20px;
+}
+fieldset#example-advanced-form-p-3 input#acceptTerms-2 {
+    width: 20px !important;
+    height: 20px !important;
+	margin-right: 5px;
+}
+.customer-account-logoutsuccess .page-title-wrapper, .customer-account-logoutsuccess .column.main {
+    text-align: center;
+}
+.customer-account-logoutsuccess .column.main p {
+    font-size: 14px;
+	font-family: 'Nunito Sans', sans-serif;
+}
+.customer-account-logoutsuccess .page-title-wrapper h1.page-title {
+	font-family: 'Nunito Sans', sans-serif;
+}
+
+/* div#block-collapsible-nav ul.nav.items li:nth-child(2){
+	content: "";
+    background: url(../images/ICON-PROFILO-BLACK-NEW.svg) 1px 0px no-repeat;
+    padding: 11px 14px;
+    float: left;
+    margin-top: -3px;
+	
+	
+} */
+.input-container {
+    border: 1px solid #ccc;
+    width: 85% !important;
+    height: 37px !important;
+    margin: 0;
+    font-size: 14px;
+    font-family: 'Nunito Sans', sans-serif;
+	float: left;
+	margin-bottom: 20px;
+	padding: 5px 9px;
+}
+.input-container.rocca {
+    margin-bottom: 5px;
+}
+.file-field.field span.note-rocca {
+    width: 100%;
+    float: left;
+	font-family: 'Nunito Sans', sans-serif;
+}
+
+.input-container input[type='file'] {
+  display: none !important;
+}
+
+.input-container .file-info, .input-container .file-info-2, .input-container .file-info-3 {
+    font-size: 14px;
+    font-family: 'Nunito Sans', sans-serif;
+    color: #5f5e5e;
+}
+
+.browse-btn, button.browse-btn-2, button.browse-btn-3 {
+    border: none;
+    background: none;
+    padding: 0;
+	float: right;
+}
+
+button.browse-btn:hover, button.browse-btn-2:hover, button.browse-btn-3:hover {
+    background: no-repeat;
+    border: none;
+}
+button:focus.browse-btn, button:focus.browse-btn-2, button:focus.browse-btn-3 {
+    outline: none;
+    background: 0;
+    border: none;
+}
+@media (max-width: 300px) {
+  .input-container button {
+    width: 100%;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 0;
+  }
+  
+  .input-container .file-info, .input-container .file-info-2, .input-container .file-info-3 {
+    display: block;
+    margin: 10px 5px;
+  }
+}
+
+.cms-damiani-home-page .Topline {
+       display: none;
+}
+form#login-form fieldset.fieldset.login {
+    margin-bottom: 0;
+}
+form#login-form div#mp_recaptcha_0 {
+    position: relative;
+    top: -25px;
+    margin-top: 10px;
+}
+.customer-account-login .login-container .block.block-new-customer {
+    margin-top: 10px;
+}
+
+.page-header .switcher .options .action.toggle:after{
+
+    font-size: 14px;
+    -webkit-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+    -webkit-transition: -webkit-transform .3s;
+    transition: -webkit-transform .3s;
+    -o-transition: transform .3s;
+    transition: transform .3s;
+    transition: transform .3s, -webkit-transform .3s;
+    moz-transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+
+}
+
+.page-header .switcher .options .action.toggle.active:after {
+    -webkit-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90);
+	content: '\e622';
+}
+.customer-account-forgotpassword .form.password.forget {
+    max-width: 400px;
+    min-width: unset;
+    margin: 0 auto;
+}
+.customer-account-forgotpassword .form.password.forget .block-title.forgotpassword {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.customer-account-forgotpassword .form.password.forget .block-title.forgotpassword span {
+    font-size: 16px;
+    letter-spacing: 0px;
+    color: #000000;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.block-authentication {
+    max-width: 400px;
+    margin: 0 auto;
+	border: none !important;
+}
+.modal-popup.popup-authentication .modal-inner-wrap header.modal-header {
+    border: none;
+}
+.block-authentication span, .customer-account-forgotpassword .form.password.forget .field.note {
+    font-size: 14px;
+    letter-spacing: 0px;
+    color: #000000;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 300;
+}
+.block-authentication form#login-form input, .customer-account-forgotpassword .form.password.forget input {
+    width: 100% !important;
+    height: 37px !important;
+    margin: 0 auto;
+    font-family: 'Nunito Sans', sans-serif;
+	border: 1px solid #c1c1c1;
+}
+.page-wrapper .page-header .header.content {
+    max-width: 1100px !important;
+    padding-left: 0;
+    padding-right: 0;
+}
+.block-authentication .actions-toolbar .primary {
+    margin-top: 15px !important;
+}
+.popup-authentication .modal-inner-wrap {
+    min-width: auto !important;
+    width: 40% !important;
+    background: #513F3A;
+}
+.modal-popup.popup-authentication button.action-close:before {
+    color: #fff;
+}
+.modal-popup.popup-authentication button.action-close:hover:before {
+    color: #98694c;
+}
+.block-authentication .block.block-customer-login {
+    padding: 0 !important;
+}
+.Topline {
+    width: 100%;
+    float: left;
+    position: absolute;
+    top: 10px;
+}
+.Topline a span {
+    font-size: 16px;
+    letter-spacing: 1px;
+    color: #000000;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: bold;
+	text-decoration: none;
+   
+}
+body.damiani .Topline a span, body.salvini .Topline a span, body.bliss .Topline a span, body.rocca .Topline a span{
+	
+	color: #ffffff;
+}
+body.damiani .Topline a:hover span {
+	color: #98694c;
+}
+
+body.salvini .Topline a:hover span{
+	color: #B39897;
+}
+body.bliss .Topline a:hover span{
+	color: #9E0E6C;
+}
+body.rocca .Topline a:hover span{
+	color: #504335;
+}
+.Topline a:hover span {
+	color: #98694c;
+	text-decoration: underline;
+}
+.damiani-home-main a img {
+    -moz-transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+}
+.damiani-home-main a:hover img {
+	
+  -moz-transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+	
+}
+span.authorization-link.logout a.header_account_link, .customer-menu ul.header.links li a, ul.header.links li.customer-welcome span.customer-name span {
+    font-size: 16px;
+    color: #000 !important;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+.customer-account-create form#form-validate .field.choice.newsletter {
+    float: left;
+    text-align: left;
+    margin-top: 10px;
+    width: 100%;
+}
+.customer-account-create form#form-validate .field.choice.newsletter input#is_subscribed {
+    width: 18px !important;
+    height: 18px !important;
+}
+.customer-account-create form#form-validate .field.choice.newsletter label.label span {
+    font-size: 16px;
+    color: #000 !important;
+    font-family: 'Nunito Sans', sans-serif;
+}
+span.authorization-link.logout a.header_account_link:hover {
+    text-decoration: none;
+}
+
+.home-contain-title {
+    text-align: center;
+}
+.damiani-brand {
+    width: 100%;
+    float: left;
+}
+header.page-header {
+    text-align: center;
+    width: 100%;
+}
+header.page-header a.logo {
+    text-align: center;
+    margin: 0 auto;
+    float: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-width: 250px;
+}
+.page-wrapper .page-header .header.panel {
+    padding-bottom: 50px;
+    padding-top: 50px;
+}
+header.page-header a.logo img {
+    margin: 0 auto;
+}
+.panel.header {
+    max-width: 1100px !important;
+}
+.category-damiani main#maincontent, .category-salvini main#maincontent, .category-bliss main#maincontent, .category-rocca main#maincontent {
+    max-width: 1100px;
+    width: 100%;
+}
+main#maincontent {
+    max-width: 100%;
+    width: 100%;
+}	
+
+.damiani-home-main.row {
+    max-width: 700px;
+    margin: 0 auto;
+}
+.home-contain-title h1 {
+    font-size: 25px;
+    letter-spacing: 1px;
+    color: #000000;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 500;
+    margin: 70px 0;
+}
+
+.page-wrapper .page-header .panel.wrapper {
+    border-bottom: none;
+    background-color: #efefef;
+}
+.page-wrapper header.page-header {
+    background-color: #f3f3f3;
+}
+
+.page-wrapper .header.panel>.header.links>li>a {
+    letter-spacing: 1px;
+    color: #000000;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 600;
+	font-size: 12px;
+}
+.page-wrapper .header.panel>.header.links>li>a:hover {
+	color: #98694c;
+}
+footer.page-footer {
+    background-color: #efefef;
+}
+footer.page-footer a.logo {
+    width: 100%;
+    float: none;
+    margin: 0 auto;
+}
+footer.page-footer a.logo img {
+    margin: 0 auto;
+    margin-top: 10px;
+    width: 227px;
+    height: 99px;
+}
+/*.damiani footer.page-footer a.logo img , .salvini footer.page-footer a.logo img , .bliss footer.page-footer a.logo img , .rocca footer.page-footer a.logo img { 
+    
+    margin: 0 auto;
+    margin-top: 25px;
+    width: auto;
+    height: auto;
+}
+*/
+.header-contact-static {
+    float: left;
+    font-size: 18px;
+    letter-spacing: 1px;
+    font-family: 'Nunito Sans', sans-serif;
+}
+.header-contact-static a.phnum, a.phnum-claim {
+    color: #000;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    font-family: 'Nunito Sans', sans-serif;
+	
+}
+.header-contact-static a.phnum:hover, body.salvini a.phnum-claim:hover  {
+	color: #98694c;
+}
+body.bliss a.phnum-claim:hover {
+	color: #9E0E6C;
+}
+body.rocca a.phnum-claim:hover {
+	color: #504335;
+}
+body.damiani a.phnum-claim:hover {
+	color: #513F3A;
+}
+.header.panel > .header.links > .authorization-link:after {
+    color: #000;
+}
+body.damiani .header.panel > .header.links > .authorization-link:after, .salvini .header.panel > .header.links > .authorization-link:after, .bliss .header.panel > .header.links > .authorization-link:after, .rocca .header.panel > .header.links > .authorization-link:after {
+    color: #fff;
+}
+.header-contact-static a.phnum img {
+    margin-right: 5px;
+}
+
+div#switcher-language {
+	margin-top: 3px;
+    float: left;
+    margin-right: 10px;
+    letter-spacing: 0.5px !important;
+    margin-left: 0;
+    font-size: 14px;
+	letter-spacing: 0px;
+	color: #000000;
+	font-family: 'Nunito Sans', sans-serif;
+}
+ul.header.links li.authorization-link a:before {
+    content: "";
+    background: url('../images/ICON-PROFILO-BLACK-NEW.svg') 1px 0px no-repeat;
+    padding: 11px 14px;
+    float: left;
+	margin-top: -3px;
+}
+div#switcher-language span:before {
+    content: "";
+    background: url('../images/ICON-WORD-BLACK-NEW.svg') 0px 0px no-repeat;
+    padding: 0px 12px;
+}
+.header-contact-static a.phnum:after {
+    content: "";
+    background: url('../images/ICON-PHONE-BLACK-NEW.svg') 1px 4px no-repeat;
+    padding: 12px 12px;
+    float: left;
+}
+.header-contact-static a.header-email:after {
+    content: "";
+    background: url('../images/iconmonstr-mail-thin.svg') 1px 4px no-repeat;
+    padding: 14px 14px;
+    float: right;
+}
+.header-contact-static a.header-email{
+  margin-left: 10px;
+}
+
+
+.page-header .switcher .options .action.toggle:hover:after{
+     color: #98694c;
+}
+.page-header .switcher .options .action.toggle.active:after {
+    margin-top: 0;
+    font-size: 14px;
+}
+
+.page-header .switcher .options .action.toggle.active:hover:after {
+     color: #98694c;
+}
+
+
+@media only screen and (max-width: 767px) {
+	
+.panel.header .links, .panel.header .switcher {
+    display: block;
+}
+.header.panel ul.header.links li {
+    /* margin: 0 !important; */
+}
+ul.header.links li.authorization-link a:before {
+    padding: 11px 10px;
+	margin-top: 0px;
+}
+
+.modal-popup.modal-slide._inner-scroll._show .modal-inner-wrap footer.modal-footer {
+    margin: 0;
+    padding: 0 20px;
+    height: 70px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #fff;
+    align-items: end;
+    padding-top: 10px;
+}
+
+
+}
+
+
+
+body.damiani .page-wrapper header.page-header {
+    background-color: #E1E1E1;
+}
+
+body.damiani .page-wrapper .page-header .panel.wrapper {
+    border-bottom: none;
+    background-color: #513F3A;
+}
+
+body.damiani div#switcher-language {
+
+    color: #fff;
+    font-size: 14px;
+    letter-spacing: 0px;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 600;
+    }
+body.damiani .header-contact-static a.phnum {
+    color: #fff;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 600;
+}
+
+body.damiani footer.page-footer {
+    background-color: #513F3A;
+}
+
+body.damiani .page-wrapper .header.panel>.header.links>li>a {
+    color: #fff;
+}
+
+body.damiani .bg-main-image {
+    position: relative;
+    margin: 0 auto;
+    text-align: center;
+}
+
+body.damiani .block-catalog {
+    position: absolute;
+    top: 20%;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    text-align: center;
+}
+.block-catalog {
+	-moz-transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+}
+.block-catalog:hover {
+  -moz-transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+body.damiani .block-catalog .text a {
+    font-size: 16px;
+    color: #fff;
+    font-family: 'Nunito Sans', sans-serif;
+}
+body.damiani .block-catalog .text a:hover {
+   text-decoration:none;
+}
+body.damiani .damiani-static-block, body.salvini .salvini-static-block, body.bliss .bliss-static-block, body.rocca .rocca-static-block {
+    margin: 90px 0;
+}
+body.damiani ul.header.links li.authorization-link a:before {
+    content: "";
+    background: url('../images/ICON-PROFILO-WHITE-NEW.svg') 1px 0px no-repeat;
+    padding: 11px 14px;
+    float: left;
+}
+body.damiani .header-contact-static a.phnum:after {
+    content: "";
+    background: url('../images/ICON-PHONE-WHITE-NEW.svg') 1px 4px no-repeat;
+    padding: 12px 12px;
+    float: left;
+}
+body.damiani .header-contact-static a.header-email:after {
+    content: "";
+    background: url('../images/iconmonstr-mail-thin.svg') 1px 4px no-repeat;
+    padding: 14px 14px;
+    float: right;
+	filter: invert(1);
+	-webkit-filter: invert(1);
+	filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='3');
+
+}
+body.salvini .header-contact-static a.header-email:after {
+    content: "";
+    background: url('../images/iconmonstr-mail-thin.svg') 1px 4px no-repeat;
+    padding: 14px 14px;
+    float: right;
+	filter: invert(1);
+	-webkit-filter: invert(1);
+}
+body.bliss .header-contact-static a.header-email:after {
+    content: "";
+    background: url('../images/iconmonstr-mail-thin.svg') 1px 4px no-repeat;
+    padding: 14px 14px;
+    float: right;
+	filter: invert(1);
+	-webkit-filter: invert(1);
+	
+}
+body.rocca .header-contact-static a.header-email:after {
+    content: "";
+    background: url('../images/iconmonstr-mail-thin.svg') 1px 4px no-repeat;
+    padding: 14px 14px;
+    float: right;
+	filter: invert(1);
+	-webkit-filter: invert(1);
+}
+
+body.damiani div#switcher-language span:before {
+    content: "";
+    background: url('../images/ICON-WORD-WHITE-NEW.svg') 0px 0px no-repeat;
+    padding: 0px 12px;
+}
+
+.customer-account-login strong#block-customer-login-heading {
+    font-size: 16px;
+    letter-spacing: 0px;
+    color: #000000;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.customer-account-login .login-container .block .block-title {
+    border: none;
+    padding: 0;
+    margin-bottom: 10px;
+}
+
+.customer-account-login  .block.block-customer-login {
+    width: 100%;
+}
+.customer-account-login  .login-container {
+    text-align: center;
+    margin: 40px 0;
+    margin: 0 auto;
+    max-width: 400px
+}
+.block.block-customer-login .control {
+    margin: 0 auto;
+}
+.block.block-customer-login .field.note {
+    font-size: 14px;
+    letter-spacing: 0px;
+    color: #000000;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 500;
+}
+.block.block-customer-login .control.login {
+    content: "";
+    background: url(../images/login-anim.svg) 0px 0px no-repeat;
+    padding: 7px 65px;
+    width: 100% !important;
+    background-size: 100%;
+}
+.block.block-customer-login .control.pass {
+    content: "";
+    background: url(../images/login-anim.svg) 1px 14px no-repeat;
+    padding: 12px 60px;
+    background-position: 0px -50px;
+    width: 100% !important;
+    background-size: 100%;
+}
+
+.block.block-customer-login .control.login input#email {
+    border: none;
+    background: none;
+}
+.block.block-customer-login .control.pass input#pass {
+    border: none;
+    background: none;
+}
+
+.block.block-customer-login input:not([disabled]):focus{
+    box-shadow: none;
+    border: none;
+    background: none;
+
+}
+
+.block.block-customer-login input:-webkit-autofill,
+.block.block-customer-login input:-webkit-autofill:hover, 
+.block.block-customer-login input:-webkit-autofill:focus,
+.block.block-customer-login textarea:-webkit-autofill,
+.block.block-customer-login textarea:-webkit-autofill:hover,
+.block.block-customer-login textarea:-webkit-autofill:focus,
+.block.block-customer-login select:-webkit-autofill,
+.block.block-customer-login select:-webkit-autofill:hover,
+.block.block-customer-login select:-webkit-autofill:focus {
+  border: none;
+  -webkit-text-fill-color: none;
+  -webkit-box-shadow: none;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.primary.signin .action.primary, .customer-account-forgotpassword .form.password.forget button.action.submit.primary {
+    padding: 12px 0;
+    width: 100%;
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: #000000;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: bold;
+}
+.primary.signin .action.primary:hover, .block.block-new-customer a.action.create.primary:hover, .customer-account-forgotpassword .form.password.forget button.action.submit.primary:hover, fieldset#example-advanced-form-p-3 button.action.submit.primary:hover, fieldset#example-advanced-form-p-3 button.click-m:hover {
+    border: 1px solid #876c62;
+    color: #876c62;
+}
+.primary .action.primary:hover {
+    background: white;
+    border: 1px solid #000;
+    color: #000;
+}
+.primary .action.primary {
+    background: white;
+    border: 1px solid #000;
+    color: #000;
+    font-family: 'Nunito Sans', sans-serif;
+}
+.or {
+    margin: 10px 0;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: 'Nunito Sans', sans-serif;
+}
+.login-container .fieldset:after {
+    margin-top: 20px !important;
+}
+.customer-account-login main#maincontent {
+    max-width: 100%;
+    width: 100%;
+}
+
+.customer-account-login .block.block-customer-login .primary.signin {
+    margin-top: 15px;
+}
+
+.actions-toolbar.forgot-pass .secondary {
+    margin: 0 auto;
+    width: 100%;
+}
+.actions-toolbar.forgot-pass .secondary a.action.remind {
+    text-align: left;
+    width: 100%;
+}
+.customer-account-login div.mage-error[generated] {
+    margin-top: 6px;
+}
+.actions-toolbar.forgot-pass .secondary  span {
+    font-size: 14px;
+    letter-spacing: 0px;
+    color: #000000;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 300;
+}
+.block.block-customer-login .field.email.required {
+    margin-bottom: 5px;;
+}
+.block.block-customer-login .field.password.required {
+    margin-bottom: 0px;
+    margin-top: 15px;
+}
+
+.customer-account-login .block.block-customer-login .control.login div#email-error {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-top: 6px;
+}
+.block.block-new-customer {
+   margin: 0 auto;
+    width: 100% !important;
+    text-align: center;
+    float: left;
+}
+
+.actions.clearfix ul li a:hover {
+    background-color: #222 !important;
+}
+
+body.bliss .actions.clearfix ul li a {
+    background-color: #a91271;
+    color: #fff;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.customer-account-create .actions-toolbar .primary button.action.submit.primary, .block-authentication button.action.action-login.secondary, .form.form-edit-account .actions-toolbar .primary button.action.save.primary {
+    padding: 12px 0;
+    width: 100%;
+	margin: 0 auto;
+    font-size: 14px;
+    letter-spacing: 1px;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: bold;
+    background: white;
+    border: 1px solid #000;
+    color: #000;
+}
+.customer-account-create .actions-toolbar .primary button.action.submit.primary:hover, .block-authentication button.action.action-login.secondary:hover, .form.form-edit-account .actions-toolbar .primary button.action.save.primary:hover {
+
+    border: 1px solid #876c62;
+    color: #876c62;
+	background: white
+
+}
+body.bliss .actions.clearfix ul li a:hover {
+    background-color: #770341 !important;
+    color: #fff;
+    color: #fff;
+}
+
+body.rocca .actions.clearfix ul li a {
+    background-color: #504335;
+    color: #fff;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+}
+
+body.rocca .actions.clearfix ul li a:hover {
+   background-color: #a59482;
+    color: #fff;
+}
+
+body.salvini .actions.clearfix ul li a {
+    background-color: #B39897;
+    color: #fff;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+}
+
+body.salvini .actions.clearfix ul li a:hover {
+   background-color: #770341;
+    color: #fff;
+}
+
+.block.block-new-customer .actions-toolbar.create-acc {
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+}
+.block.block-new-customer .actions-toolbar.create-acc .primary {
+   
+    width: 100%;
+    float: none;
+}
+.block.block-new-customer a.action.create.primary {
+    margin: 0 auto;
+    width: 100%;
+    padding: 12px 0;
+    font-size: 14px;
+    border-radius: initial;
+    letter-spacing: 1px;
+    color: #000000;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: bold;
+}
+
+.customer-account-login .login-container .block.block-customer-login{
+   margin-bottom: -30px;
+}
+
+
+ul.header.links li.customer-welcome span.customer-name span {
+    color: #000;
+}
+ul.header.links li.customer-welcome .action.switch {
+ color: #000;
+}
+
+body.damiani ul.header.links li.customer-welcome span.customer-name span {
+    color: #fff !important;
+}
+body.damiani ul.header.links li.customer-welcome .action.switch {
+ color: #fff;
+}
+
+.salvini ul.header.links li.customer-welcome span.customer-name span {
+     color: #fff !important;
+}
+.salvini ul.header.links li.customer-welcome .action.switch {
+ color: #fff;
+}
+
+.bliss ul.header.links li.customer-welcome span.customer-name span {
+     color: #fff !important;
+}
+.bliss ul.header.links li.customer-welcome .action.switch {
+ color: #fff;
+}
+
+.rocca ul.header.links li.customer-welcome span.customer-name span {
+    color: #fff !important;
+}
+.rocca ul.header.links li.customer-welcome .action.switch {
+ color: #fff;
+}
+
+
+/*******************salvini**********************/
+
+body.salvini .page-wrapper header.page-header {
+    background-color: #E1E1E1;
+}
+
+body.salvini .page-wrapper .page-header .panel.wrapper {
+    border-bottom: none;
+    background-color: #B39897;
+}
+
+body.salvini div#switcher-language {
+
+    color: #fff;
+    }
+body.salvini .header-contact-static a.phnum {
+    color: #fff;
+}
+
+body.salvini footer.page-footer {
+    background-color: #B39897;
+}
+
+body.salvini .page-wrapper .header.panel>.header.links>li>a {
+    color: #fff;
+}
+
+body.salvini .bg-main-image {
+    position: relative;
+    margin: 0 auto;
+    text-align: center;
+}
+
+body.salvini .block-catalog {
+    position: absolute;
+    top: 20%;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    text-align: center;
+}
+body.salvini .block-catalog .text a {
+    font-size: 16px;
+    color: #fff;
+    font-family: 'Nunito Sans', sans-serif;
+}
+body.salvini .block-catalog .text a:hover {
+   text-decoration:none;
+}
+body.salvini .damiani-static-block {
+    margin: 90px 0;
+}
+body.salvini ul.header.links li.authorization-link a:before {
+    content: "";
+    background: url('../images/ICON-PROFILO-WHITE-NEW.svg') 1px 0px no-repeat;
+    padding: 11px 14px;
+    float: left;
+}
+body.salvini .header-contact-static a.phnum:after {
+    content: "";
+    background: url('../images/ICON-PHONE-WHITE-NEW.svg') 1px 4px no-repeat;
+    padding: 12px 12px;
+    float: left;
+}
+body.salvini div#switcher-language span:before {
+    content: "";
+    background: url('../images/ICON-WORD-WHITE-NEW.svg') 0px 0px no-repeat;
+    padding: 0px 12px;
+}
+/*******************salvini**********************/
+.damiani header.page-header a.logo {
+    top: 30px;
+}
+.bliss .page-header a.logo {
+    top: 20px;
+}
+.bliss .page-header a.logo img {
+    height: 99px;
+}
+.rocca header.page-header a.logo {
+    top: 25px;
+}
+/*******************bliss**********************/
+
+body.bliss .page-wrapper header.page-header {
+    background-color: #E1E1E1;
+}
+
+body.bliss .page-wrapper .page-header .panel.wrapper {
+    border-bottom: none;
+    background-color: #9E0E6C;
+}
+
+body.bliss div#switcher-language {
+
+    color: #fff;
+    }
+body.bliss .header-contact-static a.phnum {
+    color: #fff;
+}
+
+body.bliss footer.page-footer {
+    background-color: #9E0E6C;
+}
+
+body.bliss  .page-wrapper .header.panel>.header.links>li>a {
+    color: #fff;
+}
+
+body.bliss .bg-main-image {
+    position: relative;
+    margin: 0 auto;
+    text-align: center;
+}
+
+body.bliss .block-catalog {
+    position: absolute;
+    top: 20%;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    text-align: center;
+}
+body.bliss .block-catalog .text a {
+    font-size: 16px;
+    color: #fff;
+    font-family: 'Nunito Sans', sans-serif;
+}
+body.bliss .block-catalog .text a:hover {
+   text-decoration:none;
+}
+body.bliss .damiani-static-block {
+    margin: 90px 0;
+}
+body.bliss ul.header.links li.authorization-link a:before {
+    content: "";
+    background: url('../images/ICON-PROFILO-WHITE-NEW.svg') 1px 0px no-repeat;
+    padding: 11px 14px;
+    float: left;
+}
+body.bliss .header-contact-static a.phnum:after {
+    content: "";
+    background: url('../images/ICON-PHONE-WHITE-NEW.svg') 1px 4px no-repeat;
+    padding: 12px 12px;
+    float: left;
+}
+body.bliss div#switcher-language span:before {
+    content: "";
+    background: url('../images/ICON-WORD-WHITE-NEW.svg') 0px 0px no-repeat;
+    padding: 0px 12px;
+}
+/*******************bliss**********************/
+
+
+/*******************rocca**********************/
+
+body.rocca .page-wrapper header.page-header {
+    background-color: #E1E1E1;
+}
+
+body.rocca .page-wrapper .page-header .panel.wrapper {
+    border-bottom: none;
+    background-color: #504335;
+}
+
+body.rocca div#switcher-language {
+
+    color: #fff;
+    }
+body.rocca .header-contact-static a.phnum {
+    color: #fff;
+}
+
+body.rocca footer.page-footer {
+    background-color: #504335;
+}
+
+body.rocca .page-wrapper .header.panel>.header.links>li>a {
+    color: #fff;
+}
+
+body.rocca .bg-main-image {
+    position: relative;
+    margin: 0 auto;
+    text-align: center;
+}
+
+body.rocca .block-catalog {
+    position: absolute;
+    top: 20%;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    text-align: center;
+}
+body.rocca .block-catalog .text a {
+    font-size: 16px;
+    color: #fff;
+    font-family: 'Nunito Sans', sans-serif;
+}
+body.rocca .block-catalog .text a:hover {
+   text-decoration:none;
+}
+
+body.rocca .damiani-static-block {
+    margin: 90px 0;
+}
+body.rocca ul.header.links li.authorization-link a:before {
+    content: "";
+    background: url('../images/ICON-PROFILO-WHITE-NEW.svg') 1px 0px no-repeat;
+    padding: 11px 14px;
+    float: left;
+}
+body.rocca .header-contact-static a.phnum:after {
+    content: "";
+    background: url('../images/ICON-PHONE-WHITE-NEW.svg') 1px 4px no-repeat;
+    padding: 12px 12px;
+    float: left;
+}
+body.rocca div#switcher-language span:before {
+    content: "";
+    background: url('../images/ICON-WORD-WHITE-NEW.svg') 0px 0px no-repeat;
+    padding: 0px 12px;
+}
+
+/*******************rocca**********************/
+
+/*******************create-account**********************/
+.field.group_id.required .control span.lable-radio {
+    font-size: 16px;
+    color: #000000;
+    font-family: 'Nunito Sans', sans-serif;
+    margin-right: 5px;
+    position: relative;
+    top: -6px;
+}
+.field.group_id.required .control span.lable-radio:last-child {
+    margin-right: 0;
+}
+.control input[type="radio"]:nth-child(2n+1) {
+    margin-left: 0px;
+}
+.control input[type="radio"], input[type="radio"] {
+    content: "";
+    background: url(../images/rectangle-154.svg) 0px 0px no-repeat;
+    padding: 14px 14px;
+    -webkit-appearance: none; 
+    font-size: 18px;
+    color: #000000;
+    font-family: 'Nunito Sans', sans-serif;
+    margin: 0;
+    margin-right: 5px;
+}
+
+.control input[type=radio]:checked, input[type=radio]:checked {
+    background: url('../images/path-222.svg') 10px 10px no-repeat;
+    background-color: #DFDFDF;
+    border-radius: 5px;
+    -ms-transform: scale(0.9); /* IE 9 */
+    -webkit-transform: scale(0.9); /* Chrome, Safari, Opera */
+    transform: scale(0.9);
+    padding: 15px;
+}
+
+.account .control span.lable-radio {
+    font-size: 16px;
+    position: relative;
+    top: -8px;
+	font-family: 'Nunito Sans', sans-serif;
+}
+
+input[type=radio]:focus {
+  outline-color: transparent;
+}
+
+.customer-account-create main#maincontent {
+    max-width: 400px;
+    margin: 0 auto;
+    width: 100%;
+}
+.customer-account-create .field.group_id.required {
+    text-align: left;
+}
+.customer-account-create form#form-validate {
+    margin: 0 auto;
+	min-width: unset;
+    width: 100%;
+}
+.field.password.required,.field.confirmation.required {
+    width: 100%;
+    margin: 0 auto;
+}
+.popup-authentication div#modal-content-11 {
+    border: none;
+}
+
+.customer-account-create .page-title-wrapper, .block-authentication .block.block-customer-login .block-title {
+    text-align: center;
+}
+.customer-account-create h1.page-title, .block-authentication .block.block-customer-login .block-title strong#block-customer-login-heading {
+    font-size: 20px;
+    letter-spacing: 0px;
+    color: #000000;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: bold;
+}
+
+.customer-account-create .actions-toolbar  .primary, .block-authentication .actions-toolbar .primary, .customer-account-forgotpassword .form.password.forget .actions-toolbar .primary, .form.form-edit-account .actions-toolbar .primary {
+    width: 100%;
+    float: none;
+    margin: 0 auto;
+
+}
+.customer-account-create .actions-toolbar {
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+.customer-account-create fieldset.fieldset.create.info {
+    margin-bottom: 20px;
+}
+.form.form-edit-account .actions-toolbar {
+    float: left !important;
+    margin: 20px 5px;
+    width: 100%;
+    max-width: 400px;
+}
+.customer-account-create .form-create-account .fieldset.create.account:after {display:none;}
+.client-contain {
+    margin-top: 10px;
+    float: none;
+    width: 100%;
+}
+
+.customer-account-create form#form-validate select#country{
+	width: 100% !important;
+    height: 37px !important;
+    margin: 0 auto;
+    max-width: 440px;
+    font-size: 14px;
+    color: #000000;
+    font-family: 'Nunito Sans', sans-serif;
+}
+.client-contain p {
+   font-size: 12px;
+    letter-spacing: 1px;
+    color: #000000;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 300;
+    float: none;
+    margin: 0 auto;
+}
+.client-create-account .field.required, .client-create-account .field {
+    width: 100%;
+    text-align: left;
+}
+.customer-account-create form#form-validate fieldset.fieldset.address {
+    margin-bottom: 0;
+}
+.client-create-account .field.required input,.client-create-account .field input, .form.form-edit-account .field input, .form.form-edit-account .field.password .control input#password-confirmation  {
+    width: 100% !important;
+    height: 37px !important;
+    margin: 0 auto;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+.control.brandoption {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+}
+.control.brandoption select {
+    width: 100% !important;
+    height: 37px !important;
+    margin: 0 auto;
+    max-width: 440px;
+    font-size: 15px;
+    color: #000000;
+    font-family: 'Nunito Sans', sans-serif;
+}
+/*******************create-account**********************/
+
+
+@media only screen and (max-width: 767px) {
+
+div#switcher-language, .header-contact-static, .home-contain-title h1 {  display: none;}
+.page-wrapper .header.panel>.header.links>li>a {font-size: 0;}
+.damiani-home-main.row .row {    text-align: center;}
+.damiani-home-main img {    padding: 30px 0;}
+.page-wrapper .page-header .header.panel {position: relative;}
+header.page-header a.logo { top: 40px;}
+header.page-header a.logo { max-width: 150px;}
+.rocca header.page-header a.logo { top: 50%; transform: translateY(-50%); }
+.header.panel > .header.links {    margin-top: -10px;    margin-right: 0;}
+.nav-toggle {
+    top: 50%;
+    transform: translateY(-50%);
+}
+.nav-toggle:before {
+    color: #ffffff;
+	filter: invert(1);
+    -webkit-filter: invert(1);
+}
+body.damiani .nav-toggle:before, body.salvini .nav-toggle:before, body.bliss .nav-toggle:before, body.rocca .nav-toggle:before {
+    color: #ffffff;
+	-webkit-filter: none;
+	filter: none;
+}
+body ul.header.links li.authorization-link a:before {
+    padding: 10px 10px!important;
+    position: absolute!important;
+}
+.bliss .page-header a.logo img {
+    max-height: 60px;
+}
+.choose-brand .col-sm-12 {
+    text-align: center;
+}
+.page-wrapper .page-header .header.content {
+	padding: 0;
+}
+.footer.content {
+    display: none;
+}
+footer.page-footer a.logo img {
+    margin-bottom: 25px;
+}
+.header.panel > .header.links > li.greet.welcome {
+    font-size: 0;
+}
+.customer-name {
+    display: block;
+}
+ul.header.links li.customer-welcome .action.switch {
+    background: none;
+    font-size: 0;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+}
+ul.header.links li.customer-welcome span.customer-name span {
+    font-size: 0;
+}
+ul.header.links .customer-name .action.switch:before {
+    content: "";
+    background: url(../images/ICON-PROFILO-BLACK-NEW.svg) 1px 0px no-repeat;
+    padding: 11px 14px;
+    float: left;
+    margin-top: -3px;
+}
+.header.panel > .header.links > li.customer-welcome .customer-menu {
+	display: none;
+}
+.header.panel > .header.links > li.customer-welcome.active .customer-menu {
+	display: block;
+    background: #fff;
+    text-align: left;
+    border: 1px solid #bbbbbb;
+    margin-top: 5px;
+    min-width: 100%;
+    z-index: 101;
+    box-sizing: border-box;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.15);
+    width: 100px;
+}
+.header.panel > .header.links > li.customer-welcome.active .customer-menu ul.header.links {
+    width: 100%;
+    display: block;
+    float: left;
+    padding: 0;
+    padding: 5px 10px;
+}
+.header.panel > .header.links > li.customer-welcome {
+    position: relative;
+}
+.customer-welcome ul:before, .customer-welcome ul:after {
+    border-bottom-style: solid;
+    content: '';
+    display: block;
+    height: 0;
+    position: absolute;
+    width: 0;
+}
+.customer-welcome ul:after {
+    border: 7px solid;
+    border-color: transparent transparent #bbbbbb transparent;
+    z-index: 98;
+}
+.customer-welcome ul:after {
+    right: 9px;
+    top: -14px;
+}
+
+body.damiani .damiani-static-block, body.salvini .salvini-static-block, body.bliss .bliss-static-block, body.rocca .rocca-static-block {
+    margin: 20px 0;
+}
+.page-products .columns {
+    padding-top: 0;
+}
+.damiani footer.page-footer a.logo img, .salvini footer.page-footer a.logo img, .bliss footer.page-footer a.logo img, .rocca footer.page-footer a.logo img {
+    margin-bottom: 25px;
+}
+
+form#example-advanced-form .steps.clearfix ul li a, form#claim .steps.clearfix ul li a {
+    margin: 0!important;
+    padding: 5px 5px 5px 0!important;
+    font-size: 10px!important;
+    height: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+form#example-advanced-form .steps.clearfix ul li:after, form#claim .steps.clearfix ul li:after {
+    width: 22px!important;
+    height: 40px!important;
+}
+.field.country.required + .field.required .control {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 100%;
+}
+body .content.clearfix fieldset#example-advanced-form-p-0 input#city-2, 
+body .content.clearfix fieldset#claim-p-0 input#city-2, fieldset#claim-p-2 input#left-city {
+    width: 100% !important;
+    float: left;
+    margin-right: 0!important;
+    margin: 0;
+}
+.field.country.required + .field.required .control .field.region.required {
+    width: 100%;
+    margin-top: 20px;
+}
+fieldset#example-advanced-form-p-0 .control select#state {
+    width: 100% !important;
+    margin: 0!important;
+}
+label.label.certi + .control {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+}
+body .content.clearfix div#state-error {
+    float: right !important;
+    width: 100% !important;
+    height: initial!important;
+}
+body .content.clearfix fieldset#example-advanced-form-p-0 input#datepickers, 
+body .content.clearfix fieldset#example-advanced-form-p-2 input#purchase_date_datepickers, 
+body .content.clearfix fieldset#claim-p-0 input#claim_datepickers, 
+body fieldset#claim-p-1 input#claim_purchase_date_datepickers, 
+body fieldset#claim-p-2 input#claim_termination, 
+body fieldset#claim-p-2 input#written-complaint, 
+body fieldset#claim-p-2 input#delivery-receipt, 
+body .content.clearfix fieldset#example-advanced-form-p-0 input#datepickers_it, 
+body fieldset#example-advanced-form-p-2 input#purchase_date_datepickers_it, 
+body .content.clearfix fieldset#claim-p-0 input#claim_datepickers_it, 
+body fieldset#claim-p-1 input#claim_purchase_date_datepickers_it, 
+body fieldset#claim-p-2 input#claim_termination_it, 
+body fieldset#claim-p-2 input#left_date_date_datepickers_it, 
+body fieldset#claim-p-2 input#left_date_date_datepickers {
+    width: auto !important;
+    flex: 1 auto;
+    margin-right: 10px!important;
+	margin-top: 0!important;
+}
+.content.clearfix img.ui-datepicker-trigger {
+	top: 0!important;
+    margin: 0;
+}
+body .content.clearfix div#city-2-error {
+    width: 100% !important;
+    margin-right: 0;
+}
+.tooltip_info {
+    position: absolute;
+    right: 0;
+    top: 35px;
+    right: 0;
+}
+body .content.clearfix .mage-error {
+    height: inherit!important;
+}
+body fieldset#example-advanced-form-p-2 .mage-error + .mage-error + .tooltip_info {
+    margin-top: -23px;
+}
+.categorypath-damiani-status-certificato button#certi_status {
+    margin-top: 20px;
+}
+.category-denuncia-del-sinistro .category-cms {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+}
+.contain-main-claim {
+    max-width: 100%!important;
+    position: static!important;
+    top: 0;
+    width: 100%!important;
+    order: 3;
+    padding: 0;
+}
+.autofill-contain {
+    max-width: 440px;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    order: 1;
+    margin-bottom: 20px;
+    padding: 2.5%;
+}
+.autofill-contain .field.required .control {
+    position: relative;
+}
+.autofill-contain .icon-search:before {
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+}
+.autofill-contain {
+    position: static;
+}
+.autofill-contain.retailer.activeon, .autofill-contain.client.activeon {
+    top: 120px;
+    position: absolute;
+}
+.autofill-contain + .wizard {
+    margin-bottom: 20px;
+}
+body .content.clearfix fieldset#claim-p-0 input#states {
+    width: 100% !important;
+}
+body .wizard > .content {
+    min-height: inherit;
+}
+fieldset#claim-p-2 label.label.certi + .control .field.region.required {
+	width: 100%!important;
+}
+fieldset#claim-p-2 label.label.certi + .control input#left-city {
+    width: 100%!important;
+}
+fieldset#claim-p-2 label.label.certi + .control .field.region.required select#state {
+    width: 100%!important;
+    margin-top: 20px;
+}
+body label.label.certi + .control input#left-city + div#left-city-error {
+    position: static;
+    bottom: -42px;
+    width: 100%!important;
+}
+.categorypath-rocca-status-certificato button#certi_status {
+    margin-top: 20px;
+}
+.customer-account-edit .page-header {
+    border-bottom: 1px solid #cccccc;
+	margin: 0 0 -1px 0;
+}
+.Topline {
+    position: static;
+    top: 12px;
+    margin-bottom: -1px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.block-collapsible-nav .title {
+    position: absolute;
+    border-bottom: 1px solid #cccccc;
+    padding: 10px 40px 10px 15px;
+    display: block;
+    text-decoration: none;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+.block-collapsible-nav {
+    top: 0;
+}
+.have-an-account-main .have-an-account p {
+	margin-bottom: 10px!important;
+    width: 100%!important;
+}
+.have-an-account-main .have-an-account .trigger-auth-popup {
+    display: inline-block;
+}
+body.damiani .have-an-account-main .have-an-account a span {
+    display: block;
+}
+body .popup-authentication .modal-inner-wrap {
+    min-width: auto !important;
+    width: 100% !important;
+    background: #513F3A;
+}
+body.account .block-collapsible-nav .content ul.nav.items li.nav.item:after {
+    right: 15px!important;
+    background-size: 10px!important;
+    background-position: center!important;
+    left: inherit!important;
+}
+body.account .block-collapsible-nav .content {
+    padding: 0!important;
+    margin-top: 35px;
+}
+body.account .block-collapsible-nav .content ul.nav.items li.nav.item:first-child {
+    display: none;
+}
+body.account .block-collapsible-nav .content ul.nav.items li.nav.item {
+    border-bottom: 1px solid #000;
+    padding: 10px 0;
+}
+body.account .block-collapsible-nav .item a {
+    background: none!important;
+}
+table#my-orders-table tbody tr td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-top: none;
+}
+table#my-orders-table tbody tr td:last-child {
+    border-right: none;
+    border-left: none;
+}
+/* .block.block-customer-login .field.password.required, .block.block-customer-login .control.login {    width: 55%;}
+.block.block-customer-login .control.pass {    background-position: 0px -70px;} */
+
+}
+/* @media only screen and (max-width: 320px) {
+.block.block-customer-login .control.login {
+    
+    padding: 18px 45px;
+    background-position: 0px 15px;
+    background-size: 100%;
+
+}
+.block.block-customer-login .control.pass {
+    padding: 18px 64px;
+    background-position: 0px -45px;
+    background-size: 100%;
+}
+} */
+/*******************Edit-account-start**********************/
+fieldset.fieldset.password {
+    display: block !important;
+    float: left !important;
+    margin: 20px 5px;
+    width: 100%;
+    max-width: 400px;
+}
+.form-edit-account .fieldset.fieldset.info {
+    width: 100%;
+    margin: 0px 5px;
+    max-width: 400px;
+	margin-top: 20px;
+}
+.form-edit-account .field.new.password.required {
+    margin: 20px 0;
+}
+.content.clearfix fieldset#example-advanced-form-p-2 .choice.checkbox {
+    width: 100%;
+    float: none;
+    max-width: 440px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+.content.clearfix fieldset#example-advanced-form-p-2 .choice.checkbox.condition{  margin-bottom: 20px;}
+.content.clearfix fieldset#example-advanced-form-p-2 .choice.checkbox input#general-conditions,.content.clearfix fieldset#example-advanced-form-p-2 .choice.checkbox input#marketing,.content.clearfix fieldset#example-advanced-form-p-2 .choice.checkbox input#profilazione,.content.clearfix fieldset#example-advanced-form-p-2 .choice.checkbox input#cessione,.content.clearfix fieldset#example-advanced-form-p-2 .choice.checkbox input#privacy{
+    float: left !important;
+    width: 26px !important;
+    height: 26px !important;
+    margin-right: 10px !important;
+    margin-top: 0 !important;
+	cursor: pointer;
+}
+.content.clearfix fieldset#example-advanced-form-p-2 .choice.checkbox input:focus { box-shadow: none;}
+.content.clearfix fieldset#example-advanced-form-p-2 .choice.checkbox.common-allbrand input#general-conditions{
+	float:none !important;
+}
+
+span.check-line {
+    width: 90%;
+    float: left;
+	margin-bottom: 20px;
+}
+/*
+form#example-advanced-form .content.clearfix ::-webkit-scrollbar              { background-color: #FFFFFF; }
+form#example-advanced-form .content.clearfix ::-webkit-scrollbar-button       { background-color: #FFFFFF; }
+form#example-advanced-form .content.clearfix ::-webkit-scrollbar-track        { background-color: #FFFFFF; }
+form#example-advanced-form .content.clearfix ::-webkit-scrollbar-track-piece  { background-color: #FFFFFF; }
+form#example-advanced-form .content.clearfix ::-webkit-scrollbar-thumb        { background-color: #FFFFFF; border: 1px solid #e8e8e8; }
+form#example-advanced-form .content.clearfix ::-webkit-scrollbar-corner       { background-color: #FFFFFF; }
+form#example-advanced-form .content.clearfix ::-webkit-resizer                { background-color: #000000; }
+*/
+
+.content.clearfix fieldset#example-advanced-form-p-2 .choice.checkbox.condition .field.required {
+    padding: 0px 10px;
+}
+.content.clearfix fieldset#example-advanced-form-p-2 .choice.checkbox.condition {
+	height: 300px;
+    overflow-y: scroll;
+    overflow: auto;
+    border: 1px solid #e8e8e8;
+}
+.content.clearfix fieldset#example-advanced-form-p-2 .choice.checkbox.condition label.label.terms{ padding: 10px;}
+.content.clearfix fieldset#example-advanced-form-p-2 .choice.checkbox label.label.terms{
+    display: block !important;
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: #4b3939;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 300;
+    text-align: justify;
+       
+}
+.content.clearfix fieldset#example-advanced-form-p-2 .title-checkbox{
+    width: 100%;
+    max-width: 440px;
+    margin: 0 auto;
+    text-align: left;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #000000;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 400;
+}
+/*******************Edit-account-end**********************/
+/*******************Ravi-Style**********************/
+
+/*
+.show {
+margin: 0px auto;
+max-width: 440px;
+border: 1px solid #ccc;
+padding: 15px;
+position: absolute;
+left: 0px;
+top: 53px;
+right: 0px;
+background: rgb(255, 255, 255);
+z-index: 999;
+border-top: 0;cursor: pointer;
+}
+#autosuggest li {
+list-style: none;
+}
+*/
+/*******************Ravi-Style**********************/
+table#my-orders-table thead th {
+    vertical-align: bottom;
+    border-bottom: 0px solid #e8e8e8;
+    font-size: 16px;
+    color: #000000;
+    font-family: 'Nunito Sans', sans-serif;
+    border-right: 1px solid #e8e8e8;;
+}
+.account .table-wrapper table#my-orders-table tr th.col.qty {
+    min-width: 100px;
+    text-align: left !important;
+}
+table#my-orders-table thead th:last-child {
+    border-right: none;
+}
+table#my-orders-table tbody tr td {
+    font-size: 14px;
+    color: #000000;
+    font-family: 'Nunito Sans', sans-serif;
+        border-right: 1px solid #e8e8e8;;
+}
+table#my-orders-table tbody tr td:last-child {
+    border-right: none;
+}
+.account .sidebar.sidebar-main .block.block-collapsible-nav div#block-collapsible-nav span.delimiter {
+    margin: 0 auto;
+}
+body.account .columns {
+    max-width: 980px;
+    margin: 0 auto;
+}
+body.account .block-collapsible-nav .content ul.nav.items li.nav.item {
+    width: 100%;
+    float: left;
+	border-bottom: 1px solid #000;
+	padding: 15px 0;
+}
+body.account .block-collapsible-nav .item:nth-child(2)> strong:before, body.account .block-collapsible-nav .content ul.nav.items li.nav.item:nth-child(2) a:before {
+	content: "";
+    background: url('../images/ICON-PROFILO.svg') 0px 0px no-repeat;
+    padding: 5px 20px;
+	
+}
+
+body.account .block-collapsible-nav .content ul.nav.items {
+    position: relative;
+}
+
+body.account .block-collapsible-nav .content ul.nav.items li.nav.item:after {
+    content: "";
+    background: url(../images/open-arrow-new.svg) 0px 0px no-repeat;
+    padding: 18px 12px;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+}
+
+body.account .block-collapsible-nav .content ul.nav.items li.nav.item:nth-child(4) a:before, body.account .block-collapsible-nav .item:nth-child(4)> strong:before {
+	
+	content: "";
+    background: url('../images/ICON-DENUNCIA-SINISTRO.svg') 0px 0px no-repeat;
+    padding: 10px 22px;
+}
+body.account .block-collapsible-nav .content ul.nav.items li.nav.item:nth-child(5) a:before, body.account .block-collapsible-nav .item:nth-child(5)> strong:before {
+	
+	content: "";
+    background: url('../images/ICON-STATUS-CERTIFICATO.svg') 0px 0px no-repeat;
+    padding: 10px 22px;
+}
+body.account .block-collapsible-nav .content ul.nav.items li.nav.item:nth-child(6) a:before, body.account .block-collapsible-nav .item:nth-child(6)> strong:before {
+	content: "";
+    background: url('../images/ICON-ASSICURAZIONE.svg') 0px 0px no-repeat;
+    padding: 10px 22px;
+}
+
+body.account .block-collapsible-nav .content ul.nav.items li.nav.item:nth-child(1):after {
+    display: none;
+}
+body.account .block-collapsible-nav .content ul.nav.items li.nav.item:nth-child(3) {
+    display: none;
+}
+
+
+.customer-account-edit .block-collapsible-nav .item.current a, .customer-account-edit .block-collapsible-nav .item.current > strong {
+    border: none;
+}
+body.account .block-collapsible-nav .item.current > strong {
+    font-size: 14px;
+    color: #000000;
+    font-family: 'Nunito Sans', sans-serif;
+	border: none;
+}
+body.account .block-collapsible-nav .item a {
+    font-size: 14px;
+    color: #000000;
+    font-family: 'Nunito Sans', sans-serif;
+	padding-left: 10px;
+}
+body.account.page-layout-2columns-left .column.main {
+    width: 60% !important; 
+}
+body.account.page-layout-2columns-left .sidebar-main {
+    width: 40% !important;
+}
+body.account .block-collapsible-nav .content {
+    background: #fff;
+    padding: 70px 0;
+}
+table#my-orders-table tbody tr td a {
+    background: #dcdcdc;
+    padding: 5px 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    color: #000000;
+    font-family: 'Nunito Sans', sans-serif;
+}
+body.account h1.page-title span.base {
+    font-size: 21px;
+}
+
+.have-an-account-main {
+    text-align: center;
+    margin: 0 auto;
+    float: none;
+    width: 100%;
+    max-width: 400px;
+	margin-bottom: 30px;
+}
+
+.have-an-account-main .have-an-account {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+.have-an-account-main .have-an-account p {
+    font-size: 18px;
+    color: #000000;
+    font-family: 'Nunito Sans', sans-serif;
+    text-align: center;
+    margin: 0 auto;
+    width: 70%;
+    float: left;
+}
+body.damiani .have-an-account-main .have-an-account a span {
+    padding: 7px 25px;
+    background: #513F3A;
+    border: 1px solid #513F3A;
+    box-shadow: none;
+    font-size: 14px;
+    color: #ffffff;
+    font-family: 'Nunito Sans', sans-serif;
+    text-align: center;
+}
+body.salvini .have-an-account-main .have-an-account a span {
+    padding: 7px 25px;
+    background: #B39897;
+    border: 1px solid #B39897;
+    box-shadow: none;
+    font-size: 14px;
+    color: #ffffff;
+    font-family: 'Nunito Sans', sans-serif;
+    text-align: center;
+}
+body.bliss .have-an-account-main .have-an-account a span {
+    padding: 7px 25px;
+    background: #9E0E6C;
+    border: 1px solid #9E0E6C;
+    box-shadow: none;
+    font-size: 14px;
+    color: #ffffff;
+    font-family: 'Nunito Sans', sans-serif;
+    text-align: center;
+}
+body.rocca .have-an-account-main .have-an-account a span {
+    padding: 7px 25px;
+    background: #504335;
+    border: 1px solid #504335;
+    box-shadow: none;
+    font-size: 14px;
+    color: #ffffff;
+    font-family: 'Nunito Sans', sans-serif;
+    text-align: center;
+}
+.have-an-account-main .have-an-account a:hover {
+	text-decoration: none;
+}
+
+body.damiani .have-an-account-main .have-an-account a span:hover {
+	 background: #000 !important;
+}
+body.salvini .have-an-account-main .have-an-account a span:hover {
+	 background: #000 !important;
+}
+body.bliss .have-an-account-main .have-an-account a span:hover {
+	 background: #770341 !important;
+}
+body.rocca .have-an-account-main .have-an-account a span:hover {
+	 background: #000 !important;
+}
+footer.page-footer span.action.nav-toggle {
+    display: none;
+}
+span.authorization-link.logout {
+    width: 100%;
+    float: left;
+    padding: 0;
+    margin-top: 10px;
+    background: none!important;
+}
+span.authorization-link.logout:hover {
+    background: #e8e8e8;
+    cursor: pointer;
+}
+ul.header.links li.greet.welcome span.not-logged-in {
+    display: none;
+}
+li.customer-welcome.active ul.header.links li {
+    width: 100%;
+    float: left;
+}
+.cms-damiani-home-page li.greet.welcome span, .account li.greet.welcome span  {
+    color: #000;
+}
+ul.header.links li.authorization-links {
+    width: auto !important;
+}
+ul.header.links li.authorization-link {
+    width: auto !important;
+}
+
+@media only screen and (max-width: 420px) {
+.block.block-customer-login .control.login {    padding: 5px 45px;}
+.block.block-customer-login .control.pass {        padding: 5px 45px;
+    background-position: 0px -47px;}
+
+}
+@media only screen and (max-width: 360px) {
+.block.block-customer-login .control.pass {
+    background-position: 0px -42px;
+}
+}
+@media only screen and (max-width: 340px) {
+.block.block-customer-login .control.login {
+    padding: 3px 45px
+}
+.block.block-customer-login .control.pass {
+       padding: 3px 45px;
+    background-position: 0px -40px;
+}
+}
+#filetouploadDiv ,#filetouploadDiv_spa {
+    position: relative;
+   /* display: flex;*/
+    flex-wrap: wrap;
+}
+#buttonImage {
+    position: absolute;
+    top: 46px;
+    right: 5px;
+}
+
+input#filetoupload , input#filetoupload_spa {
+    position: absolute;
+    visibility: hidden;
+
+} 
+#example-advanced-form #customername-2 + .icon-search:before {
+    top: 0;
+    right: 5px;
+}
+#filetouploadDiv input#filetouploadInput , #filetouploadDiv_spa input#filetouploadInput_spa {
+    order: 1;
+    width: calc(100% - 45px)!important;
+    float: left!important;
+    margin: 0;
+}
+#filetouploadDiv #filetoupload-error ,#filetouploadDiv_spa #filetoupload-error {
+    order: 2;
+}
+.certificato-index-success .page-title-wrapper, .claim-index-success .page-title-wrapper {
+    display: none;
+}
+
+.certificato-index-success .success, .claim-index-success .success {
+    text-align: center;
+    font-size: 16px;
+    letter-spacing: 1px;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: bold;
+    text-decoration: none;
+    
+}
+
+#example-advanced-form-p-2 input[readonly], #example-advanced-form-p-0 input[readonly], .content.clearfix fieldset#claim-p-0 input[readonly] , .content.clearfix fieldset#claim-p-2 input[readonly], .content.clearfix fieldset#claim-p-1 input[readonly]{
+    color: rgb(84, 84, 84);
+    opacity: 0.5;
+}
+
+.cms-page-view .damiani_privacy {
+    max-width: 1100px;
+    width: 100%;
+    margin: 0 auto;
+}
+.cms-page-view .damiani_privacy h2 {
+	font-size: 16px;
+    text-align: center;
+	font-family: 'Nunito Sans', sans-serif;
+	text-transform: uppercase;
+}
+.cms-page-view .damiani_privacy p {
+    font-size: 14px;
+	font-family: 'Nunito Sans', sans-serif;
+}
+
+.cms-page-view .damiani_privacy span.underline_contain {
+    text-decoration: underline;
+}
+.cms-page-view .damiani_privacy ul li,.cms-page-view .damiani_privacy ol li {
+    font-size: 14px;
+    font-family: 'Nunito Sans', sans-serif;
+}
+fieldset#claim-p-2 input#privacy {
+    height: 15px !important;
+    width: auto !important;
+    float: left !important;
+}
+.choice.checkbox div#privacy-error {
+    width: 100%;
+    float: left;
+}
+.choice.checkbox + .field.required {
+    width: 100%;
+    float: left;
+}
+.choice.checkbox + .field.required #filetouploadDiv {
+    display: flex;
+    width: 100%;
+}
+.choice.checkbox + .field.required #filetouploadDiv #buttonImage {
+    top: 0;
+}
+.choice.checkbox .check-line {
+    font-size: 12px;
+}
+.cms-privacyclaim .breadcrumbs {
+    display: none;
+}

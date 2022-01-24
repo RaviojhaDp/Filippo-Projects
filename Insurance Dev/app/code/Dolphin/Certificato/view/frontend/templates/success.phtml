@@ -1,0 +1,58 @@
+<?php 
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$storeManager = $objectManager->get('\Magento\Store\Model\StoreManagerInterface');
+$storeName = $storeManager->getStore()->getName(); 
+$session = $objectManager->get('Magento\Customer\Model\Session');
+?>
+<div class="success nnnn">
+  <?php
+    $websiteUrl = " ";
+       if(strtolower($session->getBrand()) == "damiani"){
+        $websiteUrl = "https://www.damiani.com/";
+      }
+      if(strtolower($session->getBrand()) == "salvini"){
+      $websiteUrl = "https://www.salvini.com/";  
+      }
+      if(strtolower($session->getBrand()) == "rocca"){
+       $websiteUrl = "https://www.rocca1794.com/"; 
+      }
+      if(strtolower($session->getBrand()) == "bliss"){
+        $websiteUrl = "http://bliss.it/";
+      }
+      if(strtolower($session->getBrand()) == "calderoni"){
+        $websiteUrl = "https://www.calderoni.com/";
+      }
+      ?>
+   			<?php if (strtolower($storeName) == "italiano") {?> 
+			 <?php $val = "La tua assicurazione n. ".$session->getWarranty(). " è stata attivata";?>
+			  <p><?= __($val) ?></p>
+			<p><?= __("Riceverai una email di conferma dell'avvenuta sottoscrizione e potrai inoltre verificare lo stato dell'assicurazione accedendo al Profilo personale sul sito web Damiani Group Customer Care.") ?></p>
+         <a href="<?php echo $websiteUrl; ?>"><?= __("TORNA A")." ".$websiteUrl ?></a>  
+           
+   			<?php }else{?>
+			<?php $val = "The warranty n. ".$session->getWarranty(). " has been successfully activated."?>
+			  <p><?= __($val) ?></p>
+            <p><?= __("You will receive a confirmation email with the details of your Warranty Certificate and you will always be able to check the status of your Warranty by logging in to your Profile on the Damiani Group Customer Care website.") ?></p>
+           <a href="<?php echo $websiteUrl; ?>"><?= __("GO BACK TO")." ".$websiteUrl ?></a>  
+          
+       <?php } ?>
+</div>
+<script>
+                                require(
+                                        [
+                                            'jquery'
+
+                                        ],
+                                        function ($) {
+                                           $(document).ready(function() {
+                                            <?php if (strtolower($storeName) == "italiano") { ?> 
+                                           jQuery(".messages:eq(0)").replaceWith('<div class="message-success success message"><div>La tua richiesta è stata inviata correttamente</div></div>');
+                                         <?php } else{?>
+                                           jQuery(".messages:eq(0)").replaceWith('<div class="message-success success message"><div>Your request has been sent correctly</div></div>');
+                                        <?php }?> 
+                                              });
+                                        });
+                            </script>
+<?php $session->unsBrand();
+$session->unsWarranty();
+?>

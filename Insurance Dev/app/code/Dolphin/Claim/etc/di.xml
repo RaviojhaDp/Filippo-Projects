@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+     <preference for="\Magento\Framework\Mail\Template\TransportBuilder" type="\Dolphin\Claim\Magento\Mail\Template\TransportBuilder" />
+<!-- <type name="Magento\Framework\Mail\TransportInterfaceFactory">
+        <plugin name="dolphin_certificato_transport_factory" type="Dolphin\Certificato\Mail\TransportFactory"/>
+    </type> -->
+    <preference for="Magento\Framework\Mail\Message" type="Dolphin\Claim\Model\Message" />
+<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="dolphin_claim_post_listing_data_source" xsi:type="string">Dolphin\Claim\Model\ResourceModel\Claim\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Dolphin\Claim\Model\ResourceModel\Claim\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">claim</argument>
+            <argument name="resourceModel" xsi:type="string">Dolphin\Claim\Model\ResourceModel\Claim</argument>
+        </arguments>
+    </virtualType>
+</config>

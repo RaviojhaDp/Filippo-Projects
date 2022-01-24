@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+<!--preference for="Magento\Customer\Controller\Account\CreatePost" type="Dolphin\Certificato\Controller\Index\ExtendCreate" /--> 
+    <preference for="\Magento\Framework\Mail\Template\TransportBuilder" type="\Dolphin\Certificato\Magento\Mail\Template\TransportBuilder" />
+<!-- <type name="Magento\Framework\Mail\TransportInterfaceFactory">
+        <plugin name="dolphin_certificato_transport_factory" type="Dolphin\Certificato\Mail\TransportFactory"/>
+    </type> -->
+    <preference for="Magento\Framework\Mail\Message" type="Dolphin\Certificato\Model\Message" />
+ <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="dolphin_certificato_post_listing_data_source" xsi:type="string">Dolphin\Certificato\Model\ResourceModel\Certificato\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Dolphin\Certificato\Model\ResourceModel\Certificato\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">certificato</argument>
+            <argument name="resourceModel" xsi:type="string">Dolphin\Certificato\Model\ResourceModel\Certificato</argument>
+        </arguments>
+    </virtualType>
+</config>

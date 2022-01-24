@@ -1,0 +1,52 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<!--@subject {{trans "Warrantyactivation" store_name=$store.getFrontendName()}} @-->
+<!--@vars {
+"var this.getUrl($store, 'customer/account/')":"Customer Account URL",
+"var customer.email":"Customer Email",
+"var customer.urla":"Customer Url",
+"var customer.firstname":"Customer Firstname",
+"var customer.order_id":"Order Id",
+"var customer.lastname":"Customer Lastname",
+
+} @-->
+
+{{template config_path="design/email/header_template"}}
+
+<p class="greeting" style="font-size:15px;">{{trans "Dear %firstname %lastname," firstname=$customer.firstname lastname=$customer.lastname}}</p>
+<p style="font-size:15px;">{{trans "regarding your order n. %order_id placed on our e-shop, we inform you that from now you can activate your Warranty by following these two simple steps:" order_id=$customer.order_id}}</p>
+<p style="font-size:15px;">{{trans "1. Clicchi sul seguente"}} <a href="{{trans "%urla," urla=$customer.urla}}">link</a></p>
+<p style="font-size:15px;">{{trans "2. Fill out the form with all necessary information"}}</p>
+<p style="font-size:15px;">{{trans "We remind you that the certificate is valid for 36 months from the date of issue, subject to activation."}}</p>
+
+   </td>
+                </tr>
+                <tr>
+                    <td class="footer">
+                        <table>
+                            <tr>
+                                <td>
+                                    <p style="font-size:18px;"> 
+                                        {{trans "Thankyou for choosing"}}<br>
+                                         {{if customer.parent_cat}}
+                                        {{var customer.parent_cat}}
+                                        {{else}}
+                                              {{trans "Damiani Group"}}
+                                         {{/if}}
+                                    </p>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+<!-- End wrapper table -->
+</body>
+

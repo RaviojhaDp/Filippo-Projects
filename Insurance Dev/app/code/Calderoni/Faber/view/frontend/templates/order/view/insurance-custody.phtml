@@ -1,0 +1,20 @@
+<?php if ($insurance = $block->getInsurance()): ?>
+<div class="box box-order-insurance">
+    <strong class="box-title">
+        <span><?php /* @escapeNotVerified */ echo __('Insurance') ?></span>
+    </strong>
+    <div class="box-content">
+        <?php echo __($insurance);?>
+    </div>
+</div>
+<?php endif; ?>
+<?php if ($custody = $block->getCustody()): ?>
+<div class="box box-order-insurance-custody">
+    <strong class="box-title">
+        <span><?php /* @escapeNotVerified */ echo __('Custody') ?></span>
+    </strong>
+    <div class="box-content">
+        <?php echo __($custody);?>
+    </div>
+</div>
+<?php endif; ?>

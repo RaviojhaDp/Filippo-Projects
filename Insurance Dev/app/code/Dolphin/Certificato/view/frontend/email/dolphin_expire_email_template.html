@@ -1,0 +1,45 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<!--@subject {{trans "Renewal of replacement certificate"}} @-->
+<!--@vars {
+"var this.getUrl($store, 'customer/account/')":"Customer Account URL",
+"var customer.email":"Customer Email",
+"var customer.expire_date":"expire_date",
+"var customer.name":"Customer Name",
+"var customer.urlnew":"urlnew"
+} @-->
+
+{{template config_path="design/email/header_template"}}
+
+<p class="greeting" style="font-size:15px;">{{trans "Dear Customer,"}}</p>
+
+<p style="font-size:15px;margin-bottom:0px;">{{trans "The replacement certificate of your solitaire ring will expire on %expire_date" expire_date=$customer.expire_date}}</p>
+<p style="font-size:15px;margin-bottom:0px;">{{trans "We’re glad to inform you that Damiani offers the opportunity to obtain a new 3-year certificate."}}</p>
+<p style="font-size:15px;margin-bottom:0px;">{{trans "Click "}}<a style="font-size:15px;margin-bottom:0px;" href="{{trans "%urlnew," urlnew=$customer.urlnew}}">{{trans "here"}}</a>{{trans " to obtain the new warranty."}}</p>
+
+ </td>
+                </tr>
+                <tr>
+                    <td class="footer">
+                        <table>
+                            <tr>
+                                <td>
+                                    <p> 
+                                      {{trans "Damiani Spa"}}
+                                    </p>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+<!-- End wrapper table -->
+</body>
+

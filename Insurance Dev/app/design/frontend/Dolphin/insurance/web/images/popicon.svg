@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="125" height="125" viewBox="0 0 125 125">
+  <defs>
+    <clipPath id="clip-Instagram_Story_1">
+      <rect width="125" height="125"/>
+    </clipPath>
+  </defs>
+  <g id="Instagram_Story_1" data-name="Instagram Story – 1" clip-path="url(#clip-Instagram_Story_1)">
+    <g id="Group_3" data-name="Group 3" transform="translate(-136.495 -35.855)">
+      <path id="Path_1" data-name="Path 1" d="M226.831,98.6a34.374,34.374,0,1,1-7.5-23.2l9.008-9.008q-1.22-1.429-2.561-2.774a47,47,0,1,0,13.767,33.235,47.36,47.36,0,0,0-1.023-9.812Z" transform="translate(0 0)" fill="#a9a9aa"/>
+      <path id="Path_2" data-name="Path 2" d="M251.6,106.108l8.4-8.4,21.62,21.62,48.61-48.335,10.522,10.522-58.29,57.658-31.929-31.929S251.565,106.073,251.6,106.108Z" transform="translate(-85.298 -17.174)" fill="#a9a9aa"/>
+    </g>
+  </g>
+</svg>

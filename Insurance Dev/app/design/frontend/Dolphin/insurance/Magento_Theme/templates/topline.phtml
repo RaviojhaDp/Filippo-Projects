@@ -1,0 +1,10 @@
+<?php $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$customerSession = $objectManager->create('Magento\Customer\Model\Session');
+if ($customerSession->isLoggedIn()) {
+$customerGroupId = $customerSession->getCustomer()->getGroupId();
+ if($customerGroupId != '5'){?>
+		<div class="Topline">
+	<a href="<?php echo $this->getUrl()?>"><span><?php echo __("BACK TO HOME")?></span></a>
+</div>
+ <?php }
+   }?>

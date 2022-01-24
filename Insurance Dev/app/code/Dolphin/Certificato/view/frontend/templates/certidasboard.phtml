@@ -1,0 +1,110 @@
+<?php
+
+  $_gridrecords = $block->getCollection(); // get collection which we set in block class 
+
+ if ($_gridrecords && count($_gridrecords) >= '1'):
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$base_url_config = $objectManager->get('Magento\Framework\App\Config\ScopeConfigInterface')->getValue("web/unsecure/base_url");
+
+$groupRepository = $objectManager->create('\Magento\Customer\Api\GroupRepositoryInterface');
+$customerSession = $objectManager->create('Magento\Customer\Model\Session');
+//if ($customerSession->isLoggedIn()) {
+    if ($customerSession->getCustomer()->getGroupId() == '3') {
+        $collection = $block->getCertificatoList()->addFieldToFilter('customer_group_id', '3');
+    }
+    if ($customerSession->getCustomer()->getGroupId() == '4') {
+        $collection = $block->getCertificatoList()->addFieldToFilter('customer_group_id', '4');
+    }
+    if ($customerSession->getCustomer()->getGroupId() == '5') {
+        $collection = $block->getCertificatoList()->addFieldToFilter('customer_group_id', '5')
+                ->addFieldToFilter('customer_id', $customerSession->getCustomer()->getId());
+    }
+    ?>
+    <div class="table-wrapper order-items">
+        <?php  $_gridrecords = $block->getCollection(); // get collection which we set in block class 
+        ?>
+<?php //if ($_gridrecords && count($_gridrecords)){ ?>
+    <?php if ($customerSession->getCustomer()->getGroupId() != '5') { ?>
+    <div class="search-container">
+         <input type="text" id="searchcertidash" placeholder="<?= /* @escapeNotVerified */ __('Search for customer or warranty *') ?>">
+        </div>
+    <?php } ?>
+    <div class="table-wrapper orders-history">
+       
+        <table class="paginated data table table-order-items" id="my-orders-table" summary="<?= /* @escapeNotVerified */ __('Items Ordered') ?>">
+            <caption class="table-caption"><?= /* @escapeNotVerified */ __('Items Ordered') ?></caption>
+            <thead>
+                <tr>
+                    <th class="col name"><?= /* @escapeNotVerified */ __('Customer') ?></th>
+                    <th class="col sku"><?= /* @escapeNotVerified */ __('N.') ?></th>
+                    <th class="col sku"><?= /* @escapeNotVerified */ __('Brand') ?></th>
+                    <th class="col subtotal"><?= /* @escapeNotVerified */ __('Status') ?></th>
+                    <th class="col price"><?= /* @escapeNotVerified */ __('Activation') ?></th>
+                    <th class="col price"><?= /* @escapeNotVerified */ __('Expiration') ?></th>
+                    <th class="col doc"><?= /* @escapeNotVerified */ __('Warranty') ?></th>
+                    <?php /*if ($customerSession->getCustomer()->getGroupId() != '5') { ?>
+                        <th class="col subtotal"><?=  __('Action') ?></th>
+                        <?php }*/ ?>
+                </tr>
+            </thead>
+
+            <tbody id="tbodycertidash">
+                <?php
+                foreach ($_gridrecords as $certilist) {
+                  
+                    //$group = $groupRepository->getById($certilist->getCustomerGroupId());
+                    ?>
+                    <tr>
+                        <td>
+                            <?php echo $certilist->getName() ." ". $certilist->getSurname(); ?>  
+                        </td>
+                        <td>
+                            <?php echo $certilist->getCertificatoCode();?>  
+                        </td>
+                        <td>
+                            <?php echo strtoupper($certilist->getBrand()); ?>  
+                        </td>
+                        <td>
+                            <?php
+                            if ($certilist->getStatus() == '1') {
+                                echo __('Activated');
+                            } else {
+                                echo __('Deactivated');
+                            }
+                            ?>  
+                        </td>
+                        
+                        <td>
+                            <?php echo date("d/m/Y",strtotime($certilist->getCreatedAt())); ?>  
+                        </td>
+                        <td>
+                            <?php echo date("d/m/Y",strtotime($certilist->getExpireDate())); ?>  
+                        </td>
+                        <td>
+                            <?php 
+                            if($certilist->getDocSignedid() != ''){
+ $urlp =  $base_url_config."it/insurancepdf/document/show?certificato_code=".$certilist->getCertificatoCode(); ?>   
+                             <a href="<?php echo $urlp; ?>"  target="_blank">Download</a><?php 
+                            }?>
+                           
+                        </td>
+
+                        <?php /*if ($customerSession->getCustomer()->getGroupId() != '5') { ?>
+                            <td>
+                                <a href="<?php echo $this->getUrl() . "certificato/customer/index?customer_id=" . $certilist->getCertificatoId() ?>"><?php echo __('Delete') ?></a>
+                            </td>
+                        <?php } */?>
+                    </tr>
+                <?php } ?>
+            </tbody>
+
+        </table>
+    </div>
+    </div>
+<?php //} ?>
+        <div class="order-products-toolbar toolbar bottom"><?php echo $block->getPagerHtml(); // for display pager block which we create in block file.   ?></div>
+   
+<?php else: ?>
+    <div class="message info empty"><span><?php echo __('At the moment there is no warranty certificate.'); ?></span></div>
+<?php endif ?>
+<?php //} ?>

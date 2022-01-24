@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+	<group id="default">
+		<job instance="Dolphin\Certificato\Cron\Email" method="execute" name="dolphin_certificato_expiry_cron"> 
+			<schedule>23 59 * * *</schedule>
+		</job>
+		<job instance="Dolphin\Certificato\Cron\Emailweeklyreport" method="execute" name="dolphin_certificato_weekly_report_cron"> 
+			<!-- <schedule>20 9 * * *</schedule>  -->
+			<schedule>0 8 * * 1</schedule> 
+			<!-- <schedule>*/02 * * * *</schedule>  -->
+		</job>
+		<job instance="Dolphin\Certificato\Cron\Emailclaimweeklyreport" method="execute" name="dolphin_claim_weekly_report_cron"> 
+			<!-- <schedule>25 13 * * *</schedule>  -->
+			<!-- <schedule>20 9 * * *</schedule>   -->
+			<schedule>0 8 * * 1</schedule> 
+			<!-- <schedule>*/02 * * * *</schedule>  -->
+			
+		</job>
+	</group>
+</config>

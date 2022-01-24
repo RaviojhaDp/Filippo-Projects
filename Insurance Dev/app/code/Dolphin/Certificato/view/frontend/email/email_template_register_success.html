@@ -1,0 +1,21 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<!--@subject {{trans "Activation confirmed"}} @-->
+<!--@vars {
+"var this.getUrl($store, 'customer/account/')":"Customer Account URL",
+"var customer.email":"Customer Email",
+"var customer.name":"Customer Name",
+"var customer.logo_url":"Logo Url",
+"var customer.password":"Customer Password"
+
+} @-->
+
+{{template config_path="design/email/header_template"}}
+<p class="greeting" style="font-size:15px;">{{trans "Dear Customer,"}}</p>
+<p style="font-size:15px;">{{trans "We are sending you the copy of the insurance certificate attached."}}</p>
+<p style="font-size:15px;">{{trans "Soon you will receive an email with credentials to access your personal area where you can monitor the status of the underwritten insurances and create new certificates."}}</p>
+{{template config_path="design/email/footer_template"}}

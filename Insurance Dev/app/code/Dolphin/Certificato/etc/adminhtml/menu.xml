@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Backend/etc/menu.xsd">
+    <menu>
+        <add id="Dolphin_Certificato::parent" title="ASSICURAZIONE" module="Dolphin_Certificato" sortOrder="100" resource="Dolphin_Certificato::parent"/>
+        <add id="Dolphin_Certificato::index" title="ASSICURAZIONE" module="Dolphin_Certificato" sortOrder="10" action="certificato/index" resource="Dolphin_Certificato::index" parent="Dolphin_Certificato::parent"/>
+        
+        <!--add id="Dolphin_Certificato::indexd" title="" module="Dolphin_Certificato" sortOrder="10" action="certificato/indexd" resource="Dolphin_Certificato::indexd" parent="Dolphin_Certificato::index"/>
+        <add id="Dolphin_Certificato::indexs" title="" module="Dolphin_Certificato" sortOrder="10" action="certificato/indexs" resource="Dolphin_Certificato::indexs" parent="Dolphin_Certificato::index"/>
+        <add id="Dolphin_Certificato::indexb" title="" module="Dolphin_Certificato" sortOrder="10" action="certificato/indexb" resource="Dolphin_Certificato::indexb" parent="Dolphin_Certificato::index"/>
+        <add id="Dolphin_Certificato::indexr" title="" module="Dolphin_Certificato" sortOrder="10" action="certificato/indexr" resource="Dolphin_Certificato::indexr" parent="Dolphin_Certificato::index"/-->
+		
+    </menu>
+</config>

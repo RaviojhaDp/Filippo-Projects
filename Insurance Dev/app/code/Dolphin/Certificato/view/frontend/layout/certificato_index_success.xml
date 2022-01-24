@@ -1,0 +1,26 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+
+	<head>
+        <title>Claim</title>
+        <!-- 
+		demo
+		<css src="Dolphin_Claim::css/css.css"/>
+		<script src="Dolphin_Claim::js/js.js"/>
+		<css src="jquery/fileUploader/css/jquery.fileupload-ui.css"/>
+		<script src="path/file.js" defer="defer"/>
+		<link src="http://url.com" src_type="url"/>
+		<remove src="path/remove/file.css"/>
+
+		-->
+    </head> 
+
+   <body>
+          <referenceContainer name="sidebar.main">
+            <block class="Dolphin\Certificato\Block\Index\Sidebar" name="certificato_index_sidebar" before="-" template="Dolphin_Certificato::certificato_index_sidebar.phtml"/>
+        </referenceContainer>
+
+        <referenceContainer name="content">
+            <block class="Dolphin\Certificato\Block\Index\Index" name="certificato_index_success" template="Dolphin_Certificato::success.phtml" cacheable="false"/>
+        </referenceContainer>
+    </body>
+</page>

@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+         <referenceContainer name="header-wrapper">
+            <block class="Magento\Framework\View\Element\Template" name="top.line" template="Magento_Theme::topline.phtml" /> 
+			<referenceBlock name="catalog.compare.link" remove="true"/>
+        </referenceContainer>
+        <referenceBlock name="logo">
+            <arguments>
+                <argument name="logo_img_width" xsi:type="number">227</argument>
+                <argument name="logo_img_height" xsi:type="number">99</argument>
+            </arguments>
+        </referenceBlock>
+        <referenceBlock name="store.settings" >
+    <arguments>
+        <argument name="title" translate="true" xsi:type="string">Lingua</argument>
+        </arguments>
+</referenceBlock>
+ <referenceBlock name="top.search" remove="true"/>
+ <referenceBlock name="minicart" remove="true"/>
+ <referenceBlock name="form.subscribe" remove="true" />
+ <referenceBlock name="copyright" remove="true"/>
+ <referenceBlock name="footer_links" remove="true"/>
+<move element="logo" destination="header.panel" />   
+            
+	   <referenceContainer name="footer-container">
+			<block class="Magento\Theme\Block\Html\Header\Logo" name="custom_block" as="custom_block" template="custom.phtml"/>
+		</referenceContainer>
+
+            <referenceBlock name="register-link" remove="true" />           <!--for Create Account Link-->
+                   
+                    <referenceBlock name="wish-list-link" remove="true" />          <!--for WishList Link-->
+                    <referenceBlock name="my-account-link" remove="false" />      
+		
+    </body>
+</page>

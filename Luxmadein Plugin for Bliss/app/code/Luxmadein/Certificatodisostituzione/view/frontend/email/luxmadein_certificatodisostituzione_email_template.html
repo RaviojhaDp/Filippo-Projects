@@ -1,0 +1,103 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<!--@subject {{trans "Attivazione Assicurazione - sku: %model" model=$customer.model}} @-->
+<!--@vars {
+"var this.getUrl($store, 'customer/account/')":"Customer Account URL",
+"var customer.email":"Customer Email",
+"var customer.urla":"Customer Url",
+"var customer.firstname":"Customer Firstname",
+"var customer.order_id":"Order Id",
+"var customer.lastname":"Customer Lastname",
+"var logo_height":"Email Logo Image Height",
+"var logo_width":"Email Logo Image Width",
+"var customer.logo_url":"Logo Url"
+"var template_styles|raw":"Template CSS"
+
+} @-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <style type="text/css">
+        /*{{var template_styles|raw}}
+
+        {{css file="css/email.css"}}*/
+    </style>
+</head>
+<body>
+<!-- {{inlinecss file="css/email-inline.css"}}
+ -->
+<!-- Begin wrapper table -->
+<table class="wrapper" width="100%" style="border-collapse: collapse ; background-color: #ffffff ; margin: 0 auto">
+    <tr>
+        <td class="wrapper-inner" align="center" style="font-family: &quot;open sans&quot; , &quot;helvetica neue&quot; , &quot;helvetica&quot; , &quot;arial&quot; , sans-serif ; vertical-align: top ; padding-bottom: 30px ; width: 100%">
+            <table class="main" align="center" style="border-collapse: collapse ; background-color: #ffffff ; width: 100%">
+                <tr>
+                    <td class="header" style="font-family: &quot;open sans&quot; , &quot;helvetica neue&quot; , &quot;helvetica&quot; , &quot;arial&quot; , sans-serif ; vertical-align: top ; text-align: center ; background-color: #ffffff ; padding: 60px 25px">
+                        <a class="logo" href="" style="color: #006bb4 ; text-decoration: none" target="_other" rel="nofollow">
+                            <img
+                                {{if logo_width}}
+                                    width="{{var logo_width}}"
+                                {{else}}
+                                    width="180"
+                                {{/if}}
+
+                                {{if logo_height}}
+                                    height="{{var logo_height}}"
+                                {{/if}}
+                                 
+                                src="https://www.damianigroupcustomercare.com/media/logo-dgroup.png"
+                                
+                                alt="{{var logo_alt}}"
+                                border="0"
+                            style="border: 0 ; height: auto ; line-height: 100% ; outline: none ; text-decoration: none"/>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="main-content" style="font-family: &quot;open sans&quot; , &quot;helvetica neue&quot; , &quot;helvetica&quot; , &quot;arial&quot; , sans-serif ; vertical-align: top ; display: block ; margin: 0 auto ; text-align: left ; max-width: 700px ; padding: 0 20px ; padding-bottom: 40px">
+                    <!-- Begin Content -->
+
+<p class="greeting" style="font-size:15px;">{{trans "Dear %firstname %lastname," firstname=$customer.firstname lastname=$customer.lastname}}</p>
+<p style="font-size:15px;">{{trans "in reference to your %order_id order placed on our site, we inform you that from this
+moment you can activate your Insurance by followin
+g these two simple steps:" order_id=$customer.order_id}}</p>
+<p style="font-size:15px;">{{trans "1.  Click on the following link for the reference code SKU: %equipment" equipment=$customer.equipment}} <a href="{{trans "%urla," urla=$customer.urla}}">- link</a></p>
+<p style="font-size:15px;">{{trans "2.  Fill in the form"}}</p>
+<p style="font-size:15px;">{{trans "Please note that the certificate is valid for 36 months from
+the date of issue, subject to activation."}}</p>
+
+   </td>
+                </tr>
+                <tr>
+                    <td class="footer" style="font-family: &quot;open sans&quot; , &quot;helvetica neue&quot; , &quot;helvetica&quot; , &quot;arial&quot; , sans-serif;vertical-align: top;background-color: #ffffff;padding: 30px 0;border-top: 2px solid #1a3d35;">
+                        <table style="border-collapse: collapse ; background-color: #ffffff ; width: 100%">
+                            <tr>
+                                <td style="font-family: &quot;open sans&quot; , &quot;helvetica neue&quot; , &quot;helvetica&quot; , &quot;arial&quot; , sans-serif ; vertical-align: top ; text-align: center">
+                                    <p style="margin-top: 0 ; margin-bottom: 0 ; line-height: 24px ; color: #000000 ; font-size: 18px"> 
+                                        {{trans "Grazie per aver scelto"}}<br>
+                                         {{if customer.parent_cat}}
+                                        {{var customer.parent_cat}}
+                                        {{else}}
+                                              {{trans "Damiani Group"}}
+                                         {{/if}}
+                                    </p>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+<!-- End wrapper table -->
+</body>
+

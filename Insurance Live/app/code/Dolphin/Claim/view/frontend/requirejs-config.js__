@@ -1,0 +1,7 @@
+var config = {
+    map: {
+        '*': {
+            claim: 'Dolphin_Claim/js/claim'
+        }
+    }
+};

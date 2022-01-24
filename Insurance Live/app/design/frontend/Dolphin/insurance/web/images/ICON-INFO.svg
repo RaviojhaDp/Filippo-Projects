@@ -1,0 +1,24 @@
+<svg id="Livello_1" data-name="Livello 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1003.73 1107.34">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #1d1d1b;
+      }
+
+      .cls-2, .cls-3 {
+        isolation: isolate;
+      }
+
+      .cls-3 {
+        font-size: 932.3px;
+        fill: #fff;
+        font-family: Vivaldii, Vivaldi;
+      }
+    </style>
+  </defs>
+  <title>ICON INFO</title>
+  <circle id="Ellipse_5" data-name="Ellipse 5" class="cls-1" cx="501.86" cy="605.47" r="501.86"/>
+  <g id="i" class="cls-2">
+    <text class="cls-3" transform="translate(364.95 781.72)">i</text>
+  </g>
+</svg>

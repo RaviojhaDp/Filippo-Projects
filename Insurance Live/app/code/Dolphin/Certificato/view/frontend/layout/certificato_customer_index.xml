@@ -1,0 +1,17 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd"> 
+<update handle="customer_account"/> 
+<head>
+        <link src="Dolphin_Certificato::js/accountdash.js"/>
+    </head>
+<body> 
+<referenceBlock name="page.main.title"> 
+<action method="setPageTitle"> 
+<argument translate="true" name="title" xsi:type="string">Warranty</argument> 
+</action> 
+</referenceBlock> 
+<referenceContainer name="content"> 
+<block class="Dolphin\Certificato\Block\Index\Index" name="certificato_form" template="Dolphin_Certificato::certidasboard.phtml" cacheable="false">
+</block> 
+</referenceContainer> 
+</body> 
+</page>

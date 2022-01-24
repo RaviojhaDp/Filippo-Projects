@@ -1,0 +1,147 @@
+<?php
+
+namespace Dolphin\Claim\Controller\Index;
+
+use Magento\Framework\Controller\ResultFactory; 
+use Magento\Framework\Controller\Result\JsonFactory;
+
+class Claim extends \Magento\Framework\App\Action\Action
+{
+    protected $_mediaDirectory;
+    protected $_fileUploaderFactory;
+    protected $_messageManager;
+    protected $resultJsonFactory;
+    public function __construct(
+    \Magento\Framework\App\Action\Context $context,
+    \Magento\Framework\ObjectManagerInterface $objectmanager,
+    \Magento\Framework\Filesystem $filesystem,
+    \Magento\Framework\Message\ManagerInterface $messageManager,
+    \Dolphin\Claim\Model\ClaimFactory $claimModelFactory,
+    \Magento\MediaStorage\Model\File\UploaderFactory $fileUploaderFactory,
+    JsonFactory $resultJsonFactory
+    ) {
+        parent::__construct($context);
+        $this->_objectManager = $objectmanager;
+         $this->claimModelFactory = $claimModelFactory;
+        $this->_mediaDirectory = $filesystem->getDirectoryWrite(\Magento\Framework\App\Filesystem\DirectoryList::MEDIA);
+        $this->_fileUploaderFactory = $fileUploaderFactory;
+         $this->_messageManager = $messageManager;
+         $this->resultJsonFactory = $resultJsonFactory;
+    }
+    
+    public function execute()
+    {
+         $resultJson = $this->resultJsonFactory->create();
+         $post = $this->getRequest()->getPostValue();
+       
+        
+
+        if(isset($post['left-city']) && $post['left-city'] != ''){
+           $post['left_city'] = $post['left-city'];
+        }else{
+           $post['left_city'] = $post['city']; 
+        }
+
+
+        if(isset($post['city_stepone']) && $post['city_stepone'] != ''){
+           $post['city'] = $post['city_stepone'];
+        }
+
+        if(isset($post['left_region']) && $post['left_region'] != '' && is_numeric($post['left_region'])){
+           
+          $region_name = $this->_objectManager->get('Magento\Directory\Model\RegionFactory')->create()->load($post['left_region']);
+          $post['left_region'] = ($region_name->getData('name') == '') ? $region_name->getData('default_name') : $region_name->getData('name');
+        }elseif(isset($post['region']) && $post['region'] != '' && is_numeric($post['region'])){
+          
+               $region_name = $this->_objectManager->get('Magento\Directory\Model\RegionFactory')->create()->load($post['region']);
+          $post['left_region'] = ($region_name->getData('name') == '') ? $region_name->getData('default_name') : $region_name->getData('name');
+         }else{
+          
+            $post['left_region'] = $post['left_region'];  
+         }
+      
+        $resultRedirect = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT);
+        
+          if (isset($_FILES['damiani_spa']['name']) && $_FILES['damiani_spa']['name'] != '') {
+         try {
+                    $target = $this->_mediaDirectory->getAbsolutePath('damiani_spa/');
+                    $uploader = $this->_fileUploaderFactory->create(['fileId' => 'damiani_spa']);
+                    $uploader->setAllowedExtensions(['jpg', 'jpeg', 'gif', 'png', 'zip', 'doc','pdf']);
+                    $uploader->setAllowRenameFiles(true);
+                    $result = $uploader->save($target);
+                    $fullname = $_FILES['damiani_spa']['name'];
+                      //$post['damiani_spa'] = $fullname;   
+                    $post['damiani_spa'] = $uploader->getUploadedFileName();
+                } catch (\Exception $e) {
+                    
+                }
+        }
+        
+        if (isset($_FILES['complaint']['name']) && $_FILES['complaint']['name'] != '') {
+                try {
+                    $target = $this->_mediaDirectory->getAbsolutePath('complaint/');
+                    $uploader = $this->_fileUploaderFactory->create(['fileId' => 'complaint']);
+                    $uploader->setAllowedExtensions(['jpg', 'jpeg', 'gif', 'png', 'zip', 'doc','pdf']);
+                    $uploader->setAllowRenameFiles(true);
+                    $result = $uploader->save($target);
+                    $fullname = $_FILES['complaint']['name'];
+                    // $post['complaint'] = $fullname;  
+                    $post['complaint'] = $uploader->getUploadedFileName();
+                } catch (\Exception $e) {
+                    
+                }
+            }
+
+        
+         if (isset($_FILES['authenticity']['name']) && $_FILES['authenticity']['name'] != '') {
+         try {
+                    $target = $this->_mediaDirectory->getAbsolutePath('authenticity/');
+                    $uploader = $this->_fileUploaderFactory->create(['fileId' => 'authenticity']);
+                    $uploader->setAllowedExtensions(['jpg', 'jpeg', 'gif', 'png', 'zip', 'doc','pdf']);
+                    $uploader->setAllowRenameFiles(true);
+                    $result = $uploader->save($target);
+                    $fullname = $_FILES['authenticity']['name'];
+                     //$post['authenticity'] = $fullname;   
+                    $post['authenticity'] = $uploader->getUploadedFileName();
+                } catch (\Exception $e) {
+                    
+                }
+        }
+  
+     
+        $model = $this->claimModelFactory->create();
+        
+        if(isset($post['left_date'])){
+            $post['left_date']= new \DateTime($post['left_date']);
+           }
+           if(isset($post['date_of_termination'])){
+            $post['date_of_termination']= new \DateTime($post['date_of_termination']);
+           }
+            if(isset($post['created_at'])){
+            $post['created_at']= date('Y-m-d');
+           }
+
+       
+         $faber_post = json_decode($post['faber_post'] , true);
+         $certiId = substr($faber_post['certificato_code'], 1);
+         $session = $this->_objectManager->get('Magento\Customer\Model\Session');
+         $session->setWarranty($faber_post['certificato_code']);
+         $session->setBrand($post['parent_cat']);
+         $model->setData($post);
+         $model->setSex($faber_post['sex']);
+         $model->setCountryId($faber_post['country_id']);
+         $model->setProvince($faber_post['region']);
+         $model->setCertificatoId("$certiId");
+         $model->setCertiCreateAt($faber_post['created_at']);
+         $model->setBrand($faber_post['brand']);
+         $model->setCustomerId($faber_post['customer_id']);
+    
+      try{
+        $model->save();  
+        $response = ['status' => 'true','claim_id'=>$model->getClaimId(),'created_at'=>$model->getCreatedAt(),'message' => 'You Claim has been Activated'];
+        } catch (\Exception $e) {
+            $response = ['status' => 'false', 'message' => $e->getMessage()];
+        }
+        return $resultJson->setData($response);
+    }
+}

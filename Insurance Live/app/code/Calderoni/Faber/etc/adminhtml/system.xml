@@ -1,0 +1,147 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="calderoni" sortOrder="2001">
+            <label>Insurance Faber</label>
+        </tab>
+        <section id="faber" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label><![CDATA[Faber]]></label>
+            <tab>calderoni</tab>
+            <resource>Calderoni_Faber::config_faber</resource>
+            <group id="settings" translate="label" type="text" sortOrder="6" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Settings</label>
+                <field id="enabled" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Enabled]]></label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+				<field id="username" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Username]]></label>
+                    <comment><![CDATA[Faber Username for authorization]]></comment>
+                </field> 
+				<field id="password" translate="label comment" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Password]]></label>
+					<comment><![CDATA[Faber Password for authorization]]></comment>
+                </field> 
+				<field id="service_name" translate="label comment" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Service Name]]></label>
+					<comment><![CDATA[Faber Service Name for authorization]]></comment>
+                </field> 
+				<field id="oauth_token" translate="label comment" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label><![CDATA[oAuth token]]></label>
+                </field>
+				<field id="sign_doc_info" translate="label comment" type="textarea" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Sign Document Info]]></label>
+                </field> 
+				<field id="sign_doc_tooltip" translate="label comment" type="textarea" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Sign Document Tooltip]]></label>
+                </field> 
+				<field id="additional_info_tooltip" translate="label comment" type="textarea" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Additional Info Tooltip]]></label>
+                </field> 
+            </group>
+            <group id="equipment" translate="label" type="text" sortOrder="7" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Equiment Brand Price Setting</label>
+
+                    <field id="brand1" translate="label comment" sortOrder="1" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label> Damiani : </label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <!-- source file contains the array of options of drop-down list -->
+                    </field>
+                    <!-- this is a text field which depends on the option value -->
+                    <field id="mindamiani" translate="label comment" sortOrder="2" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Minimum Price </label>
+                        <depends>
+                            <field id="brand1">1</field>
+                        </depends>
+                    </field>
+                    <field id="maxdamiani" translate="label comment" sortOrder="3" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Maximum Price </label>
+                        <depends>
+                            <field id="brand1">1</field>
+                        </depends>
+                    </field>
+
+                    <field id="brand2" translate="label comment" sortOrder="4" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Bliss : </label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <!-- source file contains the array of options of drop-down list -->
+                    </field>
+                    <!-- this is a text field which depends on the option value -->
+                    <field id="minbliss" translate="label comment" sortOrder="5" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Minimum Price </label>
+                        <depends>
+                            <field id="brand2">1</field>
+                        </depends>
+                    </field>
+                    <field id="maxbliss" translate="label comment" sortOrder="6" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Maximum Price </label>
+                        <depends>
+                            <field id="brand2">1</field>
+                        </depends>
+                    </field>
+
+                    <field id="brand3" translate="label comment" sortOrder="7" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Salvini : </label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <!-- source file contains the array of options of drop-down list -->
+                    </field>
+                    <!-- this is a text field which depends on the option value -->
+                    <field id="minsalvini" translate="label comment" sortOrder="8" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Minimum Price </label>
+                        <depends>
+                            <field id="brand3">1</field>
+                        </depends>
+                    </field>
+                    <field id="maxsalvini" translate="label comment" sortOrder="9" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Maximum Price </label>
+                        <depends>
+                            <field id="brand3">1</field>
+                        </depends>
+                    </field>
+
+                    <field id="brand4" translate="label comment" sortOrder="10" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Rocca : </label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <!-- source file contains the array of options of drop-down list -->
+                    </field>
+                    <!-- this is a text field which depends on the option value -->
+                    <field id="minrocca" translate="label comment" sortOrder="11" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Minimum Price </label>
+                        <depends>
+                            <field id="brand4">1</field>
+                        </depends>
+                    </field>
+                    <field id="maxrocca" translate="label comment" sortOrder="12" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Maximum Price </label>
+                        <depends>
+                            <field id="brand4">1</field>
+                        </depends>
+                    </field>
+
+                     <field id="brand5" translate="label comment" sortOrder="13" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Calderoni : </label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <!-- source file contains the array of options of drop-down list -->
+                    </field>
+                    <!-- this is a text field which depends on the option value -->
+                    <field id="mincalderoni" translate="label comment" sortOrder="14" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Minimum Price </label>
+                        <depends>
+                            <field id="brand5">1</field>
+                        </depends>
+                    </field>
+                    <field id="maxcalderoni" translate="label comment" sortOrder="15" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Maximum Price </label>
+                        <depends>
+                            <field id="brand5">1</field>
+                        </depends>
+                    </field>
+
+                   
+                
+                
+                
+            </group>
+        </section>
+    </system>
+</config>

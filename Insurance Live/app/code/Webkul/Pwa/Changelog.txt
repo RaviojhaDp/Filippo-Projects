@@ -1,0 +1,29 @@
+Legend
+
++ Features
+- Bugs	
+-------------------------------- Version 3.0.0 --------------------------------------
+
+	- Fixed Bugs
+
+-------------------------------- Version 2.2.0 --------------------------------------
+
+	+ Changed Icon of Pwa Application
+	+ Added functionality to automatically show add to home screen popup
+
+-------------------------------- Version 2.1.0 --------------------------------------
+
+	+ Updated according to Magento 2.3.x version.
+	+ Added functionality to support popup on page add to home screen
+	- Fixed Bugs
+
+-------------------------------- Version 2.0.1 --------------------------------------
+
+	+ Updated according to Magento 2.2.x version.
+
+-------------------------------- Version 2.0.0 --------------------------------------
+
+	+ Allowed to support Progressive Web Application for your website.
+	+ Enable and disable application from configuration setting.
+	+ Admin can upload Progressive Web Application icon.
+	+ Admin can set name and spash background color for Progressive Web Application.

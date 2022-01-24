@@ -1,0 +1,394 @@
+﻿"The Product Code is printed in: &#010;- insurance card &#010;- price tag, it’s the 8 characters code in the third line.","il Codice Materiale lo si trova: &#010;- sulla carta dell’assicurazione &#010;- sull’etichetta prodotto, è il campo di 8 caratteri che si trova nella terza riga."
+"The Equipment is printed in: &#010;- insurance card &#010;- price tag, it’s the 8 characters code in the first line. &#010;The Equipment code starts with 7.","L’Equipment lo si trova: &#010;- sulla carta dell'assicurazione &#010;- sull'etichetta prodotto, è il campo di 8 caratteri che si trova nella prima riga. &#010;Il codice Equipment è lungo 8 caratteri e inizia con il numero 7."
+"The Product Code is printed in: &#010;- insurance card &#010;- price tag, it’s the 8 characters code in the third line. &#010;The code starts with 5.","il Codice Materiale lo si trova: &#010;- sulla carta dell’assicurazione &#010;- sull’etichetta prodotto, è il campo di 8 caratteri. &#010;il codice inizia con il numero 5."
+The Product Code is printed in: &#010;- insurance card &#010;- price tag, it’s the 8 characters code in the third line. &#010;The code starts with 5.,il Codice Materiale lo si trova: &#010;- sulla carta dell’assicurazione &#010;- sull’etichetta prodotto, è il campo di 8 caratteri. &#010;il codice inizia con il numero 5.
+Signature,Firma
+Approval Signature,Firma per Accettazione
+Save Document,Salva Documento
+"- click on the field a pop-up appears and: <br />- type name and surname in the first field <br />- type the mobile phone number in the second field. <br />The phone number must be complete with the country code. <br />If the preset country code is wrong, it must be deleted and entered the right country code <br />- click on the Signature field","- cliccare sul campo appare un pop-up <br />- inserire il nome e cognome nel primo campo <br />- inserire il numero di telefono cellulare nel secondo campo. <br />Il numero di telefono deve essere completo del codice paese. <br />Qualora il codice paese preimpostato fosse sbagliato si deve cancellare lo stesso e inserire il codice paese corretto <br />- cliccare sul tasto firma"
+"type the code received via SMS in the "OTP code" field of the pop-up that appears","inserire il codice ricevuto via SMS nel campo "codice OTP" del pop-up che appare"
+"- click on the field a pop-up appears and: <br />- type name and surname in the first field <br />- type the mobile phone number in the second field. <br />The phone number must be complete with the country code. <br />If the preset country code is wrong, it must be deleted and entered the tight country code <br />- click on the Signature field","cliccare sul campo <br />inserire il proprio nome e cognome nel primo campo <br />inserire il proprio numero di telefono nel secondo campo. <br />Il numero di telefono deve essere completo del codice paese. <br />Qualora il codice paese preimpostato fosse sbagliato si deve cancellare lo stesso e inserire il codice <br />paese corretto cliccare sul tasto firma"
+"click on the "Save Document" button on the bottom right corner to save the PDF. <br />If you leave the transaction without saving the document by clicking on the X at the top right corner, <br />the subscription is invalid.","cliccare il bottone "Salva Documento" in basso a destra per salvare il PDF. <br />Se si lascia la transazione senza salvare il documento cliccando sulla X in alto a destra la <br />sottoscrizione non è valida"
+"Read the instructions before proceeding","Prima di procedere leggi le istruzioni"
+
+Name*,Nome*
+Cancelled,Annullato
+Activation data,Data attivazione
+Jewelry Store,Gioielleria
+Current Password*,Password attuale*
+Are you sure? You are going to deactivate the Warranty,Sei sicuro? Stai per annullare l’assicurazione
+"Yes, I confirm","sì confermo"
+"You updated your password.","Hai aggiornato la tua password."
+New Password,Nuova password
+Password Strength,Difficoltà password
+No Password,nessuna password
+Confirm New Password,Conferma nuova password
+Save,Salva
+Warranty Success,Assicurazioni Successo
+Claim Success,Denunce Successo
+Your password reset link has expired.,Il link di reimpostazione della password è scaduto.
+Your password reset link has expired,Il link di reimpostazione della password è scaduto
+Boutique Name*,Nome Boutique*
+"Upload the receipt of  shipping of the original warranty card of the watch by registered post to FUNK INTERNATIONAL SPA, Corso Garibaldi 24 15048 Valenza","Occorre caricare la ricevuta di spedizione a mezzo raccomandata della garanzia originale dell’orologio a FUNK INTERNATIONAL SPA, Corso Garibaldi 24, 15048 Valenza (AL)"
+Confirm,CONFERMA
+Proceed,PROCEDI
+"Activated","attivazione"
+"Province*","Provincia*"
+"Deactivated","Disattivato"
+"Activated Date","Data attivazione"
+"Expire Date","Data di scadenza"
+"Sku*","Codice Materiale*"
+"Serial Number*","Numero Seriale*"
+"Change Email","Cambio Email"
+"Change Password","Cambio Password"
+"This is required field.","Questo campo è obbligatorio."
+"Customer account with email %1 created successfully.","Account %1 creato correttamente"
+"Invalid login or password.","Login o password non validi."
+"Please enter the same value again.","Per favore inserisci lo stesso valore un'altra volta."
+"You saved the account information.","Hai salvato le informazioni sull'account."
+"Please enter your email.","Per favore inserisci la tua email."
+"This model is already registered",Questo modello è già registrato"
+"Change Email and Password","Cambio Email e Password"
+"No search result found","Nessun risultato trovato"
+ACTIVE,ATTIVO
+"Warranty","Certificato"
+"Forgot Your Password?","Hai dimenticato la password?"
+"* Required Fields","* Campi richiesti"
+"The document could not be recovered. Try again later or contact our customer service.","Non è stato possibile recuperare il documento. Riprovare più tardi oppure contattare il customer service."
+"Upload receipt","Carica scontrino"
+"We remind you that the certificate is valid for 36 months from the date of issue, subject to activation.","Le ricordiamo che il certificato è valido per 36 mesi dalla data di emissione, previa attivazione."
+Thankyou for choosing,Grazie per aver scelto
+Activation confirmed,Conferma attivazione
+If there is an account associated with philloit@gmail.com you will receive an email with a link to reset your password.,"Se esiste un account associato a philloit@gmail.com, riceverai un'email con un link per reimpostare la tua password"
+Active warranty,Assicurazioni Attive
+Select Boutique / Jewelry Store,Seleziona Boutique / Gioielleria
+No search result found.,Nessun risultato trovato.
+Renewal Certificate,RINNOVO CERTIFICATO
+Click on the following,Clicchi sul seguente
+Made Product,RESO PRODOTTO
+"You can cancel the certificate, and make the product In a boutique or at an authorized dealer","E' possibile annullare il certificato, e rendere il prodotto solamente in una boutique o presso un rivenditore autorizzato"
+Model*,Modello*
+Model,Modello
+"Dear %firstname %lastname,","Gentile %firstname %lastname,"
+"2. Fill out the form with all necessary information","2. Compiliil form con le informazioni richieste"
+Warrantyactivation,Attivazione Assicurazione
+"regarding your orderplaced on our e-shop, we inform you that from now you can activate your <strong>Warranty</strong> by following these two simple steps:","in riferimento al Suo ordine effettuato sul nostro e-shop, La informiamo che da questo momento può attivare il Suo Assicurazione seguendo questi due semplici passaggi:"
+"regarding your orderplaced on our e-shop, we inform you that from now you can activate your Warranty by following these two simple steps:","in riferimento al Suo ordine effettuato sul nostro e-shop, La informiamo che da questo momento può attivare il Suo Assicurazione seguendo questi due semplici passaggi:"
+"regarding your order n. %1 placed on our e-shop, we inform you that from now you can activate your Warranty by following these two simple steps:","in riferimento al Suo ordine n. %1 effettuato sul nostro e-shop, La informiamo che da questo momento può attivare il Suo Assicurazione seguendo questi due semplici passaggi:"
+"regarding your order n. %s placed on our e-shop, we inform you that from now you can activate your Warranty by following these two simple steps:","in riferimento al Suo ordine n. %s effettuato sul nostro e-shop, La informiamo che da questo momento può attivare il Suo Assicurazione seguendo questi due semplici passaggi:"
+"regarding your order n. %S placed on our e-shop, we inform you that from now you can activate your Warranty by following these two simple steps:","in riferimento al Suo ordine n. %S effettuato sul nostro e-shop, La informiamo che da questo momento può attivare il Suo Assicurazione seguendo questi due semplici passaggi:"
+"regarding your order n. %2 placed on our e-shop, we inform you that from now you can activate your Warranty by following these two simple steps:","in riferimento al Suo ordine n. %2 effettuato sul nostro e-shop, La informiamo che da questo momento può attivare il Suo Assicurazione seguendo questi due semplici passaggi:"
+"regarding your order n. %order_id placed on our e-shop, we inform you that from now you can activate your Warranty by following these two simple steps:","in riferimento al Suo ordine n. %order_id effettuato sul nostro e-shop, La informiamo che da questo momento può attivare il Suo Assicurazione seguendo questi due semplici passaggi:"
+Serial number*,Numero Seriale*
+Serial Number,Numero seriale
+LastName*,Cognome*
+Last Name*,Cognome*
+Last Name,Cognome
+Address*,Indirizzo*
+Zipcode*,Cap*
+City*,Comune*
+city,comune
+City,Comune
+city*,comune*
+Address causality,Indirizzo sinistro
+You are signed out,Logout effettuato con successo
+You have signed out and will go to our homepage in 5 seconds.,Stai per essere reindirizzato alla homepage in 5 secondi.
+Province,Provincia*
+Province*,Provincia*
+Certificate of authenticity of the watch,Certificato di autenticità dell'orologio
+Country*,Stato*
+Name*,Nome*
+Name,Nome
+BACK TO HOME,TORNA ALLA HOME
+Telephone,Telefono
+Telephone,Telefono
+"Telephone*","Telefono*"
+Cell Phone*,Cellulare*
+Tax Code,Codice Fiscale
+Date of birth*,Data di nascita*
+"Date of birth* - click on icon","Data di nascita* - cliccare su icona"
+"Partner Birthday - click on icon","Compleanno del partner - cliccare su icona"
+"Wedding Anniversary - click on icon","Data del matrimonio - cliccare su icona"
+"Children Birthday - click on icon","Compleanno del figlio - cliccare su icona"
+Partner Birthday - click on icon,Compleanno del partner - cliccare su icona
+Wedding Anniversary - click on icon,Data del matrimonio - cliccare su icona
+Children Birthday - click on icon,Compleanno del figlio - cliccare su icona
+Date,Data
+Sex*,Sesso*
+REGISTRATION,REGISTRATI
+VAT number*,Partita IVA*
+Civil Status*,Stato civile*
+Degree Education*,Grado di istruzione*
+Profession*,Professione*
+Buying Opportunity*,Occasione d' acquisto*
+Reason Purchase*,Motivo d' acquisto*
+Reason Choice*,Motivo della scelta*
+Came to Know*,Come  ne sei venuto a conoscenza?*
+This is a required field.,Questo campo è obbligatorio.
+Please select an option.,Per favore selezionate un'opzione.
+Company Name*,Ragione Sociale*
+Customer Name*,Nome del cliente*
+Expiration,Scadenza
+Customer Name,Nome del cliente
+Search Customer,Cerca Cliente
+Search Customer*,Cerca Cliente*
+Search Warranty,Seleziona Assicurazione
+Activation,Attivazione
+Surname,Cognome 
+Brand,Brand
+Status,Stato
+Expiration ,Scadenza
+Date,Data
+Serial Number,Numero seriale
+Document,Documento
+Search Customer Name*,Nome del cliente*
+Postal Code*,Cap*
+Create an Account,CONFERMA
+REGISTRATION,REGISTRAZIONE
+Customer,Cliente
+Receipt number*,Numero Scontrino*
+Receipt number,Numero Scontrino
+Dealer,Rivenditore
+Gender*,Genere*
+Male,Uomo
+Woman,Donna
+Boutique,Boutique
+Or,Oppure
+"If you are already registered, please login.","SE SEI GIÀ REGISTRATO, EFFETTUA IL LOGIN."
+SIGN IN,REGISTRATI
+LOGIN,LOGIN
+Username*,Nome Utente*
+Please enter a valid email address (Ex: johndoe@domain.com).,Inserisci un indirizzo email valido (Es: johndoe@domain.com).
+"Please select a region, state or province.",Provincia*
+"By registering your data, you agree to our terms and conditions, Privacy and Cookie Policy","Registrando i tuoi dati, acconsenti al nostro Termini e condizioni , Privacy e Cookie Policy"
+Civil status,Stato civile
+Level of education,Grado di istruzione
+Profession,Professione
+Purchasing opportunities,Occasione d' acquisto
+Reason to buy,Motivo d' acquisto
+Reason Chosen,Motivo della scelta
+How did you know about it?,Come  ne sei venuto a conoscenza?
+General Info,Info generiche
+Product data,Dati prodotto
+"I agree to use my data for analysis of purchase choices ('profiling');","Acconsento all'utilizzo i miei dati per l'analisi delle scelte di acquisto ('profilazione');"
+Continue,CONFERMA
+Name boutique / dealer,Nome boutique / rivenditore
+Address boutique / dealer,Indirizzo boutique / rivenditore
+Seller Name,Nome del venditore
+Disable Certificate,ANNULLA CERTIFICATO
+"Communication and transmission of personal data to Damiani Group companies for the purposes indicated above","Comunicazione e trasmissione dei dati personali alle Società del Gruppo Damiani per le finalità sopra indicate"
+Purchase Date*,Data acquisto*
+"Purchase Date* - click on icon","Data acquisto* - cliccare su icona"
+"Receipt Image (Jpg, Png, Pdf)*","Immagine scontrino (Jpg, Png, Pdf)*"
+"I agree to the Privacy statement, pursuant to art. 6 Co. 1e 7 of Privacy policy, the following free and optional consents soon:","Acconsento all’Informativa Privacy, ai sensi dell'art. 6 co. 1e 7 del Regolamento Privacy, presto i seguenti consensi liberi e facoltativi:"
+I agree to the use of my data for marketing purposes;,Acconsento all’utilizzo dei miei dati per finalità di marketing;
+Profiling,Profilazione
+"I agree to use my data for analysis of purchase choices (profiling"");""","Acconsento all’utilizzo dei miei dati per analisi delle scelte di acquisto (profilazione"");"""
+Cession,Cessione
+"I agree to the disclosure of my data to third party companies For the communication of promotional initiatives (including co-marketing with Damiani S.p.A.) In the field of jewellery, luxury goods and services.","Acconsento la comunicazione dei miei dati a società terze per la comunicazione di iniziative promozionali (incluso co-marketing con Damiani S.p.A.) nel settore della gioielleria, beni e servizi di lusso."
+REPLACEMENT CERTIFICATE,Assicurazione
+SUBSCRIPTION,SOTTOSCRIZIONE
+Product and purchase data,Dati prodotto e acquisto
+Personal data,Dati anagrafici
+Do you have an account?,Hai già un account?
+ACCESS,ACCEDI
+SINISTER COMPLAINT,DENUNCIA DEL SINISTRO
+Signing document,Firma documento
+"The complaint of the claim can only be made by the holder of the replacement certificate, if it is not so contact the insurance Office of Damiani SpA -  telephone","La denuncia del sinistro può esser fatta solo dall'intestatario dell’Assicurazione, qualora non fosse così contattare l'ufficio assicurazioni di Damiani SpA -  telefono"
+Active Insurance,Assicurazioni attive
+Casualty Data,Dati sinistro
+Casualty data,Dati sinistro
+File a complaint,Dati denuncia
+Casualty data*,Data sinistro*
+"Casualty data* - click on icon","Data sinistro* - cliccare su icona"
+Casualty andress*,Indirizzo sinistro*
+Postal code casualty,Cap sinistro
+City casualty,Comune sinistro
+State casualty,Stato sinistro
+Date of termination,Data denuncia
+"Date of termination - click on icon","Data denuncia - cliccare su icona"
+Authority,Autorità
+location of the Authority,Sede autorità
+Document,Documento
+Document Number issued,Numero documento rilasciato
+Describing events,Descrizione evento
+Written complaint,Denuncia scritta
+Delivery receipt of Damiani SpA,Ricevuta di spedizione di Damiani SpA
+Material code*,Codice materiale*
+Name boutique / Dealer,Nome boutique / rivenditore
+Name of the Boutique / Jewelry Store*,Nome della Boutique / Gioielleria*
+Name of the Boutique / Jewelry Store,Nome della Boutique / Gioielleria
+Boutique / Jewelry Store address,Indirizzo della Boutique / Gioielleria
+Address boutique / Dealer*,Indirizzo boutique / rivenditore*
+Date of purchase*,Data di acquisto*
+"Date of purchase* - click on icon","Data di acquisto* - cliccare su icona"
+Do you have an account?,Hai già un account?
+Access,Accedi
+Insert Code,Inserisci codice
+Search,CERCA
+Single,Celibe
+Married,Sposato
+Engaged,Impegnato
+Divorced,Divorziato
+Widower,Vedovo
+O-levels/Junior High Diploms,Media inferiore
+A-levels/Higher High Diploms,Media superiore
+University Pass Degree,Laurea
+University Honours Degree,Master
+Entrepreneur,Imprenditore
+Self-employed,Libero professionista
+Manager,Dirigente
+Employee,Impiegato
+Worker,Operaio
+Other,Altro
+Anniversary,Anniversario
+Birthday,Compleanno
+Engagement,Fidanzamento
+Wedding,Matrimonio
+Birth,Nascita
+Christmas,Natale
+Other,Altro
+For yourself,Per se
+Gift,Altro
+Brand,Brand
+Design,Design
+Jewellers recommendation,Consiglio negoziante
+Product guarantee,Garanzia
+Other,Altro
+Brochure,Catalogo
+Jewellers display,Vetrina
+Advertising,Pubblicità
+Worn by acquaintaces / celebrities,Indossato da
+Internet,Internet
+Request received,Richiesta ricevuta
+Registration,Registrazione
+Recovery password,Recupero password
+"your registration has been successfully completed. To subscribe your certificate of substitution please access to the website www.damianigroupcustomercare.com","la registrazione è avvenuta con successo. Per attivare l’Assicurazione acceda al sito www.damianigroupcustomercare.com"
+"your notification of loss has been successfully uploaded.To consult your data, please access to the website www.damianigroupcustomercare.com","la Sua notifica di sinistro è stata caricata correttamente. Per accedere ai Suoi dati, Si colleghi al sito www.damianigroupcustomercare.com"
+"your certificate has been successfully activated.To consult your data, please access to the website www.damianigroupcustomercare.com","il Suo certificato è stato attivato con successo. Per accedere ai suoi dati Si colleghi al sito www.damianigroupcustomercare.com"
+Social media,Social media
+"Minimum of different classes of characters in password is %1. Classes of characters: Lower Case, Upper Case, Digits, Special Characters.","Il numero minimo di caratteri nella password è 3. La password deve contenere: minuscole, maiuscole, cifre, caratteri speciali."
+"Minimum length of this field must be equal or greater than %1 symbols. Leading and trailing spaces will be ignored.","La lunghezza minima di questo campo deve essere uguale o maggiore di 8 simboli. Gli spazi iniziali e finali verranno ignorati."
+Other,Altro
+"If there is an account associated with %1 you will receive an email with a link to reset your password.","Se esiste un account associato a %1 riceverai un'email con un link per reimpostare la tua password."
+Forgot Your Password,HAI DIMENTICATO LA PASSWORD
+Please enter your email address below to receive a password reset link.,Inserisci il tuo indirizzo email qui sotto per ricevere un link per reimpostare la password.
+Reset My Password,Reimposta la mia password
+Casualty address,Nazione sinistro
+Casualty Country*,Nazione sinistro*
+STATUS CERTIFICATE,STATUS CERTIFICATO
+Claim Details,DENUNCIA SINISTRO
+Account Information,PROFILO
+REPLACEMENT CERTIFICATE,Assicurazione
+"WARRANTIES","Assicurazione"
+SINISTER COMPLAINT,DENUNCIA SINISTRO
+"CLAIMS","DENUNCE"
+Edit Account Information,PROFILO
+NOT LOGGED IN,ACCESSO NON EFFETTUATO
+Your registration has been successfully completed.To subscribe your certificate of substitution please access to the website www.damianigroupcustomercare.com,la tua registrazione è stata completata con successo Per iscriverti al tuo Assicurazione accedi al sito www.damianigroupcustomercare.com
+"Dear Customer,","Gentile cliente,"
+CERTIFICATE ACTIVATION,ATTIVAZIONE DEL CERTIFICATO
+"your registration has been successfully completed.","la registrazione è avvenuta con successo"
+"To subscribe your certificate of substitution please access to the website <a href=""%s"">www.damianigroupcustomercare.com</a>","Per attivare il Assicurazione acceda al sito <a href=""%s"">www.damianigroupcustomercare.com</a>"
+"Best Regards","Cordiali Saluti"
+"Here you account details: ","Qui i dettagli dell'account: "
+"Email:","Email:"
+"To subscribe your certificate of substitution please access to the website www.damianigroupcustomercare.com","Per attivare il Assicurazione acceda al sito www.damianigroupcustomercare.com"
+"Your notifcation of loss has been successfully uploaded. To consult your data, please access to the website www.damianigroupcustomercare.com","La tua notifica di perdita è stata caricata correttamente. Per consultare i tuoi dati, ti preghiamo di accedere al sito www.damianigroupcustomercare.com"
+"Password you set when creating account","Password impostata durante la creazione dell'account"
+"Sinister Complaint","Denuncia del sinistro"
+"There was recently a request to change the password for your account.","Recentemente c'è stata una richiesta di modifica della password per il tuo account."
+"If you requested this change, set a new password here:","Se hai richiesto questa modifica, imposta una nuova password qui:"
+"If you did not make this request, you can ignore this email and your password will remain the same.","Se non hai effettuato questa richiesta, puoi ignorare questa e-mail e la tua password rimarrà la stessa."
+"Set a New Password","Imposta una nuova password"
+"The equipment number is already registered","Il numero di equipment risulta già registrato"
+"If there is an account associated with %s.com you will receive an email with a link to reset your password.","Se esiste un account associato a %s, riceverai un'email con un link per reimpostare la tua password."
+"To subscribe your certificate of substitution please access to the website","Per iscriversi al Assicurazione, accedere al sito Web"
+"DAMIANI thanks you for your recent purchase and hereby informs you that in the case your jewel was stolen due to a event of ROBBERY or SNATCHING, being the jewel at the moment of the eventworn by you, you shall obtain from DAMIANI a jewel of the same characteristics  or, in absence of that, a jewel of the same purchase value of the stolen one.<br><br> a) This warranty:<br><br> 1- Is personal, therefore valid exclusively if at the moment of the event covered by this warranty the object is your property and held by you or by one of your cohabiting relatives;<br> 2- Includes events worldwide;<br> 3- Is not valid in the event of false or fraudulent claim;<br> 4- Cover robbery and snatching of worn jewels (all other cases such as theft, loss are specifically excluded)<br> 5- Is valid for jewels of a purchase value not exceeding Euros 100,000.00 (one hundred thousand Euros).<br><br> b) This warranty is valid for 36 months from the date of issue of this certificate. As precondition of validity, the certificate must be registered on the website www.damianigroupcustomercare.comwithin 30 days from the purchase date of your jewel.<br><br> c) As precondition of any right of substitution, should one of the event covered by this warranty occur, you have to send within 7 (seven) days from the event the following documentation together with the request of substitution:<br> 1.Written/undersigned notification of loss to the local Police/SecurityAuthorities, compentent for the place of the event;<br> 2. Copy of this certificate;<br><br> The above documents should be supplied either by registered post to : FUNK INTERNATIONAL SPA, Corso Garibaldi 24, 15048 Valenza (AL) – Tel. 0131 942647 – Fax. 0131 953234 (mail info@funk-gruppe.it) or online by upload on the dedicated area of the website:www.damianigroupcustomercare.com .","DAMIANI, nel ringraziarLa per l’acquisto effettuato, La informa che qualora il Suo nuovo gioiello dovesse esserLe sottratto per effetto o in conseguenza di RAPINA o SCIPPO, sempre che il gioiello sia da Lei indossato al momento dell’evento, Ella otterrà da DAMIANI un gioiello avente le medesime caratteristiche o, in mancanza, un gioiello del medesimo valore di acquisto di quello sottratto.<br><br> a) La presente garanzia:<br><br> 1- E’ personale e valida esclusivamente se al momento dell’evento coperto dalla presente garanzia, il gioiello sia ancora di Sua proprietà ed in possesso Suo o di suoi familiari conviventi;<br> 2- Include eventi verificatisi nel Mondo Intero;<br> 3- E’ nulla in caso di richiesta scientemente falsa e fraudolenta;<br> 4- Copre i casi di rapina e scippo di gioielli indossati (sono esclusi gli altri casi: furto, smarrimento, ecc.)<br> 5- E’ valida per gioielli con prezzo di acquisto non superiore a € 100.000,00 (centomila euro)<br><br> b)  Questa garanzia è valida per 36 mesi dalla data di emissione del presente certificato. Ai fini della validità il certificato deve essere tassativamente attivato tramite registrazione sul sito www.damianigroupcustomercare.com  entro 30 gg dalla data di acquisto del gioiello.<br><br> c) Qualora si verifichi uno degli eventi coperti da questa garanzia,entro 7 giorni dall’evento a pena di decadenza della garanzia, dovrà fornirela seguente documentazione unitamente alla richiesta di sostituzione:<br> 1- Denuncia scritta e circonstanziata all’Autorità Giudiziaria competente per il territorio in cui è avvenuto l’evento;<br> 2- Copia del presente Assicurazione;<br><br> mediante spedizione a mezzo raccomandata a FUNK INTERNATIONAL SPA, Corso Garibaldi 24, 15048 Valenza (AL) – Tel. 0131 942647 – Fax. 0131 953234 (mail info@funk-gruppe.it) oppure tramite upload nell’area dedicata del sito  www.damianigroupcustomercare.com."
+"SALVINI thanks you for your recent purchase and hereby informs you that in the case your jewel was stolen due to a event of ROBBERY or SNATCHING, being the jewel at the moment of the event worn by you, you shall obtain from SALVINI a jewel of the same characteristics  or, in absence of that, a jewel of the same purchase value of the stolen one.<br><br> a) This warranty:<br><br> 1- Is personal, therefore valid exclusively if at the moment of the event covered by this warranty the object is your property and held by you or by one of your cohabiting relatives;<br> 2- Includes events worldwide;<br> 3- Is not valid in the event of false or fraudulent claim;<br> 4- Cover robbery and snatching of worn jewels (all other cases such as theft, loss are specifically excluded)<br> 5- Is valid for jewels of a purchase value not exceeding Euros 35.000 (thiry-five thousand Euros).<br><br> b) This warranty is valid for 36 months from the date of issue of this certificate. As precondition of validity, the certificate must be registered on the website www.damianigroupcustomercare.com within 30 days from the purchase date of your jewel.<br><br> c) As precondition of any right of substitution, should one of the event covered by this warranty occur, you have to send within 7 (seven) days from the event the following documentation together with the request of substitution:<br> 1.Written/undersigned notification of loss to the local Police/Security Authorities, compentent for the place of the event;<br> 2. Copy of this certificate;<br><br> The above documents should be supplied either by registered post to : FUNK INTERNATIONAL SPA, Corso Garibaldi 24, 15048 Valenza (AL) – Tel. 0131 942647 – Fax. 0131 953234 (mail info@funk-gruppe.it) or online by upload on the dedicated area of the website: www.damianigroupcustomercare.com .","SALVINI, nel ringraziarLa per l’acquisto effettuato, La informa che qualora il Suo nuovo gioiello dovesse esserLe sottratto per effetto o in conseguenza di RAPINA o SCIPPO, sempre che il gioiello sia da Lei indossato al momento dell’evento, Ella otterrà da SALVINI un gioiello avente le medesime caratteristiche o, in mancanza, un gioiello del medesimo valore di acquisto di quello sottratto.<br><br> a) La presente garanzia:<br><br> 1- E’ personale e valida esclusivamente se al momento dell’evento coperto dalla presente garanzia, il gioiello sia ancora di Sua proprietà ed in possesso Suo o di suoi familiari conviventi;<br> 2- Include eventi verificatisi nel Mondo Intero;<br> 3- E’ nulla in caso di richiesta scientemente falsa e fraudolenta;<br> 4- Copre i casi di rapina e scippo di gioielli indossati (sono esclusi gli altri casi: furto, smarrimento, ecc.)<br> 5-  E’ valida per gioielli con prezzo di acquisto non superiore a € 35.000,00 (trentacinquemila euro)<br><br> b) Questa garanzia è valida per 36 mesi dalla data di emissione del presente certificato. Ai fini della validità il certificato deve essere tassativamente attivato tramite registrazione sul sito www.damianigroupcustomercare.comentro 30 gg dalla data di acquisto del gioiello.<br><br> c) Qualora si verifichi uno degli eventi coperti da questa garanzia,entro 7 giorni dall’evento a pena di decadenza della garanzia,dovrà fornirela seguente documentazione unitamente alla richiesta di sostituzione:<br> 1-Denuncia scritta e circonstanziata all’Autorità Giudiziaria competente per il territorio in cui è avvenuto l’evento;<br> 2- Copia del presente Assicurazione;<br><br> mediante spedizione a mezzo raccomandata a FUNK INTERNATIONAL SPA, Corso Garibaldi 24, 15048 Valenza (AL) – Tel. 0131 942647 – Fax. 0131 953234 (mail info@funk-gruppe.it) oppure tramite upload nell’area dedicata del sito www.damianigroupcustomercare.com."
+"BLISS thanks you for your recent purchase and hereby informs you that in the case your jewel was stolen due to a event of ROBBERY or SNATCHING, being the jewel at the moment of the event worn by you, you shall obtain from BLISS a jewel of the same characteristics  or, in absence of that, a jewel of the same purchase value of the stolen one.<br><br> a) This warranty:<br><br> 1- Is personal, therefore valid exclusively if at the moment of the event covered by this warranty the object is your property and held by you or by one of your cohabiting relatives;<br> 2- Includes events worldwide;<br> 3- Is not valid in the event of false or fraudulent claim;<br> 4- Cover robbery and snatching of worn jewels (all other cases such as theft, loss are specifically excluded)<br> 5- Is valid for gold jewelryonly, with a purchase value starting from Euros 200.00 (two hundred Euros) and not exceeding Euros 5,000.00 (five thousand Euros).<br><br> b) This warranty is valid for 36 months from the date of issue of this certificate. As precondition of validity, the certificate must be registered on the website www.damianigroupcustomercare.com within 30 days from the purchase date of your jewel.<br><br> c) As precondition of any right of substitution, should one of the event covered by this warranty occur, you have to send within 7 (seven) days from the event the following documentation together with the request of substitution:<br> 1.Written/undersigned notification of loss to the local Police/Security Authorities, compentent for the place of the event;<br> 2. Copy of this certificate;<br><br> The above documents should be supplied either by registered post to : FUNK INTERNATIONAL SPA, Corso Garibaldi 24, 15048 Valenza (AL) – Tel. 0131 942647 – Fax. 0131 953234 (mail info@funk-gruppe.it) or online by upload on the dedicated area of the website: www.damianigroupcustomercare.com .","BLISS, nel ringraziarLa per l’acquisto effettuato, La informa che qualora il Suo nuovo gioiello dovesse esserLe sottratto per effetto o in conseguenza di RAPINA o SCIPPO, sempre che il gioiello sia da Lei indossato al momento dell’evento, Ella otterrà da BLISS un gioiello avente le medesime caratteristiche o, in mancanza, un gioiello del medesimo valore di acquisto di quello sottratto.<br><br> a) La presente garanzia:<br><br> 1- E’ personale e valida esclusivamente se al momento dell’evento coperto dalla presente garanzia, il gioiello sia ancora di Sua proprietà ed in possesso Suo o di suoi familiari conviventi;<br> 2- Include eventi verificatisi nel Mondo Intero;<br> 3- E’ nulla in caso di richiesta scientemente falsa e fraudolenta;<br> 4- Copre i casi di rapina e scippo di gioielli indossati (sono esclusi gli altri casi: furto, smarrimento, ecc.);<br> 5-E’ valida per gioiellirealizzati interamente in oro con prezzo di acquisto non inferiore a € 200,00 (duecento euro) e non superiore a € 5.000,00 (cinquemila euro).<br><br> b) b)  Questa garanzia è valida per 36 mesi dalla data di emissione del presente certificato. Ai fini della validità il certificato deve essere tassativamente attivato tramite registrazione sul sito www.damianigroupcustomercare.com  entro 30 gg dalla data di acquisto del gioiello.<br><br> c) Qualora si verifichi uno degli eventi coperti da questa garanzia, entro 7 giorni dall’evento a pena di decadenza della garanzia, dovrà fornire la seguente documentazione unitamente alla richiesta di sostituzione:<br> 1- Denuncia scritta e circonstanziata all’Autorità Giudiziaria competente per il territorio in cui è avvenuto l’evento;<br> 2- Copia del presente Assicurazione;<br><br> mediante spedizione a mezzo raccomandata a FUNK INTERNATIONAL SPA, Corso Garibaldi 24, 15048 Valenza (AL) – Tel. 0131 942647 – Fax. 0131 953234 (mail info@funk-gruppe.it) oppure tramite upload nell’area dedicata del sito  www.damianigroupcustomercare.com."
+"ROCCA 1794, thanks you for your recent purchase and hereby informs you that in the case your watch was stolen due to a event ofROBBERY or SNATCHING, being the watch at the moment of the event worn by you, ROCCA 1794 will at its discretion provide you a new watch with the same characteristics or, in absence of that, a watch of the same purchase value of the stolen one.<br><br> a) This warranty:<br><br> 1- Is personal, therefore valid exclusively if at the moment of the event covered by this warranty the object is your property and held by you or by one of your cohabiting relatives;<br> 2- Includes events worldwide;<br> 3- Is not valid in the event of false or fraudulent claim;<br> 4- Cover robbery and snatching of worn watches (all other cases such as theft, loss are specifically excluded)<br> 5- Is valid for watches of a purchase value not exceeding Euros45,000.00 (forty-five thousand Euros) and under condition that the original warranty card of the stolen watch is returned.<br><br> b) This warranty is valid for 36 months from the date of issue of this certificate. As precondition of validity, the certificate must be registered on the website www.damianigroupcustomercare.com within 30 days from the purchase date.<br><br> c) As precondition of any right of substitution, should one of the event covered by this warranty occur, you have to send within 7 (seven) days from the eventthe following documentation together with the request of substitution:<br> 1.Written/undersigned notification of loss to the local Police/SecurityAuthorities, competent for the place of the event;<br> 2. Copy of this certificate;<br> 3. Original warranty card of the watch.<br><br> The above documents should be provided by upload in the dedicated area of the website www.damianigroupcustomercare.comsubject to dispatch of the original warranty card of the watch - by registered post - to FUNK INTERNATIONAL SPA, Corso Garibaldi 24, 15048 Valenza (AL) – Tel. 0131 942647 – Fax. 0131 953234 (mail info@funk-gruppe.it).","ROCCA 1794, nel ringraziarLa per l’acquisto effettuato, La informa che qualora il Suo nuovo orologio dovesse esserLe sottratto per effetto o in conseguenza di RAPINA o SCIPPO, sempre che l’orologio sia da Lei indossato al momento dell’evento, Ella otterrà da ROCCA 1794 un orologio avente le medesime caratteristiche o, in mancanza, un orologio del medesimo valore di acquisto di quello sottratto.<br><br> a) La presente garanzia:<br><br> 1- E’ personale e valida esclusivamente se al momento dell’evento coperto dalla presente garanzia, l’orologio sia ancora di Sua proprietà ed in possesso Suo o di suoi familiari conviventi;<br> 2- Include eventi verificatisi nel Mondo Intero;<br> 3- E’ nulla in caso di richiesta scientemente falsa e fraudolenta;<br> 4- Copre i casi di rapina e scippo dell’orologio indossato (sono esclusi gli altri casi: furto, smarrimento, ecc.)<br> 5-  E’ valida per orologi con prezzo di acquisto non superiore a € 45.000,00 (quarantacinquemila euro) ed a condizione che venga restituita la garanzia dell’orologio sottratto in copia originale.<br><br> b)  Questa garanzia è valida per 36 mesi dalla data di emissione del presente certificato. Ai fini della validità il certificato deve essere tassativamente attivato tramite registrazione sul sito www.damianigroupcustomercare.com entro 30 gg dalla data di acquisto.<br><br> c)  Qualora si verifichi uno degli eventi coperti da questa garanzia,entro 7 giorni dall’evento a pena di decadenza della garanzia, dovrà fornirela seguente documentazioneunitamente alla richiesta di sostituzione:<br> 1- Denuncia scritta e circonstanziata all’Autorità Giudiziaria competente per il territorio in cui è avvenuto l’evento;<br> 2- Copia del presente Assicurazione;<br> 3- Garanzia dell’orologio in copia originale.<br><br> La sopracitata documentazione dovrà essere fornita tramiteupload nell’area dedicata del sito www.damianigroupcustomercare.com, previa spedizione a mezzo raccomandata della garanzia originale dell’orologio a FUNK INTERNATIONAL SPA, Corso Garibaldi 24, 15048 Valenza (AL) – Tel. 0131 942647 – Fax. 0131 953234 (mail info@funk-gruppe.it)."
+"CALDERONI, thanks you for your recent purchase and hereby informs you that in the case your watch was stolen due to a event ofROBBERY or SNATCHING, being the watch at the moment of the event worn by you, CALDERONI will at its discretion provide you a new watch with the same characteristics or, in absence of that, a watch of the same purchase value of the stolen one.<br><br> a) This warranty:<br><br> 1- Is personal, therefore valid exclusively if at the moment of the event covered by this warranty the object is your property and held by you or by one of your cohabiting relatives;<br> 2- Includes events worldwide;<br> 3- Is not valid in the event of false or fraudulent claim;<br> 4- Cover robbery and snatching of worn watches (all other cases such as theft, loss are specifically excluded)<br> 5- Is valid for watches of a purchase value not exceeding Euros45,000.00 (forty-five thousand Euros) and under condition that the original warranty card of the stolen watch is returned.<br><br> b) This warranty is valid for 36 months from the date of issue of this certificate. As precondition of validity, the certificate must be registered on the website www.damianigroupcustomercare.com within 30 days from the purchase date.<br><br> c) As precondition of any right of substitution, should one of the event covered by this warranty occur, you have to send within 7 (seven) days from the eventthe following documentation together with the request of substitution:<br> 1.Written/undersigned notification of loss to the local Police/SecurityAuthorities, competent for the place of the event;<br> 2. Copy of this certificate;<br> 3. Original warranty card of the watch.<br><br> The above documents should be provided by upload in the dedicated area of the website www.damianigroupcustomercare.comsubject to dispatch of the original warranty card of the watch - by registered post - to FUNK INTERNATIONAL SPA, Corso Garibaldi 24, 15048 Valenza (AL) – Tel. 0131 942647 – Fax. 0131 953234 (mail info@funk-gruppe.it).","CALDERONI, nel ringraziarLa per l&rsquo;acquisto effettuato, La informa che qualora il Suo nuovo gioiello dovesse essere sottratto per effetto o in conseguenza di RAPINA o SCIPPO, sempre che il gioiello sia da Lei indossato al momento dell&rsquo;evento, Ella otterr&agrave; da CALDERONI un gioiello avente le medesime caratteristiche o, in mancanza, un gioiello del medesimo valore di acquisto di quello sottratto.<br /> <br /> a) La presente garanzia:<br /> <br /> 1- E&rsquo; personale e valida esclusivamente se al momento dell&rsquo;evento coperto dalla presente garanzia, il gioiello sia ancora di Sua propriet&agrave; ed in possesso Suo o di suoi familiari conviventi;<br /> 2- Include eventi verificatisi nel Mondo Intero;<br /> 3- E&rsquo; nulla in caso di richiesta scientemente falsa e fraudolenta;<br /> 4- Copre i casi di rapina e scippo di gioielli indossati (sono esclusi gli altri casi: furto, smarrimento, ecc.)<br /> 5- E&rsquo; valida per gioielli con prezzo di acquisto non superiore a &euro; 100.000,00 (centomila euro)<br /> <br /> b) Questa garanzia &egrave; valida per 36 mesi dalla data di emissione del presente certificato. Ai fini della validit&agrave; il certificato deve essere tassativamente attivato tramite registrazione sul sito www.damianigroupcustomercare.com entro 30 gg dalla data di acquisto del gioiello.<br /> <br /> c) Qualora si verifichi uno degli eventi coperti da questa garanzia,entro 7 giorni dall&rsquo;evento a pena di decadenza della garanzia, dovr&agrave; fornirela seguente documentazione unitamente alla richiesta di sostituzione:<br /> 1- Denuncia scritta e circonstanziata all&rsquo;Autorit&agrave; Giudiziaria competente per il territorio in cui &egrave; avvenuto l&rsquo;evento;<br /> 2- Copia del presente Assicurazione;<br /> <br /> mediante spedizione a mezzo raccomandata a FUNK INTERNATIONAL SPA, Corso Garibaldi 24, 15048 Valenza (AL) &ndash; Tel. 0131 942647 &ndash; Fax. 0131 953234 (mail info@funk-gruppe.it) oppure tramite upload nell&rsquo;area dedicata del sito www.damianigroupcustomercare.com."
+"At the moment there is no warranty certificate.","Al momento non è presente nessuna Assicurazione."
+"continue","continua"
+"The replacement certificate of your solitaire ring will expire on %expire_date","l’Assicurazione del suo solitario scadrà in data  %expire_date"
+"We’re glad to inform you that Damiani offers the opportunity to obtain a new 3-year certificate.","Le ricordiamo che Damiani le offre la possibilità di ottenere un nuovo certificato della durata di 3 anni."
+"Click ","Clicchi "
+"Click","Clicchi"
+"here","qui"
+" to obtain the new warranty."," per ricevere la nuova garanzia."
+"Renewal of replacement certificate","Rinnovo dell'Assicurazione"
+"At the moment there is no File Claim.","Al momento non è presente nessuna Denuncia di Sinistro"
+" I accept the general conditions"," Accetto le condizioni generali"
+"General Conditions","Condizioni Generali"
+"CLOSE","CHIUDI"
+"Search for customer or warranty *","Cerca cliente oppure N. Certificato"
+"I prefer not to declare it","Preferisco non dichiararlo"
+"The purchase date is greater than the maximum limit","La data di acquisto è superiore al limite massimo"
+"Activated ","attivazione "
+"Deactivated ","Disattivato "
+"Activated Date ","Data attivazione "
+"Expire Date ","Data di scadenza "
+"We have received a request to change the following information associated with your account at %store_name: email, password.,"abbiamo ricevuto una richiesta di modifica delle seguenti informazioni associate al tuo account su %store_name: password."
+"Thanks,<br>%store_name","Grazie,<br>%store_name"
+"The password doesn't match this account. Verify the password and try again.",La password non corrisponde a questo account. Verifica la password e riprova."
+"If you have not authorized this action, please contact us immediately at %store_email","La password non corrisponde a questo account. Verifica la password e riprova %store_email"
+"If you have not authorized this action, please contact us immediately at","Se non hai autorizzato questa azione, ti preghiamo di contattarci immediatamente all'indirizzo"
+"This Equipment is already registered.","Questo equipment è già registrato"
+"This model is already registered","Questo modello è già registrato"
+"This Model is already registered","Questo modello è già registrato"
+"We have received a request to change the following information associated with your account at damianigroupcustomercare.com: email, password.,"abbiamo ricevuto una richiesta di modifica delle seguenti informazioni associate al tuo account su damianigroupcustomercare.com: password."
+"We have received a request to change the following information associated with your account at damianigroupcustomercare.com: password.","abbiamo ricevuto una richiesta di modifica delle seguenti informazioni associate al tuo account su damianigroupcustomercare.com: password."
+"We received too many requests for password resets. Please wait and try again later or contact ecustomerservice@damiani.com.","Abbiamo ricevuto troppe richieste di reimpostazione della password. Attendi e riprova più tardi o contatta ecustomerservice@damiani.com."
+"Partner Name","Nome del partner"
+"Partner Surname","Cognome del partner"
+"Number of children","Numero dei figli"
+"Children Name","Nome del figlio"
+"Children Surname","Cognome del figlio"
+"Profession","Professione"
+"Trader","Commerciante"
+"Manager","Dirigente"
+"Employee","Impiegato"
+"Entrepreneur","Imprenditore"
+"Freelance","Libero professionista"
+"Other","Altro"
+"Purchase Occasion","Occasione d’acquisto"
+"Birthday","Compleanno"
+"Holiday","Festività"
+"Engagement","Fidanzamento"
+"Anniversary","Matrimonio"
+"Anniversary ","Matrimonio"
+"Special occasion","Occasione speciale"
+"Stone Code*","Codice Materiale*"
+"Please verify the code. We checked it and it is not linked to the specific Brand. Please check on the Brand website or contact our Customer Service.","Si prega di verificare il codice. Non risulta associato al Brand selezionato. Suggeriamo di verificare sul sito o contattare il nostro Customer Service."
+"Please enter the correct zip code.","Per favore inserire il CAP corretto."
+"The product code must consist of 8 characters.","Il codice materiale deve essere composto da 8 caratteri"
+"The equipment must consist of 8 characters.","L’equipment deve essere composto da 8 caratteri"
+"the certificate","il certificato"
+"in your name for the jewel","a te intestato per il gioiello"
+"with the following references","con i seguenti riferimenti"
+"signed at ","effettuato il "
+"was cancelled."," è stato annullato."
+"product code ","codice materiale "
+"CONFIRMATION AND ACTIVATION","CONFERMA E ATTIVAZIONE"
+"check your email to complete the procedure","Controlli la sua email per completare la procedura"
+"Thank you for having completed the insurance form.","Grazie per aver compilato il modulo di assicurazione."
+"<b>In order to activate your certificate you have to click on the confirmation link</b> that you will find in the email sent to: <b>mail@dominio.com</b>","<b>Per attivare il suo certificato dovrà cliccare sul link di conferma</b> che troverà nella mail inviata a: <b>mail@dominio.com</b>"
+"<b>In order to activate your certificate you have to click on the confirmation link</b> that you will find in the email sent to: ","<b>Per attivare il suo certificato dovrà cliccare sul link di conferma</b> che troverà nella mail inviata a: "
+"The insurance will not be active until the full procedure is complete.","L’assicurazione non risulterà attiva fino al completamento della procedura."
+"If the inserted email is not correct,","Se l’email inserita non è corretta,"
+"click here","cliccare qui"
+"to repeat the procedure","per ripetere la procedura."
+"thank you for completing the insurance form.","grazie per aver compilato il modulo di assicurazione."
+"To confirm the activation it’s necessary to click on the following confirmation button.","Per confermare l’attivazione è necessario cliccare sul seguente pulsante:"
+"CONFIRM ACTIVATION","CONFERMA ATTIVAZIONE"
+"Insurance Activation","Attivazione Assicurazione"
+"After the confirmation you will receive an email with the insurance certificate and the credentials to access your private area","Dopo la conferma riceverà una mail contenente il certificato di assicurazione e le credenziali per accedere all’area riservata"
+"Your account Data","Dati di accesso al Portale"
+"thank you for the registration.","grazie per la registrazione."
+"We are sending you data required for the access on the website www.damianigroupcustomercare.com","Le inviamo i suoi dati di accesso per il sito www.damianigroupcustomercare.com"
+"We are sending you the copy of the insurance certificate attached.","le inviamo in allegato copia del certificato di assicurazione."
+"Soon you will receive an email with credentials to access your personal area where you can monitor the status of the underwritten insurances and create new certificates.","A breve riceverà una mail con le credenziali per poter accedere alla sua area personale dove potrà monitorare lo status delle assicurazioni sottoscritte e creare nuovi certificati."
+"we are sending you the following credentials: www.damianigroupcustomercare.com","le inviamo i suoi dati di accesso per il portale www.damianigroupcustomercare.com"
+"We remind you that after the first access it will be possible to edit your account password.","Le ricordiamo che dopo il primo accesso potrà cambiare la password relativa al suo account."
+"After the confirmation you will receive an email with the insurance certificate.","Dopo la conferma, il certificato appena generato le sarà inviato tramite e-mail."

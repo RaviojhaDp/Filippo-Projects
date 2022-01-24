@@ -1,0 +1,49 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/**
+ * @var \Magento\Theme\Block\Html\Header\Logo $block
+ */
+?>
+<?php if($this->getRequest()->getFullActionName() == "catalog_category_view"){
+	$_objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+    $category = $_objectManager->get('Magento\Framework\Registry')->registry('current_category');
+	$categories = $_objectManager->create('Magento\Catalog\Model\Category')
+	->load($category->getId());
+
+	 if($categories->getData('level') == '3'){
+			$parent_id = $categories->getParentId();
+            $cat = $_objectManager->create('Magento\Catalog\Model\Category')
+			->load($parent_id);
+			$src_url = $this->getViewFileUrl('images/logo-damiani.svg');
+		}
+		if($categories->getData('level') == '2'){
+			$src_url = $this->getViewFileUrl('images/logo-damiani.svg'); 
+		 }
+		 ?>
+<?php $storeName = $block->getThemeName() ? $block->getThemeName() : $block->getLogoAlt();?>
+<span data-action="toggle-nav" class="action nav-toggle"><span><?= /* @escapeNotVerified */ __('Toggle Nav') ?></span></span>
+<a class="logo" href="<?= $block->getUrl('') ?>" title="<?= /* @escapeNotVerified */ $storeName ?>">
+    <img src="<?= /* @escapeNotVerified */ $src_url ?>"
+         title="<?= $block->escapeHtmlAttr($block->getLogoAlt()) ?>"
+         alt="<?= $block->escapeHtmlAttr($block->getLogoAlt()) ?>"
+         <?= $block->getLogoWidth() ? 'width="' . $block->getLogoWidth() . '"' : '' ?>
+         <?= $block->getLogoHeight() ? 'height="' . $block->getLogoHeight() . '"' : '' ?>
+    />
+</a><?php
+}else{
+	?>
+<?php $storeName = $block->getThemeName() ? $block->getThemeName() : $block->getLogoAlt();?>
+<a class="logo" href="<?= $block->getUrl('') ?>" title="<?= /* @escapeNotVerified */ $storeName ?>">
+    <img src="<?= /* @escapeNotVerified */ $block->getLogoSrc() ?>"
+         title="<?= $block->escapeHtmlAttr($block->getLogoAlt()) ?>"
+         alt="<?= $block->escapeHtmlAttr($block->getLogoAlt()) ?>"
+         
+    />
+</a>
+<?php } ?>

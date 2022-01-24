@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:Magento:module:Magento_Email:etc/email_templates.xsd">
+  <template id="email_template_insurance_confirm" label="email" file="email_template_insurance_confirm.html" type="html" module="Dolphin_InsurancePdf" area="frontend"/>
+</config>

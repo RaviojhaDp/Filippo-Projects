@@ -1,0 +1,25 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<!--@subject {{trans "Your account Data"}} @-->
+<!--@vars {
+"var this.getUrl($store, 'customer/account/')":"Customer Account URL",
+"var customer.email":"Customer Email",
+"var customer.name":"Customer Name",
+"var customer.password":"Customer Password"
+} @-->
+
+{{template config_path="design/email/header_template"}}
+
+<!--p class="greeting">{{trans "%name," name=$customer.name}}</p-->
+<p class="greeting" style="font-size:15px;">{{trans "Dear Customer,"}}</p>
+<p style="font-size:15px;">{{trans "we are sending you the following credentials: www.damianigroupcustomercare.com"}}</p>
+<ul style="margin-top:20px;margin-bottom:20px;">
+    <li><strong style="font-size:15px;">{{trans "Email:"}}</strong> {{var customer.email}}</li>
+    <li><strong style="font-size:15px;">{{trans "Password:"}}</strong> <em style="font-size:15px;">{{var customer.password}}</em></li>
+</ul>
+<p style="font-size:15px;">{{trans "We remind you that after the first access it will be possible to edit your account password."}}</p>
+{{template config_path="design/email/footer_template"}}

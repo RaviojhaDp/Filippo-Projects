@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:Magento:module:Magento_Email:etc/email_templates.xsd">
+	<template id="luxmadein_certificatodisostituzione_email_template" label="email" file="luxmadein_certificatodisostituzione_email_template.html" type="html" module="Luxmadein_Certificatodisostituzione" area="frontend"/>
+	<template id="luxmadein_certificatodisostituzione_email_template_it" label="email" file="luxmadein_certificatodisostituzione_email_template_it.html" type="html" module="Luxmadein_Certificatodisostituzione" area="frontend"/>
+</config>

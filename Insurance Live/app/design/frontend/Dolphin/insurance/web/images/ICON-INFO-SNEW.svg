@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1004 1108" width="1004" height="1108">
+	<style>
+		tspan { white-space:pre }
+		.shp0 { fill: #1d1d1b } 
+		.txt1 { font-size: 932px;fill: #ffffff;font-family: "Vivaldii,  Vivaldi" } 
+	</style>
+	<path id="Ellipse_5" class="shp0" d="M501.86 1107.33C224.33 1107.33 0 883 0 605.47C0 327.94 224.33 103.61 501.86 103.61C779.39 103.61 1003.72 327.94 1003.72 605.47C1003.72 883 779.39 1107.33 501.86 1107.33Z" />
+	<g id="i">
+		<text id="i" style="transform: matrix(1,0,0,1,350.95,958.72)" >
+			<tspan x="0" y="0" class="txt1">i</tspan>
+		</text>
+	</g>
+</svg>

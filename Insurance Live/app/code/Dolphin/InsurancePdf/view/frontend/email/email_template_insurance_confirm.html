@@ -1,0 +1,20 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<!--@subject {{trans "Attivazione Assicurazione"}} @-->
+<!--@vars {
+"var this.getUrl($store, 'customer/account/')":"Customer Account URL",
+"var customer.certificato_code":"Customer Certificato Code",
+"var customer.lang":"Customer language",
+"var customer.url":"Customer Post URL",
+} @-->
+{{template config_path="design/email/header_template"}}
+<p class="greeting" style="font-size:15px;">{{trans "Gentile cliente,"}}</p>
+<p style="font-size:15px;">{{trans "grazie per aver compilato il modulo di assicurazione."}}</p>
+<p style="font-size:15px;">{{trans "Per confermare l’attivazione è necessario cliccare sul seguente pulsante:"}}</p><br>
+<a style="font-size: 14px;display: block;width: 100%;max-width:180px;height: 25px;background:white;border:1px solid;padding: 10px;margin:0 auto;text-align: center;color:black;line-height: 25px;" href="{{var customer.url}}">{{trans "CONFERMA ATTIVAZIONE"}}</a><br>
+<p style="font-size:15px;">{{trans "Dopo la conferma, il certificato appena generato le sarà inviato tramite e-mail."}}</p>
+{{template config_path="design/email/footer_template"}}

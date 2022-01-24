@@ -1,0 +1,574 @@
+<?php
+
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$base_url_config = $objectManager->get('Magento\Framework\App\Config\ScopeConfigInterface')->getValue("web/unsecure/base_url");
+$groupRepository = $objectManager->create('\Magento\Customer\Api\GroupRepositoryInterface');
+$storeManager = $objectManager->get('\Magento\Store\Model\StoreManagerInterface');
+$storeName = $storeManager->getStore()->getName(); //IT :1, ENG : 2
+$category = $objectManager->get('Magento\Framework\Registry')->registry('current_category');
+$cat_name = $category->getParentCategory()->getName();
+$customerSession = $objectManager->create('Magento\Customer\Model\Session');
+if(strtolower($cat_name) == "damiani") {
+    $logo_name = "damiani.png";
+}
+if(strtolower($cat_name) == "salvini") {
+    $logo_name = "logosalvini.png";
+}
+if(strtolower($cat_name) == "rocca") {
+    $logo_name = "logorocca.png";
+}
+if(strtolower($cat_name) == "bliss") {
+    $logo_name = "logobliss.png";
+}
+if(strtolower($cat_name) == "calderoni") {
+    $logo_name = "calderoni.png";
+}
+$logo_url = $base_url_config."media/".$logo_name;
+$display_other = false;
+$display_to_user = false;
+if ($customerSession->isLoggedIn()) {
+    if ($customerSession->getCustomer()->getGroupId() != '5') {
+        $display_other = true;
+    }
+    if ($customerSession->getCustomer()->getGroupId() == '5') {
+        $display_to_user = true;
+    }
+    ?>
+
+    <div class="contain-main-claim">
+        <div class="line-up"></div>
+        <div class="claim-par">
+            <p><?php echo __('The complaint of the claim can only be made by the holder of the replacement certificate, if it is not so contact the insurance Office of Damiani SpA -  telephone') ?></br><a class="phnum-claim" href="<?php
+            if (strtolower($storeName) == "italiano") {
+                echo __('tel:800 001924');
+            }
+
+            if (strtolower($storeName) == "english") {
+
+                echo __('tel:800 001924');
+            }
+            ?>">
+
+            <?php
+            if (strtolower($storeName) == "italiano") {
+                echo __('800 001924');
+            }
+
+            if (strtolower($storeName) == "english") {
+
+                echo __('800 001924');
+            }
+            ?>
+
+            <?php //echo __('0131 920499')  ?></a></p>
+        </div>
+        <div class="line-down"></div>
+    </div>
+    <div class="autofill-contain <?php
+    if ($customerSession->getCustomer()->getGroupId() == '5') {
+        echo "client";
+        } else {
+            echo "retailer";
+        }
+        ?>">
+        <?php if ($display_other) { ?>
+            <div class="field required">
+                <div class="control">
+                    <input type="text" name="cusotmername" id="customername-2" value="" title="<?php echo __('Search Customer Name*') ?>" placeholder="<?php echo __('Search Customer*') ?>" class="input-text" data-validate="{required:true}">
+                    <div class="icon-search"><span style="display: none;"><?php echo __('SEARCH') ?></span></div>
+                </div>
+            </div>
+            <div class="field required">
+                <div class="control">
+                    <select id="active-insurance_rb"  name="active-insurance" title="<?php echo __('Search Warranty') ?>" class="validate-select active-insurance">
+
+                    </select>
+                </div>
+            </div>
+        <?php } ?>
+        <div class="show">
+            <div id="autosuggest_close"><h1>X</h1></div>
+            <ul name="autosuggest" id="autosuggest">
+            </ul>
+        </div>
+        <?php
+        $filter_brand = strtolower($cat_name);
+        if ($display_to_user) {
+            $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+            $model = $objectManager->create('\Dolphin\Certificato\Model\ResourceModel\Certificato\Collection')->addFieldToFilter('customer_id', $customerSession->getCustomer()->getId())->addFieldToFilter('status', '1')->addFieldToFilter('brand', $filter_brand);
+
+            $html = '';
+            $html .= '<option value="">' . __('Search Warranty') . '</option>';
+            foreach ($model->getData() as $name) {
+                $cc = substr($name['certificato_code'], 1);
+                $form2Check = $objectManager->create('\Dolphin\Claim\Model\Claim')->getCollection()
+                ->addFieldToFilter('certificato_id',array('eq'=>$cc))
+                ->addFieldToFilter('status_claim',array('eq'=>'1'));
+                if(!(count($form2Check->getData())) > '0'){
+                    $created_at = date("d/m/Y", strtotime($name['created_at']));
+                    $html .= '<option value = "' . @$name['certificato_id'] . '">' . @$name['certificato_code'] . " " . $created_at . '</option>';
+                }
+                
+            }
+            ?>
+            <div class="field required">
+                <div class="control">
+                    <select id="active-insurance_rb"  name="active-insurance" title="<?php echo __('Search Warranty') ?>" class="validate-select active-insurance">
+                        <?php echo $html; ?>
+                    </select>
+                </div>
+            </div>
+        <?php } ?>
+    </div>
+    <?php /*action="<?= $block->getUrl('claim/index/claim');*/
+    $customerData = $customerSession->getCustomer()->getData();?>
+    <form id="claim" style="display:none !important;" method="post" enctype="multipart/form-data" action="<?= $block->getUrl('claim/index/claim'); ?>" >
+        <legend><?php echo __('SINISTER COMPLAINT') ?></legend>
+        <h3><?php echo __('Personal data') ?></h3>
+        <input type="hidden" name="customer_group_id" id="customer_group_id" value="<?php echo $customerSession->getCustomer()->getGroupId(); ?>">
+
+        <input type="hidden" name="faber_post" id="faber_post" value="">
+        <fieldset class="fieldset">
+            <input type="hidden" name="logo_url" value="<?php echo $logo_url ;?>">
+            <input type="hidden" id="parent_cat" name="parent_cat" value="<?php echo $cat_name; ?>">
+            <input type="hidden" name="storename" value="<?php echo $storeName; ?>">
+            <input type="hidden" name="certificato_id" id="certificato_id" value="">
+            <input type="hidden" name="customer_id" id="customer_id" value="<?php echo $customerSession->getCustomer()->getId();?>">
+            <div class="field required">
+                <label for="name" class="label certi"><span><?php echo __('Name') ?></span></label>
+                <div class="control">
+                    <input type="text" readonly name="name" id="name-2" value="" title="<?php echo __('Name') ?>" placeholder="<?php echo __('Name*') ?>" class="input-text" data-validate="{required:true}">
+                </div>
+            </div>
+            <div class="field required">
+                <label for="Surname" class="label certi"><span><?php echo __('LastName') ?></span></label>
+                <div class="control">
+                    <input type="text" readonly name="surname" id="surname-2" value="" title="<?php echo __('LastName') ?>" placeholder="<?php echo __('LastName*') ?>" class="input-text" data-validate="{required:true}">
+                </div>
+            </div>
+            <div class="field required">
+                <label for="name" class="label certi"><span><?php echo __('Address') ?></span></label>
+                <div class="control">
+                    <input type="text" readonly name="address" id="address-2" value="" title="<?php echo __('Address') ?>" placeholder="<?php echo __('Address*') ?>" class="input-text" data-validate="{required:true}">
+                </div>
+            </div>
+            <div class="field required">
+                <label for="zipcode" class="label certi"><span><?php echo __('Postal Code') ?></span></label>
+                <div class="control">
+                    <input type="text" readonly name="zipcode" id="zipcode-2" value="" title="<?php echo __('Postal Code') ?>" placeholder="<?php echo __('Postal Code*') ?>" class="input-text" data-validate="{required:true, 'validate-zip-international':true}">
+                </div>
+            </div>
+            <div class="field country required">
+                <label class="label" for="country"><span><?php /* @escapeNotVerified */ echo __('Country') ?></span></label>
+                <div class="control">
+
+                    <?php $countryBlock = $block->getLayout()->createBlock('Magento\Directory\Block\Data'); ?>
+                    <?= $countryBlock->getCountryHtmlSelect($defValue = 'IT', $name = 'country_id', $id = 'country', $title = 'Country'); ?>
+                </div>
+            </div>
+            <div class="field required">
+                <label for="city" class="label certi"><span><?php echo __('City') ?></span></label>
+                <div class="control">
+                    <input type="text" readonly name="city_stepone" id="city-22" value="" title="<?php echo __('City') ?>" placeholder="<?php echo __('City*') ?>" class="input-text" data-validate="{required:true}">
+                    <div class="field region required">
+                        <label class="label" for="state"><span><?php /* @escapeNotVerified */ echo __('State') ?></span></label>
+                        <div class="control">
+                            <?php //echo $regionList  ?>
+                            <input readonly name="province" id="states" title="<?php /* @escapeNotVerified */ echo __('State') ?>" placeholder="<?php echo __('Province*') ?>"  class="input-text" type="text" data-validate="{required:true}"/>
+                        </div>
+                    </div>
+                    <div class="field states required" style="display:none">
+                        <label class="label" for="states"><span><?php /* @escapeNotVerified */ echo __('State') ?></span></label>
+                        <div class="control">
+                            <input readonly name="province" id="states" title="<?php /* @escapeNotVerified */ echo __('State') ?>" placeholder="<?php echo __('Province*') ?>"  class="input-text" type="text" data-validate="{required:true}"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="field required">
+                <label for="phone" class="label certi"><span><?php echo __('Telephone') ?></span></label>
+                <div class="control">
+                    <input type="text" readonly name="phone" id="phone-2" value="" title="<?php echo __('Telephone') ?>" placeholder="<?php echo __('Telephone') ?>" class="input-text">
+                </div>
+            </div>
+            <div class="field required">
+                <label for="mobile-phone" class="label certi"><span><?php echo __('Cell phone') ?></span></label>
+                <div class="control">
+                    <input type="text"  name="mobile_phone" id="mobile_phone-2" value="" title="<?php echo __('Cell Phone') ?>" placeholder="<?php echo __('Cell Phone*') ?>" class="input-text" data-validate="{required:true, 'validate-number':true}">
+                </div>
+            </div>
+            <div class="field required dob">
+                <label for="dob" class="label certi"><span><?php echo __('Date of birth* - click on icon') ?></span></label>
+                <div class="control">
+                    <input class="control-text validate-date required-entry" title="<?php echo __('Date of birth* - click on icon') ?>"  placeholder="<?php echo __('Date of birth* - click on icon') ?>" readonly name="dob" id="claim_datepickers" type="text">
+                    <!--input type="date" name="dob"  value="" title="<?php //echo __('Date Of Birth')    ?>" placeholder="<?php //echo __('Date Of Birth')    ?>" class="input-text" data-validate="{required:true}"-->
+                </div>
+            </div>
+            <div class="field required">
+                <div class="control">
+                    <select id="gender" disabled name="sex" title="<?php echo __('Sex*') ?>" class="validate-select gender">
+                        <option value=""><?php echo __('Sex*') ?></option>
+                        <option value="Male"><?php echo __('Male') ?></option>
+                        <option value="Female"><?php echo __('Woman') ?></option>
+                        <option value="Ntd"><?php echo __('I prefer not to declare it') ?></option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="field required">
+                <label for="email_address"  class="label certi"><span><?php echo __('Email') ?></span></label>
+                <div class="control">
+                    <input type="email" readonly name="email" id="email_address" value="" title="<?php echo __('Email*') ?>" placeholder="<?php echo __('Email*') ?>" class="input-text" data-validate="{required:true, 'validate-email':true}">
+                </div>
+            </div>
+        </fieldset>
+        <h3><?php echo __('Product data') ?></h3>
+        <fieldset class="fieldset">
+            <legend><?php echo __('Product data') ?></legend>
+            <?php if(strtolower($cat_name) == "damiani" || strtolower($cat_name) == "rocca" || strtolower($cat_name) == "salvini"){ ?>
+                <div class="field required equipment-filed-claim">
+                    <label for="equpiment" class="label certi"><span><?php echo __('Equipment*') ?></span></label>
+                    <div class="control">
+                        <input type="text" readonly name="equipment" id="equpiment-2" value="" title="<?php echo __('Equipment*') ?>" placeholder="<?php echo __('Equipment*') ?>" class="input-text" data-validate="{required:true}">
+                        
+                    </div>
+                </div>
+                <div class="field required equipment-filed-claim">
+
+                    <div class="control">
+                        <input readonly name="model" id="model-2" value="" title="<?php echo __('Sku*') ?>" placeholder="<?php echo __('Sku*') ?>" class="input-text" >
+						 
+                    </div>
+                </div>
+				
+				<!--div class="field required equipment-filed-claim">
+
+                    <div class="control">
+                        <input readonly name="serial_number" id="serial_number-2" value="" title="<?php //echo __('Serial Number*') ?>" placeholder="<?php //echo __('Serial Number*') ?>" class="input-text" >
+						 
+                    </div>
+                </div-->
+
+
+            <?php }
+
+            elseif(strtolower($cat_name) == "calderoni"){ // Only For Calderoni Category ?>
+                <div class="field required">
+                  <label for="equpiment" class="label certi"><span><?php echo __('Equipment*') ?></span></label>
+                  <div class="control">
+                    <input type="hidden" name="equpiment" id="equpiment-2" value="" title="<?php echo __('Equipment*') ?>" placeholder="<?php echo __('Equipment*') ?>" class="input-text">
+                </div>
+            </div>
+            <div class="field required modelhidden">
+                <div class="control">
+                  <input type="hidden" name="model" id="model-2" value="" title="<?php echo __('Sku*') ?>" placeholder="<?php echo __('Sku*') ?>" class="input-text">
+              </div>
+          </div>
+          <div class="field required">
+              <label for="stonecode" class="label certi"><span><?php echo __('Stone Code*') ?></span></label>
+              <div class="control">
+                <input type="text" readonly="readonly" name="stone_code" id="stonecode-2" value="" title="<?php echo __('Stone Code*') ?>" placeholder="<?php echo __('Stone Code*') ?>" class="input-text" data-validate="{required:true}">
+            </div>
+        </div>
+
+    <?php } 
+    else{?>
+        <div class="field required equipment-filed-claim">
+
+            <div class="control">
+                <input type="hidden" readonly name="equipment" id="equpiment-2" value="" title="<?php echo __('Equipment*') ?>" placeholder="<?php echo __('Equipment*') ?>" class="input-text">
+            </div>
+        </div>
+        <div class="field required model-field">
+            <label for="model" class="label"><span><?php echo __('Sku*') ?></span></label>
+            <div class="control">
+                <input type="text" readonly name="model" id="model-2" value="" title="<?php echo __('Sku*') ?>" placeholder="<?php echo __('Sku*') ?>" class="input-text" data-validate="{required:true}">
+                
+            </div>
+        </div>
+    <?php }?>
+            <?php /*if(strtolower($cat_name) != "bliss"){ ?>
+            <div class="field required">
+                <label for="serial_number" class="label certi"><span><?php echo __('Serial Number*') ?></span></label>
+                <div class="control">
+                    <input type="text" readonly name="serial_number" id="serial_number-2" value="" title="<?php echo __('Serial Number*') ?>" placeholder="<?php echo __('Serial number*') ?>" class="input-text" data-validate="{required:true}">
+                    <div class="tooltip_info">
+                        <img src='<?php echo $this->getViewFileUrl('images/tooltip.png'); ?>' alt="alternative text" title="<?php echo __('this will be displayed as a tooltip') ?>"/>
+                    </div>
+                </div>
+            </div>
+        <?php } */?>
+        <div class="field required">
+            <label for="name_boutique_retailer" class="label certi"><span><?php echo __('Name boutique / Dealer') ?></span></label>
+            <div class="control">
+                <input type="hidden" readonly name="name_boutique_retailer" id="name_boutique_retailer-2_dup" value="<?php
+
+                if ($customerSession->getCustomer()->getGroupId() != '5') {
+                  echo $customerSession->getCustomer()->getId();
+              }
+
+              ?>">
+              <input type="text" readonly name="name_boutique_retailer_dup" id="name_boutique_retailer-2" value="" title="<?php echo __('Name boutique / Dealer') ?>" placeholder="<?php echo __('Name boutique / Dealer*') ?>" class="input-text" data-validate="{required:true}">
+          </div>
+      </div>
+      <div class="field required">
+        <label for="add_boutique_retailer" class="label certi"><span><?php echo __('Address boutique / Dealer') ?></span></label>
+        <div class="control">
+            <input type="text" readonly name="add_boutique_retailer" id="add_boutique_retailer-2" value="" title="<?php echo __('Address boutique / Dealer*') ?>" placeholder="<?php echo __('Address boutique / Dealer*') ?>" class="input-text" data-validate="{required:true}">
+        </div>
+    </div>
+    <div class="field required claim_purchase_date_datepickers-field">
+        <label for="purchase_date" class="label certi"><span><?php echo __('Date of purchase* - click on icon') ?></span></label>
+        <div class="control">
+            <input class="control-text validate-date" title="<?php echo __('Date of purchase* - click on icon') ?>"  placeholder="<?php echo __('Date of purchase* - click on icon') ?>" readonly name="purchase_date" id="claim_purchase_date_datepickers" type="text">
+
+        </div>
+    </div>
+</fieldset>
+<h3><?php echo __('Casualty Data') ?></h3>
+<fieldset class="fieldset">
+    <div class="title-reporting-data"><?php echo __('Casualty data') ?></div>
+    <div class="field required dob read">
+        <label for="left-date" class="label certi"><span><?php echo __('Casualty data') ?></span></label>
+        <div class="control">
+            <?php if (strtolower($storeName) == "italiano") { ?>
+                <input readonly type="control-text" name="left_date" id="left_date_date_datepickers_it" value="" title="<?php echo __('Casualty data*') ?>" placeholder="<?php echo __('Casualty data* - click on icon') ?>" class="input-text" data-validate="{required:true}">
+                <div for="left_date_date_datepickers_it" generated="true" class="mage-error test123" style="display: none;"><?php echo __('This is a required field.') ?></div>
+            <?php } else { ?>
+                <input readonly type="control-text" name="left_date" id="left_date_date_datepickers" value="" title="<?php echo __('Casualty data*') ?>" placeholder="<?php echo __('Casualty data* - click on icon') ?>" class="input-text" data-validate="{required:true}">
+                <div for="left_date_date_datepickers" generated="true" class="mage-error test123" style="display: none;"><?php echo __('This is a required field.') ?></div>
+            <?php } ?>
+        </div>
+    </div>
+    <div class="field country required">
+        <label class="label certi" for="country"><span><?php /* @escapeNotVerified */ echo __('Casualty Country') ?></span></label>
+        <div class="control">
+            <?php //echo $countryList ?>
+            <?php $countryBlock = $block->getLayout()->createBlock('Magento\Directory\Block\Data'); ?>
+            <?=
+            $countryBlock->getCountryHtmlSelect($defValue = 'IT', $name = 'left_country', $id = 'casualty_address', $title = 'Casualty Country address');
+            $regionLists = $countryBlock->getRegionHtmlSelect();
+            ?>
+        </div>
+    </div>
+    <div class="field required">
+        <label for="left-address" class="label certi"><span><?php echo __('Address causality') ?></span></label>
+        <div class="control">
+            <input type="text"  name="left_address" id="left-address" value="" title="<?php echo __('Address causality') ?>" placeholder="<?php echo __('Address causality') ?>" class="input-text">
+        </div>
+    </div>
+    <div class="field required">
+        <label for="left-postalcode" class="label certi"><span><?php echo __('Postal code casualty') ?></span></label>
+        <div class="control">
+            <input type="text"  name="left_zipcode" id="left-postalcode" value="" title="<?php echo __('Postal code casualty') ?>" placeholder="<?php echo __('Postal code casualty') ?>" class="input-text">
+        </div>
+    </div>
+    <div class="field required left-city-field">
+        <label for="left-city" class="label certi"><span><?php echo __('City casualty') ?></span></label>
+        <div class="control left_city-control">
+            <!-- <input type="text"  name="left_city" id="left-city" value="" title="<?php echo __('City casualty') ?>" placeholder="<?php echo __('City casualty') ?>" class="input-text" data-validate="{required:true}"> -->
+
+            <div class="cityinput" style="display: none;">
+                <input type="text" name="left-city" id="city-2" value="" title="<?php echo __('City casualty') ?>" placeholder="<?php echo __('City casualty') ?>" class="input-text" data-validate="{required:true}" >
+            </div>
+            <div class="cityselect">
+                <select  name="city" id="city-2" title="<?php echo __('City casualty') ?>" <?php echo __('City casualty') ?> aria-required="true"  data-validate="{required:true}"><option><?php echo __('City casualty') ?></option></select>
+            </div>
+
+            <div class="field region required">
+                <label class="label" for="state"><span><?php /* @escapeNotVerified */ echo __('State') ?></span></label>
+                <div class="control pro_select">
+                    <?php echo $regionLists ?>
+                </div>
+            </div>
+            <div class="field states required" style="display:none">
+                <label class="label" for="states"><span><?php /* @escapeNotVerified */ echo __('State') ?></span></label>
+                <div class="control">
+                    <input name="left_region" id="statess" title="<?php /* @escapeNotVerified */ echo __('State') ?>" placeholder="<?php echo __('Province') ?>"  class="input-text" type="text" data-validate="{required:true}"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="title-reporting-data"><?php echo __('File a complaint') ?></div>
+    <div class="field required dob claim_termination read">
+        <label for="date-of-termination" class="label certi"><span><?php echo __('Date of termination - click on icon') ?></span></label>
+        <div class="control">
+            <?php if (strtolower($storeName) == "italiano") { ?>
+                <input readonly class="control-text" title="<?php echo __('Date of termination - click on icon') ?>"  placeholder="<?php echo __('Date of termination - click on icon') ?>"  name="date_of_termination" id="claim_termination_it" type="text">
+            <?php } else { ?>
+                <input readonly class="control-text" title="<?php echo __('Date of termination - click on icon') ?>"  placeholder="<?php echo __('Date of termination - click on icon') ?>"  name="date_of_termination" id="claim_termination" type="text">
+            <?php } ?>
+        </div>
+    </div>
+    <div class="field required">
+        <label for="authority" class="label certi"><span><?php echo __('Authority') ?></span></label>
+        <div class="control">
+            <input type="text"  name="authority" id="authority" value="" title="<?php echo __('Authority') ?>" placeholder="<?php echo __('Authority') ?>" class="input-text">
+        </div>
+    </div>
+    <div class="field required">
+        <label for="location-of-the-authority" class="label certi"><span><?php echo __('location of the Authority') ?></span></label>
+        <div class="control">
+            <input type="text"  name="location_authority" id="location-of-the-authority" value="" title="<?php echo __('location of the Authority') ?>" placeholder="<?php echo __('location of the Authority') ?>" class="input-text">
+        </div>
+    </div>
+    <div class="field required">
+        <label for="document-number-issued" class="label certi"><span><?php echo __('Document Number issued') ?></span></label>
+        <div class="control">
+            <input type="text"  name="doc_number" id="document-number-issued" value="" title="<?php echo __('Document Number issued') ?>" placeholder="<?php echo __('Document Number issued') ?>" class="input-text">
+        </div>
+    </div>
+    <div class="field required">
+        <label for="describing-events" class="label certi"><span><?php echo __('Describing events') ?></span></label>
+        <div class="control">
+                    <!--
+                       <input type="text" name="describing-events" id="describing-events" value="" title="<?php //echo __('Describing events')    ?>" placeholder="<?php //echo __('Describing events')    ?>" class="input-text" data-validate="{required:true}">
+                   -->
+                   <textarea rows="4" cols="50" name="describe_events" placeholder="<?php echo __('Describing events') ?>" form="claim"></textarea>
+               </div>
+           </div>
+
+
+
+           <div class="field required upload_claim">
+            <div class="control">
+                <div id="filetouploadDiv">
+                  <input type="file" id="filetoupload" />
+                  <input type="text" id="filetouploadInput" name="complaint" placeholder="<?php echo __('Upload complaint') ?>" />
+                  <button  onclick="document.getElementById('filetoupload').click();" class="browse-btn"  id="buttonImage" type="button">
+                    <img src='<?php echo $this->getViewFileUrl('images/upload.png'); ?>' alt="upload">
+                </button>
+            </div>
+        </div>
+    </div>
+    <?php if ($category->getId() != '18'){ ?>
+       <div class="choice checkbox">
+        <div class="field required">
+            <div class="control">
+                <input type="checkbox" data-validate="{required:true}" name="privacy" title="Privacy" id="privacy" class="checkbox">
+                <label for="custom-terms" style="display: block!important;" class="label terms privacy"><?php if (strtolower($storeName) == "italiano") {
+                    ?>
+                    <span class="check-line" style="float:right!important;"><?php echo __("Ho preso visione dell'" . '<a target="_blank" href="'.$base_url_config.'it/privacyclaim"> Informativa Privacy</a>' . " e autorizzo Damiani SpA e Funk International S.p.A. al trattamento dei miei dati per la gestione del sinistro.") ?></span>
+                <?php } else { ?>
+                    <span class="check-line" style="float:right!important;"><?php echo __("I have read the " . '<a target="_blank" href="'.$base_url_config.'en/privacyclaim">privacy policy</a>' . "and authorize Damiani SpA and Funk International S.p.A. to the processing of my data for the management of the claim.") ?></span>
+                <?php } ?>
+            </label>
+        </div>
+    </div>
+</div>
+
+<?php } ?>
+
+
+<?php if ($category->getId() == '18') { //ONLY FOR ROCCA CATEGORY    ?>
+
+    <div class="field required">
+        <div class="control">
+            <div id="filetouploadDiv_spa">
+              <input type="file" id="filetoupload_spa" name="damiani_spa" data-validate="{required:true}" />
+              <input type="text" id="filetouploadInput_spa" placeholder="<?php echo __('Delivery receipt of Damiani SpA') ?>" />
+              <button  onclick="document.getElementById('filetoupload_spa').click();" class="browse-btn"  id="buttonImage" type="button">
+                <img src='<?php echo $this->getViewFileUrl('images/upload.png'); ?>' alt="upload">
+            </button>
+
+        </div>
+        <span class="note-rocca"><?php echo __('Upload the receipt of  shipping of the original warranty card of the watch by registered post to FUNK INTERNATIONAL SPA, Corso Garibaldi 24 15048 Valenza') ?></span>
+    </div>
+</div>
+<div class="choice checkbox">
+    <div class="field required">
+        <div class="control">
+            <input type="checkbox" data-validate="{required:true}" name="privacy" title="Privacy" id="privacy" class="checkbox">
+            <label for="custom-terms" style="display: block!important;" class="label terms privacy"><?php if (strtolower($storeName) == "italiano") {
+                ?>
+                <span class="check-line" style="float:right!important;"><?php echo __("Ho preso visione dell'" . '<a target="_blank" href="'.$base_url_config.'it/privacyclaim"> Informativa Privacy</a>' . " e autorizzo Damiani SpA e Funk International S.p.A. al trattamento dei miei dati per la gestione del sinistro.") ?></span>
+            <?php } else { ?>
+                <span class="check-line" style="float:right!important;"><?php echo __("I have read the " . '<a target="_blank" href="'.$base_url_config.'en/privacyclaim">privacy policy</a>' . "and authorize Damiani SpA and Funk International S.p.A. to the processing of my data for the management of the claim.") ?></span>
+            <?php } ?>
+        </label>
+    </div>
+</div>
+</div>
+<?php } ?>
+<input type="hidden" name="status" id="status" value="1"  class="input-text">
+</fieldset>
+<h3><?php echo __('Signing document') ?></h3>
+<fieldset>
+   <label for="acceptTerms-2"><?php echo __('To complete the operation, click on Confirm') ?></label>
+   <input type="hidden" name="created_at" id="created_at_sign" value="">
+   <input type="hidden" name="certificato_code" id="certificato_code_sign" value="">
+   <button class="click-m" id="click-claim"><?php /* @escapeNotVerified */ echo __('Confirm') ?></button>
+   <div id="popup-mpdals">
+   </div>
+</fieldset>
+</form>
+<?php } else { ?>
+    <div class="have-an-account-main">
+        <div class="have-an-account">
+            <p><?php echo __('Do you have an account?') ?></p>
+            <a class="trigger-auth-popup" href="javascript:void(0);"><span><?php echo __('Access') ?></span></a>
+        </p>
+    </div>
+</div>
+<?php } ?>
+
+<div style="display:none" class="storename"><?php echo strtolower($storeName);?><div>
+    <script type="text/javascript">
+        require([
+            'jquery',
+            'mage/validation',
+            'jquery/ui',
+            ], function ($,modal,customerData) {
+                $(document).on('change', '#casualty_address', function () {
+                    var param = 'country=' + $('#casualty_address').val();
+                    $.ajax({
+                        showLoader: true,
+                        url: '<?php /* @escapeNotVerified */ echo $block->getCountryAction(); ?>',
+                        data: param,
+                        cache: false,
+                        type: "GET",
+                        dataType: 'json'
+                    }).done(function (data) {
+                        $('#state').empty();
+                        if (data.country != "IT")
+                        { 
+                            $('.cityinput').show();
+                            $('.cityselect').hide();
+                            jQuery(".loading-mask").hide();
+                            $('.cityselect #city-2').val('');
+                            $('.field.states.required').show();
+                            $('.field.region.required').hide();
+                        } else {
+                            jQuery(".loading-mask").hide();
+                            $('#state').append(data.value);
+                            $('.cityinput').hide();
+                            $('.cityinput #city-2').val('');
+                            $('.cityselect').show();
+                            $('.field.states.required').hide();
+                            $('#statess').val('');
+                            $('.field.region.required').show();
+                        }
+                    });
+                });
+
+                $(document).on('change', '#state', function () {
+                    var AjaxUrl2 = "https://www.damianigroupcustomercare.com/it/certificato/index/autoloadcity";
+                    var region_code = $("#state").val();
+                                   //var zip = $("#zipcode-2").val();
+                                   $.ajax({
+                                    showLoader: true,
+                                    url: AjaxUrl2,
+                                    cache: false,
+                                    data: {region_code,region_code},
+                                    type: "POST"
+                                }).done(function (data) {
+                                    $(".cityselect #city-2").replaceWith(data);
+                                });
+                            });
+            });
+
+
+
+        </script>

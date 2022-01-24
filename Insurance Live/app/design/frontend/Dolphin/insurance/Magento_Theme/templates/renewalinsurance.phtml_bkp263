@@ -1,0 +1,574 @@
+ <?php $model = $objectManager->create('\Dolphin\Certificato\Model\Certificato')->load($_GET['certid']);
+    $renewal_data = json_encode($model->getData(), true);?>
+ <form id="example-advanced-form" class="renewal" method="post" enctype="multipart/form-data" action="<?= $block->getUrl('certificato/index/certi'); ?>" >
+        <legend><?php echo __('REPLACEMENT CERTIFICATE') ?></legend>
+        <h3><?php echo __('Personal data') ?></h3>
+        <fieldset class="fieldset">
+            <input type="hidden" name="renewal_data" value='<?php echo $renewal_data; ?>'>
+            <input type="hidden" name="parent_cat" value="<?php echo $cat_name; ?>">
+            <input type="hidden" name="brand" value="<?php echo strtolower($cat_name); ?>">
+            <input type="hidden" name="storename" value="<?php echo strtolower($storeName); ?>">
+            <input type="hidden" name="serial_number" value="0000">
+            <input type="hidden" name="region" value="<?php echo $model->getRegion(); ?>">
+            <input type="hidden" name="logo_url" value="<?php echo $logo_url; ?>">
+            <div class="field required">
+                <label for="name" class="label certi"><span><?php echo __('Name') ?></span></label>
+                <div class="control">
+                    <input type="text" readonly name="name" id="name-2" value="<?php echo $model->getName(); ?>" title="<?php echo __('Name') ?>" placeholder="<?php echo __('Name*') ?>" class="input-text" data-validate="{required:true}">
+                </div>
+            </div>
+            <div class="field required">
+                <label for="Surname" class="label certi"><span><?php echo __('LastName') ?></span></label>
+                <div class="control">
+                    <input type="text" readonly name="surname" id="surname-2" value="<?php echo $model->getSurname(); ?>" title="<?php echo __('LastName') ?>" placeholder="<?php echo __('LastName*') ?>" class="input-text" data-validate="{required:true}">
+                </div>
+            </div>
+            <div class="field required">
+                <label for="name" class="label certi"><span><?php echo __('Address') ?></span></label>
+                <div class="control">
+                    <input type="text" readonly name="address" id="address-2" value="<?php echo $model->getAddress(); ?>" title="<?php echo __('Address') ?>" placeholder="<?php echo __('Address*') ?>" class="input-text" data-validate="{required:true}">
+                </div>
+            </div>
+            <div class="field required">
+                <label for="zipcode" class="label certi"><span><?php echo __('Postal Code') ?></span></label>
+                <div class="control">
+                    <input type="text" readonly name="zipcode" id="zipcode-2" value="<?php echo $model->getZipcode(); ?>" title="<?php echo __('Postal Code') ?>" placeholder="<?php echo __('Postal Code*') ?>" class="input-text" data-validate="{required:true, 'validate-zip-international':true}">
+                </div>
+            </div>
+            <div class="field country required">
+                <label class="label" for="country"><span><?php /* @escapeNotVerified */ echo __('Country') ?></span></label>
+                <div class="control">
+                    <?php //echo $countryList?>
+                    <?php $countryBlock = $block->getLayout()->createBlock('Magento\Directory\Block\Data'); ?>
+                    <?=
+                    $countryBlock->getCountryHtmlSelect($defValue = 'IT', $name = 'country_id', $id = 'country', $title = 'Country');
+                    $regionList_new = $countryBlock->getRegionHtmlSelect($defValue = $model['region']);
+                    ?>
+                    <script>
+                        require(['jquery'],
+                                function ($) {
+                                    $('#country').attr('disabled', 'disabled');
+                                });
+                    </script>
+                </div>
+            </div>
+            <div class="field required">
+                <label for="city" class="label certi"><span><?php echo __('City') ?></span></label>
+                <div class="control">
+                    
+                    <div class="field region required">
+                        <label class="label" for="state"><span><?php /* @escapeNotVerified */ echo __('State') ?></span></label>
+                        <div class="control">
+                            <select disabled name="region" id="states_renewal" class="required-entry validate-state fieldWidth" title="State/Province" aria-required="true"><option selected="selected" value="<?php echo $model->getRegion(); ?>"><?php echo $model->getRegion(); ?></option>
+                            </select>
+                        </div>
+                    </div>
+                    <input type="text" readonly name="city" id="city-2" value="<?php echo $model->getCity(); ?>" title="<?php echo __('City') ?>" placeholder="<?php echo __('City*') ?>" class="input-text autofillup" data-validate="{required:true}">
+                </div>
+            </div>
+            
+            <div class="field required">
+                <label for="phone" class="label certi"><span><?php echo __('Telephone') ?></span></label>
+                <div class="control">
+                    <input type="text" readonly name="phone" id="phone-2" value="<?php echo $model->getPhone(); ?>" title="<?php echo __('Telephone') ?>" placeholder="<?php echo __('Telephone') ?>" class="input-text">
+                </div>
+            </div>
+            <div class="field required">
+                <label for="mobile-phone" class="label certi"><span><?php echo __('Mobile Phone') ?></span></label>
+                <div class="control">
+                    <input type="text"  name="mobile_phone" id="mobile_phone-2" value="<?php echo $model->getMobilePhone(); ?>" title="<?php echo __('Mobile Phone') ?>" placeholder="<?php echo __('Cell Phone*') ?>" class="input-text" data-validate="{required:true, 'validate-number':true}">
+                </div>
+            </div>
+            <div class="field required">
+                <label for="fiscal-code" class="label certi"><span><?php echo __('Tax Code') ?></span></label>
+                <div class="control">
+                    <input type="text" readonly name="fiscal_code" id="fiscal-code-2" value="<?php 
+                    if($model->getFiscalCode() != '0000'){
+                        echo $model->getFiscalCode();
+                    }else{
+                        echo " ";
+                    }
+                    echo $model->getFiscalCode(); ?>" title="<?php echo __('Tax Code') ?>" placeholder="<?php echo __('Tax Code') ?>" class="input-text">
+                </div>
+            </div>
+            <div class="field required dob">
+                <label for="dob" class="label certi"><span><?php echo __('Date of birth') ?></span></label>
+                <div class="control">
+                    <?php $dob = date("d/m/Y", strtotime($model['dob'])); ?>
+                    <?php if (strtolower($storeName) == "italiano") { ?>
+                        <input class="control-text" title="<?php echo __('Date of birth') ?>"  placeholder="<?php echo __('Date of birth*') ?>" name="dob" readonly value="<?php echo $dob; ?>" id="datepickers_it" type="text" data-validate="{required:true,dateITA:true}">
+                        <div for="datepickers_it" generated="true" class="mage-error test123" style="display: none;"><?php echo __('This is a required field.') ?></div>
+                    <?php } else { ?>
+                        <input class="control-text" title="<?php echo __('Date of birth') ?>"  placeholder="<?php echo __('Date of birth*') ?>" name="dob" readonly value="<?php echo $dob; ?>" id="datepickers" type="text">
+                        <div for="datepickers_it" generated="true" class="mage-error test123" style="display: none;"><?php echo __('This is a required field.') ?></div>
+                    <?php } ?>
+    <!--input type="date" name="dob"  value="" title="<?php //echo __('Date Of Birth')       ?>" placeholder="<?php //echo __('Date Of Birth')       ?>" class="input-text" data-validate="{required:true}"-->
+                </div>
+            </div>
+            <div class="field required">
+                <div class="control">
+                    <select id="gender" disabled name="sex" title="<?php echo __('Gender*') ?>" class=" gender" >
+
+                        <option value="
+                        <?= $model->getSex() == 'Male' ? ' selected="selected"' : ''; ?>
+                                Male"><?php echo __('Male') ?></option>
+                        <option value="<?= $model->getSex() == 'Female' ? ' selected="selected"' : ''; ?> "><?php echo __('Woman') ?></option>
+                        <option value="<?= $model->getSex() == 'Ntd' ? ' selected="selected"' : ''; ?> "><?php echo __('I prefer not to declare it') ?></option>
+                    </select>
+                </div>
+            </div>
+            <!--
+               <div class="field required">
+                    <label for="gender" class="label certi"><span><?php //echo __('Gender*')       ?></span></label>
+                    <div class="control">
+                        <input type="text" name="sex" id="gender-2" value="" title="<?php //echo __('Gender*')       ?>" placeholder="<?php //echo __('Gender')       ?>" class="input-text" data-validate="{required:true}">
+                    </div>
+                </div>
+            -->
+            <div class="field required">
+                <label for="email_address" class="label certi"><span><?php echo __('Email') ?></span></label>
+                <div class="control">
+                    <input type="email" readonly name="email" id="email_address" value="<?php echo $model->getEmail(); ?>" title="<?php echo __('Email*') ?>" placeholder="<?php echo __('Email*') ?>" class="input-text" data-validate="{required:true, 'validate-email':true}">
+                </div>
+            </div>
+        </fieldset>
+        <h3><?php echo __('General Info') ?></h3>
+        <fieldset class="fieldset">
+            <legend><?php //echo __('General Info')       ?></legend>
+            <div class="field required">
+                <div class="control">
+                    <select id="civil_status" name="civil_status" title="<?php echo __('Civil status') ?>" class="civil_status">
+                        <option value=""><?php echo __('Civil status') ?></option>
+                        <option value="1" <?php
+                        if ($model->getCivilStatus() == '1') {
+                            echo "selected=selected";
+                        }
+                        ?>><?php echo __('Single') ?></option>
+                        <option value="2" <?php
+                        if ($model->getCivilStatus() == '2') {
+                            echo "selected=selected";
+                        }
+                        ?>><?php echo __('Married') ?></option>
+                        <option value="3" <?php
+                        if ($model->getCivilStatus() == '3') {
+                            echo "selected=selected";
+                        }
+                        ?>><?php echo __('Divorced') ?></option>
+                        <option value="4" <?php
+                        if ($model->getCivilStatus() == '4') {
+                            echo "selected=selected";
+                        }
+                        ?>><?php echo __('Widower') ?></option>
+                    </select>
+                </div>
+            </div>
+            <div class="field required">
+                <div class="control">
+                    <select id="degree_education" name="degree_education" title="<?php echo __('Level of education') ?>" class="degree_education">
+                        <option value=""><?php echo __('Level of education') ?></option>
+                        <option value="1" <?php
+                        if ($model->getDegreeEducation() == '1') {
+                            echo "selected=selected";
+                        }
+                        ?>><?php echo __('O-levels/Junior High Diploms') ?></option>
+                        <option value="2" <?php
+                        if ($model->getDegreeEducation() == '2') {
+                            echo "selected=selected";
+                        }
+                        ?>><?php echo __('A-levels/Higher High Diploms') ?></option>
+                        <option value="3" <?php
+                        if ($model->getDegreeEducation() == '3') {
+                            echo "selected=selected";
+                        }
+                        ?>><?php echo __('University Pass Degree') ?></option>
+                        <option value="4" <?php
+                        if ($model->getDegreeEducation() == '4') {
+                            echo "selected=selected";
+                        }
+                        ?>><?php echo __('University Honours Degree') ?></option>
+                    </select>
+                </div>
+            </div>
+            <div class="field required">
+                <div class="control">
+                    <select id="profession" name="profession" title="<?php echo __('Profession') ?>" class="profession">
+                        <option value=""><?php echo __('Profession') ?></option>
+                        <option value="1" <?php
+                        if ($model->getProfession() == '1') {
+                            echo "selected=selected";
+                        }
+                        ?>><?php echo __('Entrepreneur') ?></option>
+                        <option value="2" <?php
+                        if ($model->getProfession() == '2') {
+                            echo "selected=selected";
+                        }
+                        ?>><?php echo __('Self-employed') ?></option>
+                        <option value="3" <?php
+                        if ($model->getProfession() == '3') {
+                            echo "selected=selected";
+                        }
+                        ?>><?php echo __('Manager') ?></option>
+                        <option value="4" <?php
+                        if ($model->getProfession() == '4') {
+                            echo "selected=selected";
+                        }
+                        ?>><?php echo __('Employee') ?></option>
+                        <option value="5" <?php
+                        if ($model->getProfession() == '5') {
+                            echo "selected=selected";
+                        }
+                        ?>><?php echo __('Worker') ?></option>
+                        <option value="6" <?php
+                        if ($model->getProfession() == '6') {
+                            echo "selected=selected";
+                        }
+                        ?>><?php echo __('Other') ?></option>
+                    </select>
+                </div>
+            </div>
+            <div class="field required">
+                <div class="control">
+                    <select id="buying_opportunity" disabled name="buying_opportunity" title="<?php echo __('Purchasing opportunities') ?>" class="buying_opportunity">
+                        <option value=""><?php echo __('Purchasing opportunities') ?></option>
+                        <option value="1" <?php
+                        if ($model->getBuyingOpportunity() == '1') {
+                            echo "selected=selected";
+                        }
+                        ?>><?php echo __('Anniversary') ?></option>
+                        <option value="2" <?php
+                        if ($model->getBuyingOpportunity() == '2') {
+                            echo "selected=selected";
+                        }
+                        ?>><?php echo __('Birthday') ?></option>
+                        <option value="3" <?php
+                        if ($model->getBuyingOpportunity() == '3') {
+                            echo "selected=selected";
+                        }
+                        ?>><?php echo __('Engagement') ?></option>
+                        <option value="4" <?php
+                        if ($model->getBuyingOpportunity() == '4') {
+                            echo "selected=selected";
+                        }
+                        ?>><?php echo __('Wedding') ?></option>
+                        <option value="5" <?php
+                        if ($model->getBuyingOpportunity() == '5') {
+                            echo "selected=selected";
+                        }
+                        ?>><?php echo __('Birth') ?></option>
+                        <option value="6" <?php
+                        if ($model->getBuyingOpportunity() == '6') {
+                            echo "selected=selected";
+                        }
+                        ?>><?php echo __('Christmas') ?></option>
+                        <option value="7" <?php
+                        if ($model->getBuyingOpportunity() == '7') {
+                            echo "selected=selected";
+                        }
+                        ?>><?php echo __('Other') ?></option>
+                    </select>
+                </div>
+            </div>
+            <div class="field required">
+                <div class="control">
+                    <select id="reason_purchase" disabled name="reason_purchase" title="<?php echo __('Reason to buy') ?>" class="reason_purchase">
+                        <option value=""><?php echo __('Reason to buy') ?></option>
+                        <option value="1" <?php
+                        if ($model->getReasonPurchase() == '1') {
+                            echo "selected=selected";
+                        }
+                        ?>><?php echo __('For yourself') ?></option>
+                        <option value="2" <?php
+                        if ($model->getReasonPurchase() == '2') {
+                            echo "selected=selected";
+                        }
+                        ?>><?php echo __('Gift') ?></option>
+                    </select>
+                </div>
+            </div>
+            <div class="field required">
+                <div class="control">
+                    <select id="reason_choice" disabled name="reason_choice" title="<?php echo __('Reason Chosen') ?>" class="reason_choice">
+                        <option value=""><?php echo __('Reason Chosen') ?></option>
+                        <option value="1" <?php
+                        if ($model->getReasonChoice() == '1') {
+                            echo "selected=selected";
+                        }
+                        ?>><?php echo __('Brand') ?></option>
+                        <option value="2" <?php
+                        if ($model->getReasonChoice() == '2') {
+                            echo "selected=selected";
+                        }
+                        ?>><?php echo __('Design') ?></option>
+                        <option value="3" <?php
+                        if ($model->getReasonChoice() == '3') {
+                            echo "selected=selected";
+                        }
+                        ?>><?php echo __('Jewellers recommendation') ?></option>
+                        <option value="4" <?php
+                        if ($model->getReasonChoice() == '4') {
+                            echo "selected=selected";
+                        }
+                        ?>><?php echo __('Product guarantee') ?></option>
+                        <option value="5" <?php
+                        if ($model->getReasonChoice() == '5') {
+                            echo "selected=selected";
+                        }
+                        ?>><?php echo __('Other') ?></option>
+                    </select>
+                </div>
+            </div>
+            <div class="field required">
+                <div class="control">
+                    <select id="came_to_know" name="came_to_know" title="<?php echo __('How did you know about it?') ?>" class="came_to_know">
+                        <option value=""><?php echo __('How did you know about it?') ?></option>
+                        <option value="1" <?php
+                        if ($model->getCameToKnow() == '1') {
+                            echo "selected=selected";
+                        }
+                        ?>><?php echo __('Brochure') ?></option>
+                        <option value="2" <?php
+                        if ($model->getCameToKnow() == '2') {
+                            echo "selected=selected";
+                        }
+                        ?>><?php echo __('Jewellers display') ?></option>
+                        <option value="3" <?php
+                        if ($model->getCameToKnow() == '3') {
+                            echo "selected=selected";
+                        }
+                        ?>><?php echo __('Advertising') ?></option>
+                        <option value="4" <?php
+                        if ($model->getCameToKnow() == '4') {
+                            echo "selected=selected";
+                        }
+                        ?>><?php echo __('Worn by acquaintaces / celebrities') ?></option>
+                        <option value="5" <?php
+                        if ($model->getCameToKnow() == '5') {
+                            echo "selected=selected";
+                        }
+                        ?>><?php echo __('Internet') ?></option>
+                        <option value="6" <?php
+                        if ($model->getCameToKnow() == '6') {
+                            echo "selected=selected";
+                        }
+                        ?>><?php echo __('Social media') ?></option>
+                        <option value="7" <?php
+                        if ($model->getCameToKnow() == '7') {
+                            echo "selected=selected";
+                        }
+                        ?>><?php echo __('Other') ?></option>
+                    </select>
+                </div>
+            </div>
+        </fieldset>
+        <h3><?php echo __('Product and purchase data') ?></h3>
+        <fieldset class="fieldset">
+            <legend><?php //echo __('Product and purchase data')       ?></legend>
+
+            <?php if ($category->getId() == '9') { //ONLY FOR BLISS CATEGORY    ?>
+                <div class="field required">
+                    <label for="equpiment" class="label certi"><span><?php echo __('Equipment*') ?></span></label>
+                    <div class="control">
+                        <input type="hidden" disabled name="equpiment" id="equpiment-2" value="<?php echo $model->getEqupiment() ?>" title="<?php echo __('Equipment*') ?>" placeholder="<?php echo __('Equipment*') ?>" class="input-text" data-validate="{required:tru,'eqpvalidationrule':true}">
+                    </div>
+                </div>
+                <div class="field required">
+                <label for="model" class="label certi"><span><?php echo __('Model*') ?></span></label>
+                <div class="control">
+                    <input type="text" disabled name="model" id="model-2" value="<?php echo $model->getModel() ?>" title="<?php echo __('Model*') ?>" placeholder="<?php echo __('Model*') ?>" class="input-text" data-validate="{required:true}">
+                    <div class="tooltip_info">
+                        <img src='<?php echo $this->getViewFileUrl('images/ICON-INFO-INEW.svg'); ?>' type="image/svg+xml" alt="alternative text" title="<?php echo __('Lorem Ipsum is simply dummy text of the printing and typesetting industry.') ?>"/>
+                    </div>
+                </div>
+            </div>
+            <?php } else { ?>
+                <div class="field required">
+                    <label for="equpiment" class="label certi"><span><?php echo __('Equipment*') ?></span></label>
+                    <div class="control">
+                        <input type="text" disabled name="equpiment" id="equpiment-2" value="<?php echo $model->getEqupiment() ?>" title="<?php echo __('Equipment*') ?>" placeholder="<?php echo __('Equipment*') ?>" class="input-text" data-validate="{required:true,'eqpvalidationrule':true}">
+                        <div class="tooltip_info">
+                            <img src='<?php echo $this->getViewFileUrl('images/ICON-INFO-INEW.svg'); ?>' type="image/svg+xml" alt="alternative text" title="<?php echo __('Lorem Ipsum is simply dummy text of the printing and typesetting industry.') ?>"/>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="field required">
+                <div class="control">
+                    <input type="hidden" disabled name="model" id="model-2" value="<?php echo $model->getModel() ?>" title="<?php echo __('Model*') ?>" placeholder="<?php echo __('Model*') ?>" class="input-text" data-validate="{required:true}">
+                    <div class="tooltip_info">
+                        <!-- <img src='<?php //echo $this->getViewFileUrl('images/ICON-INFO-INEW.svg'); ?>' type="image/svg+xml" alt="alternative text" title="<?php //echo __('Lorem Ipsum is simply dummy text of the printing and typesetting industry.') ?>"/> -->
+                    </div>
+                </div>
+            </div>
+            <?php } ?>
+            
+            <?php
+            $RenewalNameBoutiqueRetailer = $objectManager->create('Magento\Customer\Model\Customer')->load($model->getNameBoutiqueRetailer());
+            $renewalname_boutique_retailer = $RenewalNameBoutiqueRetailer->getData("firstname")." ".$RenewalNameBoutiqueRetailer->getData("lastname");
+             ?>
+            <div class="field required">
+                <label for="name_boutique_retailer" class="label certi"><span><?php echo __('Name of the Boutique / Jewelry Store') ?></span></label>
+                <div class="control">
+                    <input type="text" disabled name="name_boutique_retailer" id="name_boutique_retailer-2" value="<?php echo $renewalname_boutique_retailer ?>" title="<?php echo __('Name of the Boutique / Jewelry Store') ?>" placeholder="<?php echo __('Name of the Boutique / Jewelry Store') ?>" class="input-text">
+                </div>
+            </div>
+            <div class="field required">
+                <label for="add_boutique_retailer" class="label certi"><span><?php echo __('Boutique / Jewelry Store address*') ?></span></label>
+                <div class="control">
+                    <input type="text" disabled name="add_boutique_retailer" id="add_boutique_retailer-2" value="<?php echo $model->getAddBoutiqueRetailer() ?>" title="<?php echo __('Boutique / Jewelry Store address*') ?>" placeholder="<?php echo $model->getAddBoutiqueRetailer() ?>" class="input-text" data-validate="{required:true}">
+                </div>
+            </div>
+            <div class="field required">
+                <label for="seller_name" class="label certi"><span><?php echo __('Seller Name') ?></span></label>
+                <div class="control">
+                    <input type="text" disabled name="seller_name" id="seller_name-2" value="<?php echo $model->getSellerName() ?>" title="<?php echo __('Seller Name') ?>" placeholder="<?php echo __('Seller Name') ?>" class="input-text">
+                </div>
+            </div>
+            <div class="field required">
+                <label for="purchase_date" class="label certi"><span><?php echo __('Purchase Date*') ?></span></label>
+                <div class="control">
+                    <?php $PurchaseDate = date("d/m/Y", strtotime($model['purchase_date'])); ?>
+                    <?php if (strtolower($storeName) == "italiano") { ?>
+                        <input class="control-text" value="<?php echo $PurchaseDate; ?>" title="<?php echo __('Purchase Date') ?>"  placeholder="<?php echo __('Purchase Date*') ?>" disabled name="purchase_date" id="purchase_date_datepickers_it" type="text">
+                    <?php } else { ?>
+                        <input class="control-text" value="<?php echo $PurchaseDate; ?>" title="<?php echo __('Purchase Date') ?>"  placeholder="<?php echo __('Purchase Date*') ?>" disabled name="purchase_date" id="purchase_date_datepickers" type="text">
+                    <?php } ?>
+                </div>
+            </div>
+            <?php /* <div class="field required">
+              <label for="filetoupload" class="label certi"><span><?php echo __('Receipt Image (Jpg, Png, Pdf)*') ?></span></label>
+              <div class="control">
+              <input type="file" name="filetoupload" accept="image/*" capture="camera" id="filetoupload" value="" title="<?php echo __('Receipt Image (Jpg, Png, Pdf)*') ?>" placeholder="<?php echo __('Receipt Image (Jpg, Png, Pdf)*') ?>" class="input-text" data-validate="{required:true}">
+              <!--input type="submit" value="Upload Image" name="submit"-->
+              </div>
+              </div>
+             */ ?>
+            <div class="field required">
+                <label for="receipt_number" class="label certi"><span><?php echo __('Receipt number') ?></span></label>
+                <div class="control">
+                    <input type="text" disabled name="receipt_number" id="receipt_number" value="<?php echo $model->getReceiptNumber() ?>" title="<?php echo __('Receipt number') ?>" placeholder="<?php echo __('Receipt number*') ?>" class="input-text" data-validate="{required:true}">
+                </div>
+            </div>
+
+            <div class="field required">
+                <div class="control">
+                    <div id="filetouploadDiv">
+                        <input disabled type="file" id="filetoupload" value="<?php echo $model->getFiletoupload() ?>" name="filetoupload" placeholder="<?php echo __('Fort.png')  ?>"/>
+                               <input disabled type="file" id="filetoupload" name="filetoupload" />
+                        <input disabled type="text" id="filetouploadInput" value="<?php echo $model->getFiletoupload() ?>"  placeholder="<?php echo __('Upload receipt')  ?>"/>
+                        <!--input disabled type="text" id="filetouploadInput" placeholder="<?php //echo __('Fort.png')  ?>" /-->
+                        <button disabled onclick="document.getElementById('filetoupload').click();" class="browse-btn"  id="buttonImage" type="button">
+                            <img src='<?php echo $this->getViewFileUrl('images/upload.png'); ?>' alt="upload">
+                        </button>     
+                    </div>
+                </div>
+            </div>
+            <div class="title-checkbox title-condition"><span></span></div>
+            <label for="" class="check-line" style="display: block;"><span><?php echo __('General Conditions') ?></span></label>
+            <div class="choice checkbox condition">
+                <?php
+                if (strtolower($cat_name) == 'damiani') {
+                    echo $this->getLayout()->createBlock("Magento\Framework\View\Element\Template")->setTemplate("Dolphin_Certificato::Certificato/damiani-contain.phtml")->toHtml();
+                }
+                if (strtolower($cat_name) == 'salvini') {
+                    echo $this->getLayout()->createBlock("Magento\Framework\View\Element\Template")->setTemplate("Dolphin_Certificato::Certificato/salvini-contain.phtml")->toHtml();
+                }
+                if (strtolower($cat_name) == 'bliss') {
+                    echo $this->getLayout()->createBlock("Magento\Framework\View\Element\Template")->setTemplate("Dolphin_Certificato::Certificato/bliss-contain.phtml")->toHtml();
+                }
+                if (strtolower($cat_name) == 'rocca') {
+                    echo $this->getLayout()->createBlock("Magento\Framework\View\Element\Template")->setTemplate("Dolphin_Certificato::Certificato/rocca-contain.phtml")->toHtml();
+                }
+                ?>
+            </div>
+            <div class="choice checkbox common-allbrand">
+                <div class="field required">
+                    <div class="control">
+                        <input type="checkbox"  name="general_conditions" value="check" id="general-conditions" data-validate="{required:true}" aria-required="true" <?php
+                        if ($model->getGeneralConditions() == '1') {
+                            echo "checked";
+                        }
+                        ?>>
+                        <label for="" class="check-line" style="display: block;"><span><?php echo __(' I accept the general conditions') ?></span></label>
+                    </div>
+                </div>
+            </div>
+            <div class="title-checkbox"><b><?php echo __('PRIVACY*') ?></b></div>
+            <div class="choice checkbox">
+                <div class="field required">
+                    <div class="control">
+                        <input type="checkbox" data-validate="{required:true}"  name="privacy" title="Privacy" id="privacy" class="checkbox" <?php
+                        if ($model->getPrivacy() == '1') {
+                            echo "checked";
+                        }
+                        ?>>
+
+                        <label for="custom-terms" class="label terms privacy">
+                            <?php if (strtolower($storeName) == "italiano") {
+                                ?>
+                                <span class="check-line"><?php echo __("Ho preso visione dell'" . '<a target="_blank" href="https://www.certificatodisostituzione.com/index.php/it/' . strtolower($cat_name) . '-privacy">Informativa Privacy</a>' . " Damiani SpA ed" . '<a target="_blank" href="https://www.certificatodisostituzione.com/index.php/it/privacycertificato"> Informativa Privacy</a>' . " Funk International S.p.A. al trattamento dei miei dati per l’attivazione e gestione della “garanzia di sostituzione".'<br><br>'."
+
+                                    Dichiaro inoltre di prestare specifico consenso, libero e facoltativo, al trattamento dei miei dati personali per le seguenti finalità:") ?></span>
+                            <?php } else { ?>
+                                <span class="check-line"><?php echo __("I have read the " . '<a target="_blank" href="https://www.certificatodisostituzione.com/index.php/it/' . strtolower($cat_name) . '-privacy">privacy policy</a>' . " Damiani SpA and Funk International S.p.A. " . '<a target="_blank" href="https://www.certificatodisostituzione.com/index.php/en/privacycertificato">privacy policy</a>' . " to the processing of my data for the activation and management of the warranty".'<br><br>'."
+ 
+                                    I also declare to give specific, free and optional consent to the processing of my personal data for the following purposes:") ?></span>
+                            <?php } ?>
+
+                        </label>
+
+                    </div>
+                </div>
+            </div>
+            <div class="title-checkbox"><b><?php echo __('Marketing') ?></b></div>
+            <div class="choice checkbox">
+                <div class="field required">
+                    <div class="control">
+                        <input type="checkbox"  name="marketing" title="Marketing" id="marketing" class="checkbox" <?php
+                            if ($model->getMarketing() == '1') {
+                                echo "checked";
+                            }
+                            ?>>
+                        <label for="custom-terms" class="label terms marketing"><span class="check-line"><?php echo __('I agree to the use of my data for marketing purposes;') ?></span></label>
+                    </div>
+                </div>
+            </div>
+            <div class="title-checkbox"><b><?php echo __('Profiling') ?></b></div>
+            <div class="choice checkbox">
+                <div class="field required">
+                    <div class="control">
+                        <input type="checkbox"  name="profiling" title="Profilazione" id="profilazione" class="checkbox" <?php
+                           if ($model->getProfiling() == '1') {
+                               echo "checked";
+                           }
+                            ?>>
+                        <label for="custom-terms" class="label terms profilazione"><span class="check-line"><?php echo __("I agree to use my data for analysis of purchase choices ('profiling');") ?></span></label>
+                    </div>
+                </div>
+            </div>
+            <div class="title-checkbox"><b><?php echo __('Cession') ?></b></div>
+            <div class="choice checkbox">
+                <div class="field required">
+                    <div class="control">
+                        <input type="checkbox"  name="cession" title="Cessione" id="cessione" class="checkbox" <?php
+                           if ($model->getcession() == '1') {
+                               echo "checked";
+                           }
+                            ?>>
+                        <label for="custom-terms" class="label terms cessione"><span><?php echo __('Communication and transmission of personal data to Damiani Group companies for the purposes indicated above') ?></span></label>
+                    </div>
+                </div>
+            </div>
+            <input type="hidden" name="status" id="status" value="3"  class="input-text">
+        </fieldset>
+        <h3><?php echo __('Signing document') ?></h3>
+        <fieldset>
+            <legend><?php //echo __('Terms and Conditions')     ?></legend>
+            <label for="acceptTerms-2"><?php echo __('To complete the operation, click on Confirm') ?></label>
+            <input type="hidden" name="created_at" id="created_at_sign" value="">
+            <input type="hidden" name="certificato_code" id="certificato_code_sign" value="">
+            <button class="click-m" id="click-mes"><?php /* @escapeNotVerified */ echo __('Confirm') ?></button>
+            <div id="popup-mpdal">
+            </div>
+
+        </fieldset>
+    </form>

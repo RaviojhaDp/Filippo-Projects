@@ -1,0 +1,45 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var \Magento\Customer\Block\Account\AuthorizationLink $block */
+
+$dataPostParam = '';
+if ($block->isLoggedIn()) {
+    $dataPostParam = sprintf(" data-post='%s'", $block->getPostParams());
+}
+?>
+
+<?php 
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$customerSession = $objectManager->create('Magento\Customer\Model\Session');
+if($customerSession->isLoggedIn()) : ?>
+	<li class="authorization-link logout">
+		<a class= "header_account_link" href="<?php echo $this->getUrl("customer/account/logout");?>">
+		<?php echo __('Logout')?>
+		</a>
+	</li>
+<?php else: ?>
+	<li class="authorization-link" data-label="<?php echo __('/'); ?>">
+    <a href="<?php echo $this->getUrl('customer/account/login'); ?>">
+        <?php //= $block->escapeHtml($block->getLabel()) ?>
+        <?php echo __('LOGIN '); ?>
+    </a>
+</li>
+<?php endif;?>
+
+
+<?php if (!$block->isLoggedIn()) :?>
+
+
+<li class="authorization-links">
+    <a href="<?php echo $this->getUrl('customer/account/Create'); ?>">
+        <?php //= $block->escapeHtml($block->getLabel()) ?>
+        <?php echo __('REGISTRATION'); ?>
+    </a>
+</li>
+<?php endif;?>

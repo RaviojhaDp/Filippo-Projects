@@ -1,0 +1,102 @@
+ <?php
+ $_gridrecords = $block->getCollection(); // get collection which we set in block class
+
+ if ($_gridrecords && count($_gridrecords) >= '1'):
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$base_url_config = $objectManager->get('Magento\Framework\App\Config\ScopeConfigInterface')->getValue("web/unsecure/base_url");
+$groupRepository = $objectManager->create('\Magento\Customer\Api\GroupRepositoryInterface');
+$customerSession = $objectManager->create('Magento\Customer\Model\Session');
+//if ($customerSession->isLoggedIn()) {
+    //echo 'Customer Id: ' . $customerSession->getCustomer()->getId() . '<br/>';
+    //echo 'Customer Name: ' . $customerSession->getCustomer()->getName() . '<br/>';
+    //echo 'Customer Email: ' . $customerSession->getCustomer()->getEmail() . '<br/>';
+    //echo 'Customer Group Id: ' .  $customerSession->getCustomer()->getGroupId() . '<br/>';
+    if ($customerSession->getCustomer()->getGroupId() == '3') {
+        $collection = $block->getClaimList()->addFieldToFilter('customer_group_id', '3');
+    }
+    if ($customerSession->getCustomer()->getGroupId() == '4') {
+        $collection = $block->getClaimList()->addFieldToFilter('customer_group_id', '4');
+    }
+    if ($customerSession->getCustomer()->getGroupId() == '5') {
+        $collection = $block->getClaimList()->addFieldToFilter('customer_group_id', '5')
+                ->addFieldToFilter('customer_id', $customerSession->getCustomer()->getId());
+    }
+    //echo $collection->getSelect();Exit;
+    ?>
+    <div class="table-wrapper order-items">
+
+
+    <div class="table-wrapper orders-history">
+        <table class="data table table-order-items" id="my-orders-table" summary="<?= /* @escapeNotVerified */ __('Items Ordered') ?>">
+            <caption class="table-caption"><?= /* @escapeNotVerified */ __('Items Ordered') ?></caption>
+            <thead>
+
+
+                <tr>
+                    <th class="col name"><?= /* @escapeNotVerified */ __('Customer') ?></th>
+                    <th class="col qty"><?= /* @escapeNotVerified */ __('Date') ?></th>
+                    <th class="col sku"><?= /* @escapeNotVerified */ __('Brand') ?></th>
+                    <th class="col price"><?= /* @escapeNotVerified */ __('Model') ?></th>
+
+                    <th class="col document"><?= /* @escapeNotVerified */ __('Document') ?></th>
+
+                     <th class="col document2"><?=/* @escapeNotVerified */ __('Document')  ?></th>
+                </tr>
+            </thead>
+
+            <tbody>
+    <?php
+    foreach ($_gridrecords as $certilist) {
+/*        echo "<pre>";
+        print_r($certilist->getData());
+        die;*/
+        $group = $groupRepository->getById($certilist->getCustomerGroupId());
+        ?>
+                    <tr>
+                        <td>
+                            <?php echo $certilist->getName()." ". $certilist->getSurname();; ?>
+                        </td>
+                        <td>
+                            <?php
+                            $createDate = new DateTime($certilist->getCreatedAt());
+
+                            $strip = $createDate->format('d-m-Y');
+                            echo  $strip; ?>
+                        </td>
+                        <td>
+                              <?php echo strtoupper($certilist->getBrand()); ?>
+                        </td>
+                        <td>
+                            <?php echo $certilist->getModel(); ?>
+                        </td>
+                        <td>
+                            <?php if($certilist->getComplaint() !=""){ ?>
+                            <a href=" <?php echo $base_url_config."/media/complaint/".$certilist->getComplaint(); ?>  " download>Download</a>
+                           <?php } ?>
+                        </td>
+                        <td class="<?php  if($certilist->getDocSignedid() == ''){ echo "blank_btn";}?>">
+
+                          <?php
+                    $prefix = strtoupper(substr($certilist->getBrand(), 0, 1));
+                         $code =  $prefix.$certilist->getCertificatoId();
+                           $urlp =  $base_url_config."it/insurancepdf/document/showclaim?certificato_code=".$code; ?>   
+                             <a href="<?php echo $urlp; ?>"  target="_blank">Download</a>
+                        </td>
+                       <?php /* <td>
+                            <a href="<?php echo $this->getUrl() . "certificato/customer/index?customer_id=" . $certilist->getClaimId() ?>"><?php echo __('Delete') ?></a>
+                        </td> */ ?>
+                    </tr>
+                <?php } ?>
+            </tbody>
+
+        </table>
+    </div>
+    </div>
+
+        <div class="order-products-toolbar toolbar bottom"><?php echo $block->getPagerHtml(); // for display pager block which we create in block file.   ?></div>
+
+<?php else: ?>
+    <div class="message info empty"><span><?php echo __('At the moment there is no File Claim.'); ?></span></div>
+<?php endif ?>
+
+<?php //} ?>

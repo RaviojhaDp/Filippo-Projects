@@ -1,0 +1,496 @@
+<?php
+/**
+ * Webkul_Grid Add New Row Form Admin Block.
+ * @category    Webkul
+ * @package     Webkul_Grid
+ * @author      Webkul Software Private Limited
+ *
+ */
+namespace Dolphin\Certificato\Block\Adminhtml\Index\Edit;
+ 
+ 
+/**
+ * Adminhtml Add New Row Form.
+ */
+class Form extends \Magento\Backend\Block\Widget\Form\Generic
+{
+    /**
+     * @var \Magento\Store\Model\System\Store
+     */
+    protected $_systemStore;
+ 
+    /**
+     * @param \Magento\Backend\Block\Template\Context $context
+     * @param \Magento\Framework\Registry             $registry
+     * @param \Magento\Framework\Data\FormFactory     $formFactory
+     * @param array                                   $data
+     */
+    public function __construct(
+        \Magento\Backend\Block\Template\Context $context,
+        \Magento\Framework\Registry $registry,
+        \Magento\Framework\Data\FormFactory $formFactory,
+        \Magento\Cms\Model\Wysiwyg\Config $wysiwygConfig,
+        \Dolphin\Certificato\Model\Status $options,
+        \Magento\Framework\ObjectManagerInterface $objectmanager,
+        array $data = []
+    ) 
+    {
+        $this->_objectManager = $objectmanager;
+        $this->_options = $options;
+        $this->_wysiwygConfig = $wysiwygConfig;
+        parent::__construct($context, $registry, $formFactory, $data);
+    }
+ 
+    /**
+     * Prepare form.
+     *
+     * @return $this
+     */
+    protected function _prepareForm()
+    {
+        $dateFormat = $this->_localeDate->getDateFormat(\IntlDateFormatter::SHORT);
+        $model = $this->_coreRegistry->registry('row_data');
+        $form = $this->_formFactory->create(
+            ['data' => [
+                            'id' => 'edit_form', 
+                            'enctype' => 'multipart/form-data', 
+                            'action' => $this->getData('action'), 
+                            'method' => 'post'
+                        ]
+            ]
+        );
+ 
+        $form->setHtmlIdPrefix('wkgrid_');
+		if($model != ""){
+
+			
+        if ($model->getCertificatoId()) {
+            $fieldset = $form->addFieldset(
+                'base_fieldset',
+                ['legend' => __('Edit Row Data'), 'class' => 'fieldset-wide']
+            );
+            $fieldset->addField('certificato_id', 'hidden', ['name' => 'certificato_id']);
+        } 
+        }
+		else {
+            $fieldset = $form->addFieldset(
+                'base_fieldset',
+                ['legend' => __('Add Row Data'), 'class' => 'fieldset-wide']
+            );
+		}
+ 
+	$fieldset->addField(
+            'customer_group_id',
+            'select',
+            [
+                'label' => __('Customer Group'),
+                'title' => __('Customer Group'),
+                'name' => 'customer_group_id',
+                'required' => true,
+                'options' => ['3' => __('Retailer'), '4' => __('Boutique'),'5' => __('Client')]
+            ]
+        ); 
+        $fieldset->addField(
+            'name',
+            'text',
+            [
+                'name' => 'name',
+                'label' => __('Name'),
+                'id' => 'name',
+                'title' => __('Name'),
+                //'class' => 'required-entry',
+                //'required' => true,
+            ]
+        );
+		$fieldset->addField(
+            'surname',
+            'text',
+            [
+                'name' => 'surname',
+                'label' => __('Surname'),
+                'id' => 'surname',
+                'title' => __('Surname'),
+                //'class' => 'required-entry',
+               // 'required' => true,
+            ]
+        );
+        $fieldset->addField(
+            'address',
+            'text',
+            [
+                'name' => 'address',
+                'label' => __('Address'),
+                'id' => 'address',
+                'title' => __('Address'),
+               // 'class' => 'required-entry',
+                //'required' => true,
+            ]
+        );
+        $fieldset->addField(
+            'zipcode',
+            'text',
+            [
+                'name' => 'zipcode',
+                'label' => __('Zipcode'),
+                'id' => 'zipcode',
+                'title' => __('Zipcode'),
+             //   'class' => 'required-entry',
+               // 'required' => true,
+            ]
+        );
+        $fieldset->addField(
+            'city',
+            'text',
+            [
+                'name' => 'city',
+                'label' => __('City'),
+                'id' => 'city',
+                'title' => __('City'),
+                //'class' => 'required-entry',
+                //'required' => true,
+            ]
+        );
+        $fieldset->addField(
+            'region',
+            'text',
+            [
+                'name' => 'region',
+                'label' => __('Region'),
+                'id' => 'region',
+                'title' => __('Region'),
+               // 'class' => 'required-entry',
+               // 'required' => true,
+            ]
+			
+        );
+       /* $fieldset->addField(
+            'state',
+            'text',
+            [
+                'name' => 'state',
+                'label' => __('State'),
+                'id' => 'state',
+                'title' => __('State'),
+               // 'class' => 'required-entry',
+                //'required' => true,
+            ]
+        );*/
+        $fieldset->addField(
+            'telephone',
+            'text',
+            [
+                'name' => 'phone',
+                'label' => __('Telephone'),
+                'id' => 'phone',
+                'title' => __('Telephone'),
+                //'class' => 'required-entry',
+                //'required' => true,
+            ]
+        );
+        $fieldset->addField(
+            'mobile_phone',
+            'text',
+            [
+                'name' => 'mobile_phone',
+                'label' => __('Mobile Phone'),
+                'id' => 'mobile_phone',
+                'title' => __('Mobile Phone'),
+                //'class' => 'required-entry',
+                //'required' => true,
+            ]
+        );
+        $fieldset->addField(
+            'fiscal_code',
+            'text',
+            [
+                'name' => 'fiscal_code',
+                'label' => __('Fiscal Code'),
+                'id' => 'fiscal_code-2',
+                'title' => __('Fiscal Code'),
+                //'class' => 'required-entry',
+                //'required' => true,
+            ]
+        );
+  
+		$fieldset->addField(
+        'dob',
+        'date',
+        [
+            'name' => 'dob',
+            'label' => __('Date Of Birth'),
+            'title' => __('Date Of Birth'),
+            'required' => true,
+            'date_format' => 'yyyy-MM-dd',
+           
+        ]
+       );
+        //~ $fieldset->addField(
+            //~ 'gender',
+            //~ 'text',
+            //~ [
+                //~ 'name' => 'gender',
+                //~ 'label' => __('Gender'),
+                //~ 'id' => 'gender',
+                //~ 'title' => __('Gender'),
+                //~ //'class' => 'required-entry',
+                //~ //'required' => true,
+            //~ ]
+        //~ );
+        $fieldset->addField(
+            'sex',
+            'select',
+            [
+                'label' => __('Gender'),
+                'title' => __('Gender'),
+                'name' => 'sex',
+                'required' => true,
+                'options' => ['0' => __(''), 'Male' => __('Male'),'Female' => __('Female'),'Ntd' => __('I prefer not to declare it')]
+            ]
+        );
+		$fieldset->addField(
+            'email',
+            'text',
+            [
+                'name' => 'email',
+                'label' => __('Email'),
+                'id' => 'email',
+                'title' => __('Email'),
+                //'class' => 'required-entry validate-email',
+               // 'required' => true,
+            ]
+        );
+		
+		$fieldset->addField(
+            'civil_status',
+            'select',
+            [
+                'label' => __('Civil Status'),
+                'title' => __('Civil Status'),
+                'name' => 'civil_status',
+                'required' => true,
+                'options' => ['0' => __('Single'), '1' => __('Married'),'2' => __('Divorced'),'3' => __('Widower')]
+            ]
+        );
+        
+        $fieldset->addField(
+            'degree_education',
+            'select',
+            [
+                'label' => __('Degree Education'),
+                'title' => __('Degree Education'),
+                'name' => 'degree_education',
+                'required' => true,
+                'options' => ['0' => __('O-levels/Junior High Diploms'), '1' => __('A-levels/Higher High Diploms'),'2' => __('University Pass Degree'),'3' => __('University Honours Degree')]
+            ]
+        );
+		$fieldset->addField(
+            'profession',
+            'select',
+            [
+                'label' => __('Profession'),
+                'title' => __('Profession'),
+                'name' => 'profession',
+                'required' => true,
+                'options' => ['0' => __('Entrepreneur'), '1' => __('Self-employed'),'2' => __('Manager'),'3' => __('Employee'),'4' => __('Worker'),'5' => __('Other')]
+            ]
+        );
+        $fieldset->addField(
+            'buying_opportunity',
+            'select',
+            [
+                'label' => __('Buying Opportunity'),
+                'title' => __('Buying Opportunity'),
+                'name' => 'buying_opportunity',
+                'required' => true,
+                'options' => ['0' => __('Anniversary'), '1' => __('Birthday'),'2' => __('Engagement'),'3' => __('Wedding'),'4' => __('Birth'),'5' => __('Christmas'),'6' => __('Other')]
+            ]
+        );
+       
+        $fieldset->addField(
+            'reason_purchase',
+            'select',
+            [
+                'label' => __('Reason Purchase'),
+                'title' => __('Reason Purchase'),
+                'name' => 'reason_purchase',
+                'required' => true,
+                'options' => ['0' => __('For yourself'), '1' => __('Gift')]
+            ]
+        );
+      $fieldset->addField(
+            'reason_choice',
+            'select',
+            [
+                'label' => __('Reason Choice'),
+                'title' => __('Reason Choice'),
+                'name' => 'reason_choice',
+                'required' => true,
+                'options' => ['0' => __('Brand'), '1' => __('Design'),'2' => __('Jewellers recommendation'),'3' => __('Product guarantee'),'4' => __('Other')]
+            ]
+        );
+  
+		$fieldset->addField(
+            'came_to_know',
+            'select',
+            [
+                'label' => __('Came to know'),
+                'title' => __('Came to know'),
+                'name' => 'came_to_know',
+                'required' => true,
+                'options' => ['0' => __('Brochure'), '1' => __('Jewellers display'),'2' => __('Advertising'),'3' => __('Worn by acquaintaces / celebrities'),'4' => __('Internet'),'5' => __('Social media'),'6' => __('Other')]
+            ]
+        );
+        $fieldset->addField(
+            'equpiment',
+            'text',
+            [
+                'name' => 'equpiment',
+                'label' => __('Equpiment'),
+                'id' => 'equpiment',
+                'title' => __('Equpiment'),
+               // 'class' => 'required-entry',
+                //'required' => true,
+            ]
+        );
+         $fieldset->addField(
+            'model',
+            'text',
+            [
+                'name' => 'model',
+                'label' => __('Model'),
+                'id' => 'model',
+                'title' => __('Model'),
+                //'class' => 'required-entry',
+                //'required' => true,
+            ]
+        );
+        $fieldset->addField(
+            'serial_number',
+            'text',
+            [
+                'name' => 'serial_number',
+                'label' => __('Serial Number'),
+                'id' => 'serial_number',
+                'title' => __('Serial Number'),
+                //'class' => 'required-entry',
+                //'required' => true,
+            ]
+        );
+        $fieldset->addField(
+            'name_boutique_retailer',
+            'text',
+            [
+                'name' => 'name_boutique_retailer',
+                'label' => __('Name Boutique / Retailer'),
+                'id' => 'name_boutique_retailer',
+                'title' => __('Name Boutique / Retailer'),
+               // 'class' => 'required-entry',
+                //'required' => true,
+            ]
+        );
+		 
+        $fieldset->addField(
+            'add_boutique_retailer',
+            'text',
+            [
+                'name' => 'add_boutique_retailer',
+                'label' => __('Add Boutique / Retailer'),
+                'id' => 'add_boutique_retailer',
+                'title' => __('Add Boutique / Retailer'),
+               // 'class' => 'required-entry',
+                //'required' => true,
+            ]
+        );
+        $fieldset->addField(
+            'seller_name',
+            'text',
+            [
+                'name' => 'seller_name',
+                'label' => __('Seller Name'),
+                'id' => 'seller_name-2',
+                'title' => __('Seller Name'),
+               // 'class' => 'required-entry',
+                //'required' => true,
+            ]
+        );
+         $fieldset->addField(
+            'purchase_date',
+            'date',
+            [
+                'name' => 'purchase_date',
+                'label' => __('Purchase Date'),
+                'required' => true,
+				'date_format' => 'yyyy-MM-dd',
+            ]
+        );
+		$fieldset->addField(
+				'receipt_number',
+				'text',
+				[
+					'name' => 'receipt_number',
+					'label' => __('Receipt Number'),
+					'id' => 'receipt_number',
+					'title' => __('Receipt Number'),
+					//'class' => 'required-entry',
+					//'required' => true,
+				]
+			);
+	
+		$fieldset->addField(
+        		'filetoupload',
+        		'image',
+        		[
+        				'title' => __('Receipt Image (jpg, jpeg, gif, png) *'),
+        				'label' => __('Receipt Image (jpg, jpeg, gif, png) *'),
+        				'name' => 'filetoupload',
+        				'note' => 'Allow image type: jpg, jpeg, gif, png',
+        		]
+        );
+		
+		$fieldset->addField(
+            'status',
+            'select',
+            [
+                'name' => 'is_active',
+                'label' => __('Status'),
+                'id' => 'is_active',
+                'title' => __('Status'),
+                'values' => $this->_options->getOptionArray(),
+                'class' => 'status',
+                'required' => true,
+            ]
+        );
+
+    $fieldset->addType('csvfile', 'Dolphin\Certificato\Block\Adminhtml\Index\Csvfile');
+
+    $fieldset->addField(
+        'file',
+        'csvfile',
+        [
+            'name'  => 'csvfile',
+            'label' => __('csvfile'),
+            'title' => __('csvfile'),
+
+        ]
+    );
+     
+		if($model){
+			/*echo "<pre>";
+			print_r($model->getData());
+			die;*/
+             $customerObj = $this->_objectManager->create('Magento\Customer\Model\Customer')->load($model->getNameBoutiqueRetailer());
+                $customerAddress = array();
+                foreach ($customerObj->getAddresses() as $address) {
+                    $customerAddress[] = $address->toArray();
+                }
+            $model->setNameBoutiqueRetailer($customerAddress[0]['firstname']);
+            $model->setAddBoutiqueRetailer($customerAddress[0]['street']);
+			$form->setValues($model->getData());
+		}
+        
+        $form->setUseContainer(true);
+        $this->setForm($form);
+ 
+        return parent::_prepareForm();
+    }
+}

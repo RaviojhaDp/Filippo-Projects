@@ -1,0 +1,16 @@
+<svg id="Livello_1" data-name="Livello 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 927.85 928.87">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #e0e0e0;
+      }
+
+      .cls-2 {
+        fill: #010101;
+      }
+    </style>
+  </defs>
+  <title>ICON PROFILO</title>
+  <circle id="Ellipse_1" data-name="Ellipse 1" class="cls-1" cx="463.92" cy="463.92" r="463.92"/>
+  <path id="Path_1" data-name="Path 1" class="cls-2" d="M597.52,598.91A133.3,133.3,0,0,0,670.82,481a137.62,137.62,0,0,0-275.14,0,133.31,133.31,0,0,0,73.23,117.88A210.92,210.92,0,0,0,318.64,798.52v150a506.73,506.73,0,0,0,216.7,57,525.86,525.86,0,0,0,219.53-53.32l-7.13-153.62A210.93,210.93,0,0,0,597.52,598.91Z" transform="translate(-76.07 -76.59)"/>
+</svg>

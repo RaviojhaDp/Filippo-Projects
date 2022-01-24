@@ -1,0 +1,75 @@
+Back,Back
+"Delete Notification Message","Delete Notification Message"
+"Are you sure you want to delete this notification message?","Are you sure you want to delete this notification message?"
+"Save Notification Message","Save Notification Message"
+Reset,Reset
+"Save and Continue Edit","Save and Continue Edit"
+"You have deleted the notification message.","You have deleted the notification message."
+"Something went wrong while saving the notification message. %1","Something went wrong while saving the notification message. %1"
+"Requested notification message doesn't exist","Requested notification message doesn't exist"
+"Something went wrong while editing the notification message.","Something went wrong while editing the notification message."
+"Edit Item with id %1","Edit Item with id %1"
+"New Push Notification Message","New Push Notification Message"
+"Push Notification Message","Push Notification Message"
+"File can not be saved to the destination folder.","File can not be saved to the destination folder."
+"Manage Push Notification","Manage Push Notification"
+"A total of %1 record(s) have been deleted.","A total of %1 record(s) have been deleted."
+"A total of %1 record(s) have been disabled.","A total of %1 record(s) have been disabled."
+"A total of %1 record(s) have been enabled.","A total of %1 record(s) have been enabled."
+"You saved the notification message.","You saved the notification message."
+"Please upload icon.","Please upload icon."
+"Go to the Site","Go to the Site"
+"Notification sent.","Notification sent."
+"Push notification message did not send.","Push notification message did not send."
+"Title field can not be blank.","Title field can not be blank."
+"Body field can not be blank.","Body field can not be blank."
+"Target url field can not be blank.","Target url field can not be blank."
+--Select--,--Select--
+Top,Top
+Bottom,Bottom
+"Bottom Right","Bottom Right"
+"Top Right","Top Right"
+Enabled,Enabled
+Disabled,Disabled
+Edit,Edit
+Send,Send
+"Install PWA App!","Install PWA App!"
+"You have successfully subscribed for push notifications!","You have successfully subscribed for push notifications!"
+service_workers_are_not_supported_in_this_browser,service_workers_are_not_supported_in_this_browser
+"Are you sure you want to do this?","Are you sure you want to do this?"
+Webkul,Webkul
+"Progressive Web Application","Progressive Web Application"
+Settings,Settings
+Status,Status
+"Application Name","Application Name"
+"Application Short Name","Application Short Name"
+"Web API Key","Web API Key"
+"FCM Auth Domain","FCM Auth Domain"
+"FCM Database URL","FCM Database URL"
+"FCM Project Id","FCM Project Id"
+"FCM Storage Bucket","FCM Storage Bucket"
+"Messaging Sender Id","Messaging Sender Id"
+"FCM App Id","FCM App Id"
+"Server Key","Server Key"
+"Public Key","Public Key"
+"Application Icon","Application Icon"
+"Splash Backgroud Color","Splash Backgroud Color"
+"Theme Color","Theme Color"
+"PWA Button Settings","PWA Button Settings"
+"Text Color","Text Color"
+"Button Color","Button Color"
+"Button Position","Button Position"
+Title,Title
+Body,Body
+"Target URL","Target URL"
+"Allowed file types: jpeg, gif, png.","Allowed file types: jpeg, gif, png."
+Delete,Delete
+"Are you sure you wan't to delete selected notification record?","Are you sure you wan't to delete selected notification record?"
+Enable,Enable
+"Are you sure you wan't to enable the selected notification?","Are you sure you wan't to enable the selected notification?"
+Disable,Disable
+"Are you sure you wan't to disable selected notification?","Are you sure you wan't to disable selected notification?"
+ID,ID
+Created,Created
+Modified,Modified
+"Push Notification","Push Notification"

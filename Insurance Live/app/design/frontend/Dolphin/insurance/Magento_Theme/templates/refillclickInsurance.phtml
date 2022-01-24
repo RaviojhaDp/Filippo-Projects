@@ -1,0 +1,768 @@
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$storeManager = $objectManager->get('\Magento\Store\Model\StoreManagerInterface');
+$base_url_config = $objectManager->get('Magento\Framework\App\Config\ScopeConfigInterface')->getValue("web/unsecure/base_url");
+$regionCollectionFactory = $objectManager->get('\Magento\Directory\Model\ResourceModel\Region\CollectionFactory');
+$region_code = $regionCollectionFactory->create()->addRegionNameFilter($_GET['region']) ->getFirstItem()->toArray();       
+$storeName = $storeManager->getStore()->getName();
+$category = $objectManager->get('Magento\Framework\Registry')->registry('current_category');
+$customerSession = $objectManager->create('Magento\Customer\Model\Session');
+if(isset($_GET['brand'])){
+	$cat_name = $_GET['brand'];
+}
+$oi = (isset($_GET['oi'])) ? $_GET['oi']:" ";
+$eq = (isset($_GET['equipment'])) ? $_GET['equipment']:" ";
+?>
+<form  style="visibility:hidden" id="example-advanced-form" method="post" enctype="multipart/form-data" action="<?= $block->getUrl('certificato/index/certi'); ?>" >
+	<legend><?php echo __('Warranty') ?></legend>
+	<h3><?php echo __('Personal data') ?></h3>
+	<fieldset class="fieldset">
+            <input type="hidden" id="stoke_unit" name="stoke_unit" value="<?php echo strtolower($eq); ?>">
+		<input type="hidden" id="oi" name="oi" value="<?php echo strtolower($oi); ?>">
+		<input type="hidden" id="brand" name="brand" value="<?php echo strtolower($cat_name); ?>">
+		<input type="hidden" id="parent_cat" name="parent_cat" value="<?php echo strtolower($cat_name); ?>">
+		<input type="hidden" name="storename" value="<?php echo strtolower($storeName); ?>">
+		<input type="hidden" name="customer_group_id" value="5">
+		<input type="hidden" name="customer_id" id="customer_ids" value="">
+		<div class="show">
+			<div id='autosuggest_close'><h1>X</h1></div>
+			<ul name="autosuggest" id="autosuggest">
+			</ul>
+		</div>
+		<div class="field required">
+			<label for="name" class="label certi"><span><?php echo __('Name') ?></span></label>
+			<div class="control">
+				<input type="text" name="name" id="name-2" value="<?php echo @$_GET['firstname']; ?>" title="<?php echo __('Name') ?>" placeholder="<?php echo __('Name*') ?>" class="input-text" data-validate="{required:true}">
+			</div>
+		</div>
+		<div class="field required">
+			<label for="Surname" class="label certi"><span><?php echo __('LastName') ?></span></label>
+			<div class="control">
+				<input type="text" name="surname" id="surname-2" value="<?php echo @$_GET['lastname']; ?>" title="<?php echo __('LastName') ?>" placeholder="<?php echo __('LastName*') ?>" class="input-text" data-validate="{required:true}">
+			</div>
+		</div>
+		<div class="field required">
+			<label for="name" class="label certi"><span><?php echo __('Address') ?></span></label>
+			<div class="control">
+				<input type="text" name="address" id="address-2" value="<?php echo @$_GET['street']; ?>" title="<?php echo __('Address') ?>" placeholder="<?php echo __('Address*') ?>" class="input-text" data-validate="{required:true}">
+			</div>
+		</div>
+		<div class="field required">
+			<label for="zipcode" class="label certi"><span><?php echo __('Postal Code') ?></span></label>
+			<div class="control">
+				<input type="text" name="zipcode" id="zipcode-2" value="<?php echo @$_GET['postcode']; ?>" title="<?php echo __('Postal Code') ?>" placeholder="<?php echo __('Postal Code*') ?>" class="input-text" data-validate="{required:true, 'validate-zip-international':true}">
+			</div>
+		</div>
+		<div class="field country required">
+			<label class="label" for="country"><span><?php /* @escapeNotVerified */ echo __('Country') ?></span></label>
+			<div class="control rrrr">
+				<?php //echo $countryList     ?>
+				<?php $countryBlock = $block->getLayout()->createBlock('Magento\Directory\Block\Data'); ?>
+				<?= $countryBlock->getCountryHtmlSelect($defValue = 'IT', $name = 'country_id', $id = 'country', $title = 'Country'); ?>
+				<script>
+					require(
+						[
+						'jquery'
+						],
+						function ($) {
+							$('#country').removeAttr("disabled");
+						});
+					</script>
+				</div>
+			</div>
+			<div class="field required">
+				<label for="city" class="label certi"><span><?php echo __('City') ?></span></label>
+				<div class="control">
+						<div class="cityinput CityA">
+                                <input type="text" name="cityinput" id="city-2" value="<?php echo @$_GET['city']; ?>" title="<?php echo __('City*') ?>" placeholder="<?php echo __('City*') ?>" class="input-text" data-validate="{required:true}" >
+                            </div>
+					</div>
+				</div>
+
+				<div class="field required">
+					<label for="phone" class="label certi"><span><?php echo __('Telephone') ?></span></label>
+					<div class="control">
+						<input type="text" name="phone" id="phone-2" value="" title="<?php echo __('Telephone') ?>" placeholder="<?php echo __('Telephone') ?>" class="input-text" data-validate="{'validate-number':true}">
+					</div>
+				</div>
+				<div class="field required">
+					<label for="mobile-phone" class="label certi"><span><?php echo __('Cell phone') ?></span></label>
+					<div class="control">
+						<input type="text" name="mobile_phone" id="mobile_phone-2" value="<?php echo @$_GET['telephone']; ?>" title="<?php echo __('Cell Phone') ?>" placeholder="<?php echo __('Cell Phone*') ?>" class="input-text" data-validate="{required:true, 'validate-number':true}" >
+					</div>
+				</div>
+	
+				<div class="field required dob">
+					<label for="dob" class="label certi"><span><?php echo __('Date of birth') ?></span></label>
+					<div class="control">
+						<?php if (strtolower($storeName) == "italiano") { ?>
+							<input class="input-text validate-date" data-validate="{required:true,dateITA:true}" title="<?php echo __('Date of birth') ?>"  placeholder="<?php echo __('Date of birth*') ?>" name="dob" id="datepickers_it" type="text">
+							<div for="datepickers_it" generated="true" class="mage-error test123" style="display: none;"><?php echo __('This is a required field.') ?></div>
+						<?php } else { ?>
+							<input class="input-text validate-date" data-validate="{required:true}" title="<?php echo __('Date of birth') ?>"  placeholder="<?php echo __('Date of birth*') ?>" name="dob" id="datepickers" type="text">
+							<div for="datepickers" generated="true" class="mage-error test123" style="display: none;"><?php echo __('This is a required field.') ?></div>
+						<?php } ?>
+					</div>
+				</div>
+				<div class="field required">
+					<div class="control">
+						<select id="gender" name="sex" title="<?php echo __('Gender*') ?>" class="validate-select gender">
+							<option value=""><?php echo __('Gender*') ?></option>
+							<option value="Male"><?php echo __('Male') ?></option>
+							<option value="Female"><?php echo __('Woman') ?></option>
+							<option value="Ntd"><?php echo __('I prefer not to declare it') ?></option>
+
+						</select>
+					</div>
+				</div>
+				<div class="field required">
+					<label for="email_address" class="label certi"><span><?php echo __('Email') ?></span></label>
+					<div class="control">
+						<input type="email" name="email" emailexist="" id="email_address" value="<?php echo @$_GET['email']; ?>" title="<?php echo __('Email*') ?>" placeholder="<?php echo __('Email*') ?>"class="input-text" data-validate="<?php if(strtolower($storeName) == "italiano"){
+							echo "{required:true, 'validate-email':true ,'emailvalidationruleit':true}";
+							}else{
+								echo "{required:true, 'validate-email':true ,'emailvalidationrule':true}";
+							}?>">
+							<!-- class="input-text" data-validate="{required:true, 'validate-email':true, 'emailvalidationrule':true}"> -->
+						</div>
+					</div>
+				</fieldset>
+				<h3><?php echo __('General Info') ?></h3>
+				<fieldset class="fieldset">
+					<legend><?php //echo __('General Info')      ?></legend>
+					<div class="field required">
+						<div class="control">
+							<select id="civil_status" name="civil_status" title="<?php echo __('Civil status') ?>" class="civil_status">
+								<option value="0"><?php echo __('Civil status') ?></option>
+								<option value="1"><?php echo __('Single') ?></option>
+								<option value="5"><?php echo __('Engaged') ?></option>
+								<option value="2"><?php echo __('Married') ?></option>
+							</select>
+						</div>
+					</div>
+					<!-- Depedent for civil_status FIRST option START-->            
+					<div class="field required statusfirstchild" style="display: none;">
+						<div class="control">
+							<select id="first_no_of_child" name="first_no_of_child" placeholder="<?php echo __('Number of children') ?>" title="<?php echo __('Number of children') ?>" class="first_no_of_child">
+								<option value="7"><?php echo __('Number of children') ?></option>
+								<option value="0">0</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+							</select>
+						</div>
+					</div>
+
+					<!-- Depedent for civil_status NO. OF CHILDREN option-->
+					<div class="field required first_childofchild_1" style="display: none;">
+						<div class="control">
+							<input type="text" name="first_chidren_name_one" title="<?php echo __('Children Name') ?>" placeholder="<?php echo __('Children Name') ?>" class="first_chidren_name_one">
+						</div>
+					</div>
+					<div class="field required first_childofchild_1" style="display: none;">
+						<div class="control">
+							<input type="text" name="first_chidren_surname_one" title="<?php echo __('Children Surname') ?>" placeholder="<?php echo __('Children Surname') ?>" class="first_chidren_surname_one">
+						</div>
+					</div>
+					<div class="field required first_childofchild_1" style="display: none;">
+						<div class="control">
+							<input readonly class="input-text validate-date"  title="<?php echo __('Children Birthday - click on icon') ?>"  placeholder="<?php echo __('Children Birthday - click on icon') ?>" name="first_chidren_dob_one" id="first_chidren_dob_one" type="text">
+						</div>
+					</div>
+
+					<div class="field required first_childofchild_2" style="display: none;">
+						<div class="control">
+							<input type="text" name="first_chidren_name_two" title="<?php echo __('Children Name') ?>" placeholder="<?php echo __('Children Name') ?>" class="first_chidren_name_two">
+						</div>
+					</div>
+					<div class="field required first_childofchild_2" style="display: none;">
+						<div class="control">
+							<input type="text" name="first_chidren_surname_two" title="<?php echo __('Children Surname') ?>" placeholder="<?php echo __('Children Surname') ?>" class="first_chidren_surname_two">
+						</div>
+					</div>
+					<div class="field required first_childofchild_2" style="display: none;">
+						<div class="control">
+							<input readonly class="input-text validate-date"  title="<?php echo __('Children Birthday - click on icon') ?>"  placeholder="<?php echo __('Children Birthday - click on icon') ?>" name="first_chidren_dob_two" id="first_chidren_dob_two" type="text">
+						</div>
+					</div>
+
+					<div class="field required first_childofchild_3" style="display: none;">
+						<div class="control">
+							<input type="text" name="first_chidren_name_three" title="<?php echo __('Children Name') ?>" placeholder="<?php echo __('Children Name') ?>" class="first_chidren_name_three">
+						</div>
+					</div>
+					<div class="field required first_childofchild_3" style="display: none;">
+						<div class="control">
+							<input type="text" name="first_chidren_surname_three" title="<?php echo __('Children Surname') ?>" placeholder="<?php echo __('Children Surname') ?>" class="first_chidren_surname_three">
+						</div>
+					</div>
+					<div class="field required first_childofchild_3" style="display: none;">
+						<div class="control">
+							<input readonly class="input-text validate-date"  title="<?php echo __('Children Birthday - click on icon') ?>"  placeholder="<?php echo __('Children Birthday - click on icon') ?>" name="first_chidren_dob_three" id="first_chidren_dob_three" type="text">
+						</div>
+					</div>
+
+					<div class="field required first_childofchild_4" style="display: none;">
+						<div class="control">
+							<input type="text" name="first_chidren_name_four" title="<?php echo __('Children Name') ?>" placeholder="<?php echo __('Children Name') ?>" class="first_chidren_name_four">
+						</div>
+					</div>
+					<div class="field required first_childofchild_4" style="display: none;">
+						<div class="control">
+							<input type="text" name="first_chidren_surname_four" title="<?php echo __('Children Surname') ?>" placeholder="<?php echo __('Children Surname') ?>" class="first_chidren_surname_four">
+						</div>
+					</div>
+					<div class="field required first_childofchild_4" style="display: none;">
+						<div class="control">
+							<input readonly class="input-text validate-date" title="<?php echo __('Children Birthday - click on icon') ?>"  placeholder="<?php echo __('Children Birthday - click on icon') ?>" name="first_chidren_dob_four" id="first_chidren_dob_four" type="text">
+						</div>
+					</div>
+
+					<div class="field required first_childofchild_5" style="display: none;">
+						<div class="control">
+							<input type="text" name="first_chidren_name_five" title="<?php echo __('Children Name') ?>" placeholder="<?php echo __('Children Name') ?>" class="first_chidren_name_five">
+						</div>
+					</div>
+					<div class="field required first_childofchild_5" style="display: none;">
+						<div class="control">
+							<input type="text" name="first_chidren_surname_five" title="<?php echo __('Children Surname') ?>" placeholder="<?php echo __('Children Surname') ?>" class="first_chidren_surname_five">
+						</div>
+					</div>
+					<div class="field required first_childofchild_5" style="display: none;">
+						<div class="control">
+							<input readonly class="input-text validate-date" title="<?php echo __('Children Birthday - click on icon') ?>"  placeholder="<?php echo __('Children Birthday - click on icon') ?>" name="first_chidren_dob_five" id="first_chidren_dob_five" type="text">
+						</div>
+					</div>
+
+					<div class="field required first_childofchild_6" style="display: none;">
+						<div class="control">
+							<input type="text" name="first_chidren_name_six" title="<?php echo __('Children Name') ?>" placeholder="<?php echo __('Children Name') ?>" class="first_chidren_name_six">
+						</div>
+					</div>
+					<div class="field required first_childofchild_6" style="display: none;">
+						<div class="control">
+							<input type="text" name="first_chidren_surname_six" title="<?php echo __('Children Surname') ?>" placeholder="<?php echo __('Children Surname') ?>" class="first_chidren_surname_six">
+						</div>
+					</div>
+					<div class="field required first_childofchild_6" style="display: none;">
+						<div class="control">
+							<input readonly class="input-text validate-date"  title="<?php echo __('Children Birthday - click on icon') ?>"  placeholder="<?php echo __('Children Birthday - click on icon') ?>" name="first_chidren_dob_six" id="first_chidren_dob_six" type="text">
+						</div>
+					</div>
+					
+					<!-- Depedent for civil_status NO. OF CHILDREN option-->
+
+					<!-- Depedent for civil_status FIRST option END-->
+
+					<!-- Depedent for civil_status ENGAGED option-->
+
+					<div class="field required statussinglechild" style="display: none;">
+						<div class="control">
+							<input type="text" name="partner_name_single" title="<?php echo __('Partner Name') ?>" placeholder="<?php echo __('Partner Name') ?>" class="partner_name_single" id="partner_name_single">
+						</div>
+					</div>
+					<div class="field required statussinglechild" style="display: none;">
+						<div class="control">
+							<input type="text" name="partner_surname_single" title="<?php echo __('Partner Surname') ?>" placeholder="<?php echo __('Partner Surname') ?>" class="partner_surname_single" id="partner_surname_single">
+						</div>
+					</div>
+					<div class="field required dob read statussinglechild" style="display: none;">
+						<div class="control">
+							<?php if (strtolower($storeName) == "italiano") { ?>
+								<input readonly class="input-text validate-date"  title="<?php echo __('Partner Birthday - click on icon') ?>"  placeholder="<?php echo __('Partner Birthday - click on icon') ?>" name="partner_dob_single" id="datepickers_it_single" type="text">
+								
+							<?php } else { ?>
+								<input readonly class="input-text validate-date" title="<?php echo __('Partner Birthday - click on icon') ?>"  placeholder="<?php echo __('Partner Birthday - click on icon') ?>" name="partner_dob_single" id="datepickers_single" type="text">
+								
+							<?php } ?>
+						</div>
+					</div>
+					<div class="field required statussinglechild" style="display: none;">
+						<div class="control">
+							<select id="engaged_no_of_child" name="engaged_no_of_child" placeholder="<?php echo __('Number of children') ?>" title="<?php echo __('Number of children') ?>" class="engaged_no_of_child">
+								<option value="7"><?php echo __('Number of children') ?></option>
+								<option value="0">0</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+							</select>
+						</div>
+					</div>
+					<!-- Depedent for civil_status NO. OF CHILDREN option-->
+					<div class="field required engaged_childofchild_1" style="display: none;">
+						<div class="control">
+							<input type="text" name="engaged_chidren_name_one" title="<?php echo __('Children Name') ?>" placeholder="<?php echo __('Children Name') ?>" class="engaged_chidren_name_one">
+						</div>
+					</div>
+					<div class="field required engaged_childofchild_1" style="display: none;">
+						<div class="control">
+							<input type="text" name="engaged_chidren_surname_one" title="<?php echo __('Children Surname') ?>" placeholder="<?php echo __('Children Surname') ?>" class="engaged_chidren_surname_one">
+						</div>
+					</div>
+					<div class="field required engaged_childofchild_1" style="display: none;">
+						<div class="control">
+							<input readonly class="input-text validate-date"  title="<?php echo __('Children Birthday - click on icon') ?>"  placeholder="<?php echo __('Children Birthday - click on icon') ?>" name="engaged_chidren_dob_one" id="engaged_chidren_dob_one" type="text">
+						</div>
+					</div>
+
+					<div class="field required engaged_childofchild_2" style="display: none;">
+						<div class="control">
+							<input type="text" name="engaged_chidren_name_two" title="<?php echo __('Children Name') ?>" placeholder="<?php echo __('Children Name') ?>" class="engaged_chidren_name_two">
+						</div>
+					</div>
+					<div class="field required engaged_childofchild_2" style="display: none;">
+						<div class="control">
+							<input type="text" name="engaged_chidren_surname_two" title="<?php echo __('Children Surname') ?>" placeholder="<?php echo __('Children Surname') ?>" class="engaged_chidren_surname_two">
+						</div>
+					</div>
+					<div class="field required engaged_childofchild_2" style="display: none;">
+						<div class="control">
+							<input readonly class="input-text validate-date"  title="<?php echo __('Children Birthday - click on icon') ?>"  placeholder="<?php echo __('Children Birthday - click on icon') ?>" name="engaged_chidren_dob_two" id="engaged_chidren_dob_two" type="text">
+						</div>
+					</div>
+
+					<div class="field required engaged_childofchild_3" style="display: none;">
+						<div class="control">
+							<input type="text" name="engaged_chidren_name_three" title="<?php echo __('Children Name') ?>" placeholder="<?php echo __('Children Name') ?>" class="engaged_chidren_name_three">
+						</div>
+					</div>
+					<div class="field required engaged_childofchild_3" style="display: none;">
+						<div class="control">
+							<input type="text" name="engaged_chidren_surname_three" title="<?php echo __('Children Surname') ?>" placeholder="<?php echo __('Children Surname') ?>" class="engaged_chidren_surname_three">
+						</div>
+					</div>
+					<div class="field required engaged_childofchild_3" style="display: none;">
+						<div class="control">
+							<input readonly class="input-text validate-date"  title="<?php echo __('Children Birthday - click on icon') ?>"  placeholder="<?php echo __('Children Birthday - click on icon') ?>" name="engaged_chidren_dob_three" id="engaged_chidren_dob_three" type="text">
+						</div>
+					</div>
+
+					<div class="field required engaged_childofchild_4" style="display: none;">
+						<div class="control">
+							<input type="text" name="engaged_chidren_name_four" title="<?php echo __('Children Name') ?>" placeholder="<?php echo __('Children Name') ?>" class="engaged_chidren_name_four">
+						</div>
+					</div>
+					<div class="field required engaged_childofchild_4" style="display: none;">
+						<div class="control">
+							<input type="text" name="engaged_chidren_surname_four" title="<?php echo __('Children Surname') ?>" placeholder="<?php echo __('Children Surname') ?>" class="engaged_chidren_surname_four">
+						</div>
+					</div>
+					<div class="field required engaged_childofchild_4" style="display: none;">
+						<div class="control">
+							<input readonly class="input-text validate-date" title="<?php echo __('Children Birthday - click on icon') ?>"  placeholder="<?php echo __('Children Birthday - click on icon') ?>" name="engaged_chidren_dob_four" id="engaged_chidren_dob_four" type="text">
+						</div>
+					</div>
+
+					<div class="field required engaged_childofchild_5" style="display: none;">
+						<div class="control">
+							<input type="text" name="engaged_chidren_name_five" title="<?php echo __('Children Name') ?>" placeholder="<?php echo __('Children Name') ?>" class="engaged_chidren_name_five">
+						</div>
+					</div>
+					<div class="field required engaged_childofchild_5" style="display: none;">
+						<div class="control">
+							<input type="text" name="engaged_chidren_surname_five" title="<?php echo __('Children Surname') ?>" placeholder="<?php echo __('Children Surname') ?>" class="engaged_chidren_surname_five">
+						</div>
+					</div>
+					<div class="field required engaged_childofchild_5" style="display: none;">
+						<div class="control">
+							<input readonly class="input-text validate-date" title="<?php echo __('Children Birthday - click on icon') ?>"  placeholder="<?php echo __('Children Birthday - click on icon') ?>" name="engaged_chidren_dob_five" id="engaged_chidren_dob_five" type="text">
+						</div>
+					</div>
+
+					<div class="field required engaged_childofchild_6" style="display: none;">
+						<div class="control">
+							<input type="text" name="engaged_chidren_name_six" title="<?php echo __('Children Name') ?>" placeholder="<?php echo __('Children Name') ?>" class="engaged_chidren_name_six">
+						</div>
+					</div>
+					<div class="field required engaged_childofchild_6" style="display: none;">
+						<div class="control">
+							<input type="text" name="engaged_chidren_surname_six" title="<?php echo __('Children Surname') ?>" placeholder="<?php echo __('Children Surname') ?>" class="engaged_chidren_surname_six">
+						</div>
+					</div>
+					<div class="field required engaged_childofchild_6" style="display: none;">
+						<div class="control">
+							<input readonly class="input-text validate-date"  title="<?php echo __('Children Birthday - click on icon') ?>"  placeholder="<?php echo __('Children Birthday - click on icon') ?>" name="engaged_chidren_dob_six" id="engaged_chidren_dob_six" type="text">
+						</div>
+					</div>
+					
+					<!-- Depedent for civil_status NO. OF CHILDREN option-->
+					
+					<!-- Depedent for civil_status ENGAGED option-->
+
+					<!-- Depedent for civil_status MARRIED option-->
+					<div class="field required statusmarriedchild" style="display: none;">
+						<div class="control">
+							<?php if (strtolower($storeName) == "italiano") { ?>
+								<input readonly class="input-text validate-date" title="<?php echo __('Wedding Anniversary - click on icon') ?>"  placeholder="<?php echo __('Wedding Anniversary - click on icon') ?>" name="wedding_anniversary" id="wedding_anniversary_it" type="text">
+								
+							<?php } else { ?>
+								<input readonly class="input-text validate-date"  title="<?php echo __('Wedding Anniversary - click on icon') ?>"  placeholder="<?php echo __('Wedding Anniversary - click on icon') ?>" name="wedding_anniversary" id="wedding_anniversary" type="text">
+								
+							<?php } ?>
+						</div>
+					</div>
+					<div class="field required statusmarriedchild" style="display: none;">
+						<div class="control">
+							<input type="text" name="partner_name" title="<?php echo __('Partner Name') ?>" placeholder="<?php echo __('Partner Name') ?>" class="partner_name">
+						</div>
+					</div>
+					<div class="field required statusmarriedchild" style="display: none;">
+						<div class="control">
+							<input type="text" name="partner_surname" title="<?php echo __('Partner Surname') ?>" placeholder="<?php echo __('Partner Surname') ?>" class="partner_surname">
+						</div>
+					</div>
+					<div class="field required dob read statusmarriedchild" style="display: none;">
+						<div class="control">
+							<?php if (strtolower($storeName) == "italiano") { ?>
+								<input readonly class="input-text validate-date" data-validate="{dateITA:true}" title="<?php echo __('Partner Birthday - click on icon') ?>"  placeholder="<?php echo __('Partner Birthday - click on icon') ?>" name="partner_dob" id="datepickers_it_married" type="text">
+								
+							<?php } else { ?>
+								<input readonly class="input-text validate-date"  title="<?php echo __('Partner Birthday - click on icon') ?>"  placeholder="<?php echo __('Partner Birthday - click on icon') ?>" name="partner_dob" id="datepickers_married" type="text">
+								
+							<?php } ?>
+						</div>
+					</div>
+					<div class="field required statusmarriedchild" style="display: none;">
+						<div class="control">
+							<select id="no_of_child" name="no_of_child" placeholder="<?php echo __('Number of children') ?>" title="<?php echo __('Number of children') ?>" class="no_of_child">
+								<option value="7"><?php echo __('Number of children') ?></option>
+								<option value="0">0</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+							</select>
+						</div>
+					</div>
+					<!-- Depedent for civil_status NO. OF CHILDREN option-->
+					<div class="field required childofchild_1" style="display: none;">
+						<div class="control">
+							<input type="text" name="chidren_name_one" title="<?php echo __('Children Name') ?>" placeholder="<?php echo __('Children Name') ?>" class="chidren_name_one">
+						</div>
+					</div>
+					<div class="field required childofchild_1" style="display: none;">
+						<div class="control">
+							<input type="text" name="chidren_surname_one" title="<?php echo __('Children Surname') ?>" placeholder="<?php echo __('Children Surname') ?>" class="chidren_surname_one">
+						</div>
+					</div>
+					<div class="field required childofchild_1" style="display: none;">
+						<div class="control">
+							<input readonly class="input-text validate-date"  title="<?php echo __('Children Birthday - click on icon') ?>"  placeholder="<?php echo __('Children Birthday - click on icon') ?>" name="chidren_dob_one" id="chidren_dob_one" type="text">
+						</div>
+					</div>
+
+					<div class="field required childofchild_2" style="display: none;">
+						<div class="control">
+							<input type="text" name="chidren_name_two" title="<?php echo __('Children Name') ?>" placeholder="<?php echo __('Children Name') ?>" class="chidren_name_two">
+						</div>
+					</div>
+					<div class="field required childofchild_2" style="display: none;">
+						<div class="control">
+							<input type="text" name="chidren_surname_two" title="<?php echo __('Children Surname') ?>" placeholder="<?php echo __('Children Surname') ?>" class="chidren_surname_two">
+						</div>
+					</div>
+					<div class="field required childofchild_2" style="display: none;">
+						<div class="control">
+							<input readonly class="input-text validate-date"  title="<?php echo __('Children Birthday - click on icon') ?>"  placeholder="<?php echo __('Children Birthday - click on icon') ?>" name="chidren_dob_two" id="chidren_dob_two" type="text">
+						</div>
+					</div>
+
+					<div class="field required childofchild_3" style="display: none;">
+						<div class="control">
+							<input type="text" name="chidren_name_three" title="<?php echo __('Children Name') ?>" placeholder="<?php echo __('Children Name') ?>" class="chidren_name_three">
+						</div>
+					</div>
+					<div class="field required childofchild_3" style="display: none;">
+						<div class="control">
+							<input type="text" name="chidren_surname_three" title="<?php echo __('Children Surname') ?>" placeholder="<?php echo __('Children Surname') ?>" class="chidren_surname_three">
+						</div>
+					</div>
+					<div class="field required childofchild_3" style="display: none;">
+						<div class="control">
+							<input readonly class="input-text validate-date"  title="<?php echo __('Children Birthday - click on icon') ?>"  placeholder="<?php echo __('Children Birthday - click on icon') ?>" name="chidren_dob_three" id="chidren_dob_three" type="text">
+						</div>
+					</div>
+
+					<div class="field required childofchild_4" style="display: none;">
+						<div class="control">
+							<input type="text" name="chidren_name_four" title="<?php echo __('Children Name') ?>" placeholder="<?php echo __('Children Name') ?>" class="chidren_name_four">
+						</div>
+					</div>
+					<div class="field required childofchild_4" style="display: none;">
+						<div class="control">
+							<input type="text" name="chidren_surname_four" title="<?php echo __('Children Surname') ?>" placeholder="<?php echo __('Children Surname') ?>" class="chidren_surname_four">
+						</div>
+					</div>
+					<div class="field required childofchild_4" style="display: none;">
+						<div class="control">
+							<input readonly class="input-text validate-date" title="<?php echo __('Children Birthday - click on icon') ?>"  placeholder="<?php echo __('Children Birthday - click on icon') ?>" name="chidren_dob_four" id="chidren_dob_four" type="text">
+						</div>
+					</div>
+
+					<div class="field required childofchild_5" style="display: none;">
+						<div class="control">
+							<input type="text" name="chidren_name_five" title="<?php echo __('Children Name') ?>" placeholder="<?php echo __('Children Name') ?>" class="chidren_name_five">
+						</div>
+					</div>
+					<div class="field required childofchild_5" style="display: none;">
+						<div class="control">
+							<input type="text" name="chidren_surname_five" title="<?php echo __('Children Surname') ?>" placeholder="<?php echo __('Children Surname') ?>" class="chidren_surname_five">
+						</div>
+					</div>
+					<div class="field required childofchild_5" style="display: none;">
+						<div class="control">
+							<input readonly class="input-text validate-date" title="<?php echo __('Children Birthday - click on icon') ?>"  placeholder="<?php echo __('Children Birthday - click on icon') ?>" name="chidren_dob_five" id="chidren_dob_five" type="text">
+						</div>
+					</div>
+
+					<div class="field required childofchild_6" style="display: none;">
+						<div class="control">
+							<input type="text" name="chidren_name_six" title="<?php echo __('Children Name') ?>" placeholder="<?php echo __('Children Name') ?>" class="chidren_name_six">
+						</div>
+					</div>
+					<div class="field required childofchild_6" style="display: none;">
+						<div class="control">
+							<input type="text" name="chidren_surname_six" title="<?php echo __('Children Surname') ?>" placeholder="<?php echo __('Children Surname') ?>" class="chidren_surname_six">
+						</div>
+					</div>
+					<div class="field required childofchild_6" style="display: none;">
+						<div class="control">
+							<input readonly class="input-text validate-date"  title="<?php echo __('Children Birthday - click on icon') ?>"  placeholder="<?php echo __('Children Birthday - click on icon') ?>" name="chidren_dob_six" id="chidren_dob_six" type="text">
+						</div>
+					</div>
+					
+					<!-- Depedent for civil_status NO. OF CHILDREN option-->
+
+					<!-- Depedent for civil_status MARRIED option-->
+					<div class="field required">
+						<div class="control">
+							<select id="profession" name="profession" title="<?php echo __('Profession') ?>" class="profession">
+								<option value="0"><?php echo __('Profession') ?></option>
+								<option value="1"><?php echo __('Trader') ?></option>
+								<option value="2"><?php echo __('Manager') ?></option>
+								<option value="3"><?php echo __('Employee') ?></option>
+								<option value="4"><?php echo __('Entrepreneur') ?></option>
+								<option value="5"><?php echo __('Freelance ') ?></option>
+								<option value="6"><?php echo __('Other') ?></option>
+							</select>
+						</div>
+					</div>
+					<div class="field required">
+						<div class="control">
+							<select id="buying_opportunity" name="buying_opportunity" title="<?php echo __('Purchase Occasion') ?>" class="buying_opportunity">
+								<option value="0"><?php echo __('Purchase Occasion') ?></option>
+								<option value="1"><?php echo __('Birthday') ?></option>
+								<option value="2"><?php echo __('Holiday') ?></option>
+								<option value="3"><?php echo __('Engagement') ?></option>
+								<option value="4"><?php echo __('Anniversary') ?></option>
+								<option value="5"><?php echo __('Special occasion') ?></option>
+
+							</select>
+						</div>
+					</div>
+				</fieldset>
+				<h3><?php echo __('Product and purchase data') ?></h3>
+				<fieldset class="fieldset">
+					<legend><?php //echo __('Product and purchase data')     ?></legend>
+					<?php if ($category->getId() == '9') { //ONLY FOR BLISS CATEGORY     ?>
+						<div class="field required equpiment-field">
+							<label for="equpiment" class="label certi"><span><?php echo __('Equipment*') ?></span></label>
+							<div class="control">
+								<input type="hidden" name="equpiment" id="equpiment-2" value="<?php echo @$_GET['equipment']; ?>" title="<?php echo __('Equipment*') ?>" placeholder="<?php echo __('Equipment*') ?>" class="input-text" data-validate="{required:true,'eqpvalidationrule':true}">
+							</div>
+						</div>
+						<div class="field required">
+							<label for="model" class="label certi"><span><?php echo __('Sku*') ?></span></label>
+							<div class="control">
+								<input type="text" name="model" id="model-2" value="<?php echo @$_GET['model']; ?>" title="<?php echo __('Sku*') ?>" placeholder="<?php echo __('Sku*') ?>" class="input-text" data-validate="{required:true}">
+								<div class="
+								tip_info">
+									<img src='<?php echo $this->getViewFileUrl('images/ICON-INFO-INEW.svg'); ?>' type="image/svg+xml" alt="alternative text" title="<?php echo __('Lorem Ipsum is simply dummy text of the printing and typesetting industry.') ?>"/>
+								</div>
+							</div>
+						</div>
+
+					<?php } 
+					elseif($category->getId() == '20'){ // Only For Calderoni Category ?>
+						<div class="field required equpiment-field">
+							<label for="equpiment" class="label certi"><span><?php echo __('Equipment*') ?></span></label>
+							<div class="control">
+								<input type="hidden" name="equpiment" id="equpiment-2" value="" title="<?php echo __('Equipment*') ?>" placeholder="<?php echo __('Equipment*') ?>" class="input-text" data-validate="{required:true,'eqpvalidationrule':true}">
+							</div>
+						</div>
+						<div class="field required modelhidden">
+							<div class="control">
+								<input type="hidden" name="model" id="model-2" value="" title="<?php echo __('Sku*') ?>" placeholder="<?php echo __('Sku*') ?>" class="input-text" data-validate="{required:true}">
+							</div>
+						</div>
+						<div class="field required">
+							<label for="stonecode" class="label certi"><span><?php echo __('Stone Code*') ?></span></label>
+							<div class="control">
+								<input readonly type="text" name="stone_code" id="stonecode-2" value="<?php echo $_GET['equipment']; ?>" title="<?php echo __('Stone Code*') ?>" placeholder="<?php echo __('Stone Code*') ?>" class="input-text" data-validate="{required:true}">
+							</div>
+						</div>
+
+					<?php } else { ?>
+						<div class="field required equpiment-field">
+							<label for="equpiment" class="label certi"><span><?php echo __('Equipment*') ?></span></label>
+							<div class="control">
+								<input readonly type="text" name="equpiment" id="equpiment-2" value="<?php echo @$_GET['equipment']; ?>" title="<?php echo __('Equipment*') ?>" placeholder="<?php echo __('Equipment*') ?>" class="input-text" data-validate="{required:true,'eqpvalidationrule':true}">
+							</div>
+						</div>
+						<div class="field required equpiment-field">
+							<div class="control">
+								<input name="model" id="model-2" value="<?php echo @$_GET['model']; ?>" title="<?php echo __('Sku*') ?>" placeholder="<?php echo __('Sku*') ?>" class="input-text" data-validate="{required:true}">
+								
+							</div>
+						</div>
+						<!-- <div class="field required equpiment-field">
+							<div class="control">
+								<input name="serial_number" id="serial_number-2" value="<?php //echo @$_GET['serial']; ?>" title="<?php //echo __('Serial Number*') ?>" placeholder="<?php //echo __('Serial Number*') ?>" class="input-text" data-validate="{required:true}">
+								
+							</div>
+						</div> -->
+					<?php } ?>
+					<div class="field required">
+						<label for="name_boutique_retailer" class="label certi"><span><?php echo __('Name of the Boutique / Jewelry Store') ?></span></label>
+						<div class="control">
+							<select id="name_boutique_retailer" name="name_boutique_retailer-2" class="input-text">
+								<option value="ecommerce"><?php echo __('E-Commerce') ?></option>
+							</select>
+						</div>
+					</div>
+					<?php
+					$origDate = isset($_GET['created_at'])?$_GET['created_at']: " ";
+					$newDate = date("d/m/Y", strtotime($origDate));
+					?>
+					<div class="field required dob read">
+						<label for="purchase_date" class="label certi"><span><?php echo __('Purchase Date*') ?></span></label>
+						<div class="control">
+							<?php if (strtolower($storeName) == "italiano") { ?>
+								<input readonly class="control-text" value="<?php  echo $newDate; ?>" title="<?php echo __('Purchase Date') ?>"  placeholder="<?php echo __('Purchase Date*') ?>" name="purchase_date" id="purchase_date_datepickers_it" type="text">
+							<?php } else { ?>
+								<input readonly class="control-text" value="<?php  echo $newDate; ?>" title="<?php echo __('Purchase Date') ?>"  placeholder="<?php echo __('Purchase Date*') ?>" name="purchase_date" id="purchase_date_datepickers" type="text">
+							<?php } ?>
+						</div>
+					</div>
+					<div class="field required">
+						<label for="receipt_number" class="label certi"><span><?php echo __('Receipt number') ?></span></label>
+						<div class="control">
+							<input readonly type="text" name="receipt_number" id="receipt_number" value="<?php  echo isset($_GET['order_id'])?$_GET['order_id']: " " ?>" title="<?php echo __('Receipt number') ?>" placeholder="<?php echo __('Receipt number*') ?>" class="input-text" data-validate="{required:true}">
+						</div>
+					</div>
+					<div class="title-checkbox title-condition"><span></span></div>
+					<div class="choice checkbox condition">
+						<?php
+						$cat_name = rtrim($cat_name, ',');
+						if (strtolower($cat_name) == 'damiani') {
+							echo $this->getLayout()->createBlock("Magento\Framework\View\Element\Template")->setTemplate("Dolphin_Certificato::Certificato/damiani-contain.phtml")->toHtml();
+						}
+						if (strtolower($cat_name) == 'salvini') {
+							echo $this->getLayout()->createBlock("Magento\Framework\View\Element\Template")->setTemplate("Dolphin_Certificato::Certificato/salvini-contain.phtml")->toHtml();
+						}
+						if (strtolower($cat_name) == 'bliss') {
+							echo $this->getLayout()->createBlock("Magento\Framework\View\Element\Template")->setTemplate("Dolphin_Certificato::Certificato/bliss-contain.phtml")->toHtml();
+						}
+						if (strtolower($cat_name) == 'rocca') {
+							echo $this->getLayout()->createBlock("Magento\Framework\View\Element\Template")->setTemplate("Dolphin_Certificato::Certificato/rocca-contain.phtml")->toHtml();
+						}
+						if (strtolower($cat_name) == 'calderoni') {
+							echo $this->getLayout()->createBlock("Magento\Framework\View\Element\Template")->setTemplate("Dolphin_Certificato::Certificato/calderoni-contain.phtml")->toHtml();
+						}
+						?>
+					</div>
+					<div class="choice checkbox common-allbrand">
+						<div class="field required">
+							<div class="control">
+								<input checked='checked' type="checkbox" name="general_conditions" value="check" id="general-conditions" data-validate="{required:true}" aria-required="true">
+							</div>
+						</div>
+					</div>
+					<div class="title-checkbox"><b><?php echo __('PRIVACY*') ?></b></div>
+					<div class="choice checkbox">
+						<div class="field required">
+							<div class="control">
+								<input checked='checked' type="checkbox" data-validate="{required:true}" name="privacy" title="Privacy" id="privacy" class="checkbox">
+								<label for="custom-terms" class="label terms privacy"><?php if (strtolower($storeName) == "italiano") {
+									?>
+									<span class="check-line"><?php echo __("Ho preso visione dell'informativa privacy Damiani SpA ed" . '<a target="_blank" href="'.$base_url_config.'index.php/it/' . strtolower($cat_name) . '-privacy"> Informativa Privacy</a>' . " Funk International S.p.A. al trattamento dei miei dati per l’attivazione e gestione della “garanzia di sostituzione".'<br><br>'."
+
+									Dichiaro inoltre di prestare specifico consenso, libero e facoltativo, al trattamento dei miei dati personali per le seguenti finalità:") ?></span>
+								<?php } else { ?>
+									<span class="check-line"><?php echo __("I have read the privacy policy Damiani SpA and Funk International S.p.A. " . '<a target="_blank" href="'.$base_url_config.'"index.php/it/' . strtolower($cat_name) . '-privacy">privacy policy</a>' . " to the processing of my data for the activation and management of the warranty".'<br><br>'."
+
+									I also declare to give specific, free and optional consent to the processing of my personal data for the following purposes:") ?></span>
+									<?php } ?></label>
+								</div>
+							</div>
+						</div>
+						<div class="title-checkbox"><b><?php echo __('Marketing') ?></b></div>
+						<div class="choice checkbox">
+							<div class="field required">
+								<div class="control">
+									<input checked='checked' type="checkbox" name="marketing" title="Marketing" id="marketing" class="checkbox">
+									<label for="custom-terms" class="label terms marketing"><span class="check-line"><?php echo __('I agree to the use of my data for marketing purposes;') ?></span></label>
+								</div>
+							</div>
+						</div>
+						<div class="title-checkbox"><b><?php echo __('Profiling') ?></b></div>
+						<div class="choice checkbox">
+							<div class="field required">
+								<div class="control">
+									<input type="checkbox" name="profiling" title="Profilazione" id="profilazione" class="checkbox">
+									<label for="custom-terms" class="label terms profilazione"><span class="check-line"><?php echo __("I agree to use my data for analysis of purchase choices ('profiling');") ?></span></label>
+								</div>
+							</div>
+						</div>
+						<div class="title-checkbox"><b><?php echo __('Cession') ?></b></div>
+						<div class="choice checkbox">
+							<div class="field required">
+								<div class="control">
+									<input type="checkbox" name="cession" title="Cessione" id="cessione" class="checkbox">
+									<label for="custom-terms" class="label terms cessione"><span class="check-line"><?php echo __('Communication and transmission of personal data to Damiani Group companies for the purposes indicated above') ?></span></label>
+								</div>
+							</div>
+						</div>
+						                 <div id="popup-modal-step3" >
+                    <div class="pop-text">
+                        <div class="pop-text-center">
+                        <h1><?php echo __('CONFIRMATION AND ACTIVATION') ?></h1>
+                        <p><?php echo __('Thank you for having completed the insurance form.') ?></p>
+                        <span><?php echo __('check your email to complete the procedure') ?></span>
+                       </div>
+                       <div class="pop-text-image">
+                        <img src='<?php echo $this->getViewFileUrl('images/open-mail.svg'); ?>' type="image/svg+xml" >
+                    </div>
+                    <div class="pop-text-contain">
+                        <p><?php echo __('<b>In order to activate your certificate you have to click on the confirmation link</b> that you will find in the email sent to: ') ?><b id="popup_email"></b></p>
+                        <p><?php echo __('The insurance will not be active until the full procedure is complete.') ?></p>
+                        <p><?php echo __('If the inserted email is not correct,') ?><a id="popup_url" href=""><b> <?php echo __('click here') ?> </b></a><?php echo __('to repeat the procedure') ?></p>
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" name="status" id="status" value="3"  class="input-text">
+                <div class="button-click-m">
+                <button type="submit" class="click-m" id="click-mes"><?php /* @escapeNotVerified */ echo __('Confirm') ?></button>
+            </div>
+					</fieldset>
+				</form>
+				<script>
+				require(['jquery', 'jquery/ui'], function($){
+				  $(document).ready( function() {  
+				  $(".have-an-account-main").remove();
+				  });
+				   $(window).load( function() {   
+				  
+				    $("#purchase_date_datepickers").datepicker("disable"); 
+				    $("#purchase_date_datepickers_it").datepicker("disable"); 
+				  });
+				});
+				</script> 

@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Backend/etc/menu.xsd">
+    <menu>        
+        <add id="Dolphin_Claim::index" title="Sinistri" module="Dolphin_Claim" sortOrder="10" action="claim/index" resource="Dolphin_Claim::index" parent="Dolphin_Certificato::parent"/>	
+    </menu>
+</config>

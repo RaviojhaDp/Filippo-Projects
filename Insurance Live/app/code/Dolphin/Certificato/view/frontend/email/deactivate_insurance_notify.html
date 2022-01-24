@@ -1,0 +1,25 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<!--@subject {{trans "Deactivation confirmed"}} @-->
+<!--@vars {
+"var customer.certificato_code":"Certificato Code",
+"var customer.brand":"Brand",
+"var customer.equpiment":"Equipment",
+"var customer.model":"Model",
+"var customer.created_at":"Created"
+
+} @-->
+
+{{template config_path="design/email/header_template"}}
+<p class="greeting" style="font-size:15px;">{{trans "Dear Customer,"}}</p>
+<p style="font-size:15px;">{{trans "the certificate"}} {{var certificato_code}}  {{trans "in your name for the jewel"}}{{var order}} {{trans "with the following references"}}</p>
+<ul>
+  <li>equipment {{var equpiment}}</li>
+  <li>{{trans "product code "}} {{var model}}</li>
+</ul>
+<p style="font-size:15px;">{{trans "signed at "}}{{var created_at}} {{trans "was cancelled."}}</p>
+{{template config_path="design/email/footer_template"}}

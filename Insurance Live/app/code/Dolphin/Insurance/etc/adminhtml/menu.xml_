@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Backend/etc/menu.xsd">
+    <menu>
+        <add id="Dolphin_Insurance::parent" title="Insurance" module="Dolphin_Insurance" sortOrder="100" resource="Dolphin_Insurance::parent"/>
+        <add id="Dolphin_Insurance::index" title="Insurance Index" module="Dolphin_Insurance" sortOrder="10" action="insurance/index" resource="Dolphin_Insurance::index" parent="Dolphin_Insurance::parent"/>
+		
+    </menu>
+</config>

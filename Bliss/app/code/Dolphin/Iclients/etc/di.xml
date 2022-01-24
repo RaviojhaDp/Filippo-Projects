@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Dolphin\Iclients\Api\IclientsRepositoryInterface" type="Dolphin\Iclients\Model\IclientsRepository"/>
+    <preference for="Dolphin\Iclients\Api\Data\IclientsInterface" type="Dolphin\Iclients\Model\Data\Iclients"/>
+    <preference for="Dolphin\Iclients\Api\Data\IclientsSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+    <virtualType name="Dolphin\Iclients\Model\ResourceModel\Iclients\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">dolphin_iclients_iclients</argument>
+            <argument name="resourceModel" xsi:type="string">Dolphin\Iclients\Model\ResourceModel\Iclients\Collection</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="dolphin_iclients_iclients_listing_data_source" xsi:type="string">Dolphin\Iclients\Model\ResourceModel\Iclients\Grid\Collection</item>
+                <item name="sales_order_grid_data_source" xsi:type="string">Dolphin\Iclients\Model\ResourceModel\Order\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <virtualType name="logoImageUploadName" type="Magento\Catalog\Model\ImageUploader">
+       <arguments>
+          <argument name="baseTmpPath" xsi:type="string">iclients/client</argument>
+          <argument name="basePath" xsi:type="string">iclients/client</argument>
+          <argument name="allowedExtensions" xsi:type="array">
+             <item name="jpg" xsi:type="string">jpg</item>
+             <item name="jpeg" xsi:type="string">jpeg</item>
+             <item name="gif" xsi:type="string">gif</item>
+             <item name="png" xsi:type="string">png</item>
+          </argument>
+       </arguments>
+    </virtualType>
+    <type name="Dolphin\Iclients\Controller\Adminhtml\Logo\Image\Upload">
+       <arguments>
+          <argument name="imageUploader" xsi:type="object">logoImageUploadName</argument>
+       </arguments>
+    </type>
+
+
+   <!--  <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="sales_order_grid_data_source" xsi:type="string">Dolphin\Iclients\Model\ResourceModel\Order\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type> -->
+    <!-- <virtualType name="Dolphin\Iclients\Model\ResourceModel\Order\Grid\Collection"> -->
+    <virtualType name="Dolphin\Iclients\Model\ResourceModel\Order\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+
+        <arguments>
+            <argument name="mainTable" xsi:type="string">sales_order_grid</argument>
+            <argument name="resourceModel" xsi:type="string">Magento\Sales\Model\ResourceModel\Order</argument>
+        </arguments>
+    </virtualType>
+</config>

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+	<group id="default">			
+		<!-- every 1hour -->
+		<job name="bliss_unlockproducts" instance="Dolphin\Sap\Cron\Unlockproducts" method="execute">
+			<schedule>0 * * * *</schedule>
+		</job>
+		<!-- <job name="bliss_tracklink" instance="Dolphin\Sap\Cron\Tracklink" method="execute">
+				<schedule>0 8-21/3 * * *</schedule>
+		</job> -->
+		<job name="bliss_tracklink" instance="Dolphin\Sap\Cron\Tracklink" method="execute">
+			<schedule>*/2 * * * *</schedule>
+		</job>
+	</group>
+</config>

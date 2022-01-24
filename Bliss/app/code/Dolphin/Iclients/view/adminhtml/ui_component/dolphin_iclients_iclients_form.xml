@@ -1,0 +1,321 @@
+<?xml version="1.0" ?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+	<argument name="data" xsi:type="array">
+		<item name="js_config" xsi:type="array">
+			<item name="provider" xsi:type="string">dolphin_iclients_iclients_form.iclients_form_data_source</item>
+		</item>
+		<item name="label" translate="true" xsi:type="string">General Information</item>
+		<item name="template" xsi:type="string">templates/form/collapsible</item>
+	</argument>
+	<settings>
+		<buttons>
+			<button class="Dolphin\Iclients\Block\Adminhtml\Iclients\Edit\BackButton" name="back"/>
+			<button class="Dolphin\Iclients\Block\Adminhtml\Iclients\Edit\DeleteButton" name="delete"/>
+			<button class="Dolphin\Iclients\Block\Adminhtml\Iclients\Edit\SaveButton" name="save"/>
+			<button class="Dolphin\Iclients\Block\Adminhtml\Iclients\Edit\SaveAndContinueButton" name="save_and_continue"/>
+		</buttons>
+		<namespace>dolphin_iclients_iclients_form</namespace>
+		<dataScope>data</dataScope>
+		<deps>
+			<dep>dolphin_iclients_iclients_form.iclients_form_data_source</dep>
+		</deps>
+	</settings>
+	<dataSource name="iclients_form_data_source">
+		<argument name="data" xsi:type="array">
+			<item name="js_config" xsi:type="array">
+				<item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+			</item>
+		</argument>
+		<settings>
+			<submitUrl path="*/*/save"/>
+		</settings>
+		<dataProvider class="Dolphin\Iclients\Model\Iclients\DataProvider" name="iclients_form_data_source">
+			<settings>
+				<requestFieldName>iclients_id</requestFieldName>
+				<primaryFieldName>iclients_id</primaryFieldName>
+			</settings>
+		</dataProvider>
+	</dataSource>
+	<fieldset name="general">
+		<settings>
+			<label/>
+		</settings>
+		<field formElement="input" name="name" sortOrder="10">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">iclients</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">Name</label>
+				<dataScope>name</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">true</rule>
+				</validation>
+			</settings>
+		</field>
+		<field formElement="input" name="url_param" sortOrder="20">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">iclients</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">Parameter</label>
+				<dataScope>url_param</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">true</rule>
+				</validation>
+				<notice>Don't use &#38; and ? symbols</notice>
+			</settings>
+		</field>
+		<field formElement="input" name="website_link" sortOrder="30">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">iclients</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">Website Link</label>
+				<dataScope>website_link</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">true</rule>
+				</validation>
+			</settings>
+		</field>
+		<field formElement="input" name="identify_code" sortOrder="40">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">iclients</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">Identify Code</label>
+				<dataScope>identify_code</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">true</rule>
+				</validation>
+			</settings>
+		</field>
+		<field formElement="input" name="sap_code" sortOrder="40">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">iclients</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">SAP Code</label>
+				<dataScope>sap_code</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">true</rule>
+				</validation>
+			</settings>
+		</field>
+        <field name="header_bg_color" sortOrder="101">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Dolphin_Iclients/js/form/element/color-select</item>
+                    <item name="template" xsi:type="string">ui/form/field</item>
+                    <item name="elementTmpl" xsi:type="string">Dolphin_Iclients/form/element/color-select</item>
+                    <item name="label" xsi:type="string">Header BG Color</item>
+                    <item name="labelVisible" xsi:type="boolean">true</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">iclients</item>
+                </item>
+            </argument>
+        </field>	
+		<field formElement="select" name="display_logo" sortOrder="50">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">iclients</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">Display Logo</label>
+				<dataScope>display_logo</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">true</rule>
+				</validation>
+			</settings>
+			<formElements>
+		        <select>
+		            <settings>
+		                <options class="Dolphin\Iclients\Model\Config\Source\Yesno"/>
+		            </settings>
+		        </select>
+		    </formElements>
+		</field>
+		<field formElement="select" name="logo_align" sortOrder="60">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">iclients</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">Logo Alignment</label>
+				<dataScope>logo_align</dataScope>
+				<!-- <validation>
+					<rule name="required-entry" xsi:type="boolean">true</rule>
+				</validation> -->
+			</settings>
+			<formElements>
+		        <select>
+		            <settings>
+		                <options class="Dolphin\Iclients\Model\Config\Source\Logoalign"/>
+		            </settings>
+		        </select>
+		    </formElements>
+		</field>
+		<field formElement="input" name="header" sortOrder="70">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">iclients</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">Header Text</label>
+				<dataScope>header</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">true</rule>
+				</validation>
+			</settings>
+		</field>
+		<field formElement="select" name="content_align" sortOrder="80">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">iclients</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">Header Text Alignment</label>
+				<dataScope>content_align</dataScope>
+				<!-- <validation>
+					<rule name="required-entry" xsi:type="boolean">true</rule>
+				</validation> -->
+			</settings>
+			<formElements>
+		        <select>
+		            <settings>
+		                <options class="Dolphin\Iclients\Model\Config\Source\Logoalign"/>
+		            </settings>
+		        </select>
+		    </formElements>
+		</field>
+        <field name="text_color" sortOrder="102">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Dolphin_Iclients/js/form/element/color-select</item>
+                    <item name="template" xsi:type="string">ui/form/field</item>
+                    <item name="elementTmpl" xsi:type="string">Dolphin_Iclients/form/element/color-select</item>
+                    <item name="label" xsi:type="string">Text Color</item>
+                    <item name="labelVisible" xsi:type="boolean">true</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">iclients</item>
+                </item>
+            </argument>
+        </field>	
+
+		<field name="logo">
+		    <argument name="data" xsi:type="array">
+		        <item name="config" xsi:type="array">
+		            <item name="dataType" xsi:type="string">string</item>
+		            <item name="source" xsi:type="string">iclients</item>
+		            <item name="label" xsi:type="string" translate="true">Logo Image</item>
+		            <item name="visible" xsi:type="boolean">true</item>
+		            <item name="formElement" xsi:type="string">fileUploader</item>
+		            <item name="elementTmpl" xsi:type="string">ui/form/element/uploader/uploader</item>
+		            <item name="previewTmpl" xsi:type="string">Dolphin_Iclients/image-preview</item>
+		            <item name="required" xsi:type="boolean">false</item>
+		            <item name="sortOrder" xsi:type="number">40</item>
+		            <item name="uploaderConfig" xsi:type="array">
+		                <item name="url" xsi:type="url" path="dolphin_iclients/logo_image/upload"/>
+		            </item>
+		        </item>
+		    </argument>
+		</field>
+		<field name="store_id">
+		    <argument name="data" xsi:type="array">
+		        <item name="options" xsi:type="object">Magento\Cms\Ui\Component\Listing\Column\Cms\Options</item>
+		        <item name="config" xsi:type="array">
+		            <item name="dataType" xsi:type="string">int</item>
+		            <item name="label" xsi:type="string" translate="true">Store View</item>
+		            <item name="formElement" xsi:type="string">select</item>
+		            <item name="source" xsi:type="string">page</item>
+		            <item name="dataScope" xsi:type="string">store_id</item>
+		            <item name="default" xsi:type="string">0</item>
+		            <item name="validation" xsi:type="array">
+		                <item name="required-entry" xsi:type="boolean">true</item>
+		            </item>
+		        </item>
+		    </argument>
+		</field>
+		<!-- <field name="store_id" formElement="multiselect" sortOrder="80">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">iclients</item>
+                    <item name="default" xsi:type="number">0</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>int</dataType>
+                <label translate="true">Store View</label>
+                <dataScope>store_id</dataScope>
+            </settings>
+            <formElements>
+                <multiselect>
+                    <settings>
+                        <options class="Magento\Cms\Ui\Component\Listing\Column\Cms\Options"/>
+                    </settings>
+                </multiselect>
+            </formElements>
+        </field> -->
+        <field formElement="textarea" name="ifraem" sortOrder="90">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">iclients</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">Ifram</label>
+				<dataScope>ifraem</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">false</rule>
+				</validation>
+				<disabled>1</disabled>
+			</settings>
+		</field>
+		<field formElement="input" name="link" sortOrder="100">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">iclients</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">Link</label>
+				<dataScope>link</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">false</rule>
+				</validation>
+				<disabled>1</disabled>
+			</settings>
+		</field>
+	</fieldset>
+</form>

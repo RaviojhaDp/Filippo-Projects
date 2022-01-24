@@ -1,0 +1,58 @@
+<?php 
+$websiteCode = $block->getWebsiteStoreCode();
+$baseUrl = $block->getWebBaseUrl();
+?>
+<div class="store-list">
+	<?php if($websiteCode == "ch") { ?>
+		<a href="javascript:;" class="storeswitcherlang">English</a> <span class="sparator">/</span> 
+		<a href="javascript:;" class="storeswitchercountry">Switzerland</a>
+		<ul class="openToggle countrylist" style="display: none;">
+			<li><a class="underline-hover" href="<?php echo $baseUrl ?>it">Italia</a></li>
+			<li><a class="underline-hover" href="<?php echo $baseUrl ?>eu">Austria</a></li>
+			<li><a class="underline-hover" href="<?php echo $baseUrl ?>eu">Belgio</a></li>
+			<li><a class="underline-hover" href="<?php echo $baseUrl ?>eu">Bulgaria</a></li>
+			<li><a class="underline-hover" href="<?php echo $baseUrl ?>eu">Cipro</a></li>
+			<li><a class="underline-hover" href="<?php echo $baseUrl ?>eu">Croazia</a></li>
+			<li><a class="underline-hover" href="<?php echo $baseUrl ?>eu">Danimarca</a></li>
+			<li><a class="underline-hover" href="<?php echo $baseUrl ?>eu">Estonia</a></li>
+			<li><a class="underline-hover" href="<?php echo $baseUrl ?>eu">Finlandia</a></li>
+			<li><a class="underline-hover" href="<?php echo $baseUrl ?>eu">Francia</a></li>
+			<li><a class="underline-hover" href="<?php echo $baseUrl ?>eu">Germania</a></li>
+			<li><a class="underline-hover" href="<?php echo $baseUrl ?>eu">Grecia</a></li>
+			<li><a class="underline-hover" href="<?php echo $baseUrl ?>eu">Irlanda</a></li>
+			<li><a class="underline-hover" href="<?php echo $baseUrl ?>eu">Lettonia</a></li>
+			<li><a class="underline-hover" href="<?php echo $baseUrl ?>eu">Lituania</a></li>
+			<li><a class="underline-hover" href="<?php echo $baseUrl ?>eu">Lussemburgo</a></li>
+			<li><a class="underline-hover" href="<?php echo $baseUrl ?>eu">Malta</a></li>
+			<li><a class="underline-hover" href="<?php echo $baseUrl ?>eu">Paesi Bassi</a></li>
+			<li><a class="underline-hover" href="<?php echo $baseUrl ?>eu">Polonia</a></li>
+			<li><a class="underline-hover" href="<?php echo $baseUrl ?>eu">Portogallo</a></li>
+			<li><a class="underline-hover" href="<?php echo $baseUrl ?>eu">Regno Unito</a></li>
+			<li><a class="underline-hover" href="<?php echo $baseUrl ?>eu">Repubblica Ceca</a></li>
+			<li><a class="underline-hover" href="<?php echo $baseUrl ?>eu">Romania</a></li>
+			<li><a class="underline-hover" href="<?php echo $baseUrl ?>eu">Slovacchia</a></li>
+			<li><a class="underline-hover" href="<?php echo $baseUrl ?>eu">Slovenia</a></li>
+			<li><a class="underline-hover" href="<?php echo $baseUrl ?>eu">Spagna</a></li>
+			<li><a class="underline-hover" href="<?php echo $baseUrl ?>eu">Svezia</a></li>
+			<li><a class="underline-hover" href="<?php echo $baseUrl ?>eu">Ungheria</a></li>			
+		</ul>		
+	<?php }  ?>		
+</div>
+<script>
+require(['jquery', 'jquery/ui'], function($){
+	$(document).on("click",function(e){
+		if(e.target == document.querySelector('.storeswitcherlang') || e.target == document.querySelector('.storeswitchercountry')){
+			if($(".openToggle").hasClass('open')){
+				$(".openToggle").removeClass('open');
+				$(".openToggle").hide("slow");
+			} else {
+				$(".openToggle").addClass('open');
+				$(".openToggle").show("slow");
+			}	
+		} else {
+			$(".openToggle").removeClass('open');
+			$(".openToggle").hide("slow");
+		}
+	});	
+});
+</script>

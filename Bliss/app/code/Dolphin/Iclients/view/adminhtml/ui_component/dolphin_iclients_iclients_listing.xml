@@ -1,0 +1,86 @@
+<?xml version="1.0" ?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+	<argument name="data" xsi:type="array">
+		<item name="js_config" xsi:type="array">
+			<item name="provider" xsi:type="string">dolphin_iclients_iclients_listing.dolphin_iclients_iclients_listing_data_source</item>
+		</item>
+	</argument>
+	<settings>
+		<spinner>dolphin_iclients_iclients_columns</spinner>
+		<deps>
+			<dep>dolphin_iclients_iclients_listing.dolphin_iclients_iclients_listing_data_source</dep>
+		</deps>
+		<buttons>
+			<button name="add">
+				<url path="*/*/new"/>
+				<class>primary</class>
+				<label translate="true">Add new item</label>
+			</button>
+		</buttons>
+	</settings>
+	<dataSource component="Magento_Ui/js/grid/provider" name="dolphin_iclients_iclients_listing_data_source">
+		<settings>
+			<updateUrl path="mui/index/render"/>
+		</settings>
+		<aclResource>Dolphin_Iclients::iclients</aclResource>
+		<dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="dolphin_iclients_iclients_listing_data_source">
+			<settings>
+				<requestFieldName>id</requestFieldName>
+				<primaryFieldName>iclients_id</primaryFieldName>
+			</settings>
+		</dataProvider>
+	</dataSource>
+	<listingToolbar name="listing_top">
+		<settings>
+			<sticky>true</sticky>
+		</settings>
+		<bookmark name="bookmarks"/>
+		<columnsControls name="columns_controls"/>
+		<filters name="listing_filters"/>
+		<paging name="listing_paging"/>
+	</listingToolbar>
+	<columns name="dolphin_iclients_iclients_columns">
+		<column name="iclients_id">
+			<settings>
+				<filter>text</filter>
+				<sorting>asc</sorting>
+				<label translate="true">ID</label>
+			</settings>
+		</column>
+		<column name="name">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">Name</label>
+			</settings>
+		</column>
+		<column name="url_param">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">Parameter</label>
+			</settings>
+		</column>
+		<column name="logo_align" component="Magento_Ui/js/grid/columns/select">
+		    <settings>
+		        <label translate="true">Logo Alignment</label>
+		        <options class="Dolphin\Iclients\Model\Config\Source\Logoalign"/>
+		        <filter>select</filter>
+		        <dataType>select</dataType>
+		    </settings>
+		</column>
+		<column name="content_align" component="Magento_Ui/js/grid/columns/select">
+		    <settings>
+		        <label translate="true">Header Text Alignment</label>
+		        <options class="Dolphin\Iclients\Model\Config\Source\Logoalign"/>
+		        <filter>select</filter>
+		        <dataType>select</dataType>
+		    </settings>
+		</column>
+		<actionsColumn class="Dolphin\Iclients\Ui\Component\Listing\Column\IclientsActions" name="actions">
+			<settings>
+				<indexField>iclients_id</indexField>
+				<resizeEnabled>false</resizeEnabled>
+				<resizeDefaultWidth>107</resizeDefaultWidth>
+			</settings>
+		</actionsColumn>
+	</columns>
+</listing>

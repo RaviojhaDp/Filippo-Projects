@@ -1,0 +1,48 @@
+<?php $categories = $block->getCategories(4); 
+$baseUrl = $block->getWebBaseUrl().'media/catalog/category/';
+?>
+
+<div class="category-slider-wrapper">
+	<div class="slider-title">
+		<h1>
+			<?= $escaper->escapeHtml(__('GIOIELLI UOMO')) ?>
+		</h1>
+	</div>
+	<div class="category-slider owl-carousel">
+		<?php foreach($categories as $cat){ ?>			
+		<div class="slider-item">
+			<div class="slider-image">
+				<img class="desk-img" src="<?php echo $baseUrl.$cat["image"];?>">
+				<?php if($cat["mobileboximage"]) { ?>
+				<img class="mobile-img" src="<?php echo $block->getWebBaseUrl().$cat["mobileboximage"];?>">							<?php } ?>
+			</div>
+			<div class="cat-link">
+				<a href="<?php echo $cat["url"];?>" class="underline"><?php echo $cat["name"];?></a>
+			</div>
+		</div>
+		<?php } ?>
+	</div>
+</div>
+<script type="text/javascript">
+	require(['jquery', 'owlcarousel'], function($, owlcarousel) {
+        $(".category-slider").owlCarousel({
+            nav: true,
+            dots:true,
+            autoPlay: false,
+            items : 3,
+            margin: 20,
+            loop: true,
+            responsive: {
+			    0: {
+			    	items: 1.2
+			    },
+			    576: {
+			    	items: 2.2
+			    },
+			    1025: {
+			    	items: 3
+			    }
+			}
+        });
+    });
+</script>

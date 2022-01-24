@@ -1,0 +1,52 @@
+<?php 
+	$helper = $this->helper('Dolphin\Iclients\Helper\Data');
+	$client = $block->getClientData();
+	//print_r($client->getData());
+	if($client->getData()){
+
+	// set cookie value
+	$helper->setCookie($client->getData('url_param'));
+
+	//get cookie value
+	$client_name = $helper->getCookie('client_name');
+	//print_r($client_name);
+
+	$header_bg_color = $client->getData('header_bg_color');
+	$text_color = $client->getData('text_color');
+	
+	$logo_alignment = $client->getData('logo_align');
+	$content_alignment = $client->getData('content_align');
+
+	if(!empty($logo_alignment) || !empty($content_alignment)){
+
+		$logo_alignment = $client->getData('logo_align');
+		$content_alignment = $client->getData('content_align');
+
+	}else{
+
+		$logo_alignment = 'center';
+		$content_alignment = 'center';		
+
+	}
+
+?>
+<div class="<?php echo $client->getData('display_logo') ? 'main_havelogo' : 'main_nologo' ?>" style="<?= 'background-color: #'.$header_bg_color.';' ?>">
+	<div class="header chan-head" id="<?php echo $client->getData('display_logo') ? 'havelogo' : 'nologo' ?>"> 
+		<div class="header_logo" id="<?= $logo_alignment.'_'.$content_alignment ?>">
+			
+			<?php 
+				$clientLogo = $block->getMediaUrl('iclients/client').'/'.$client->getData('logo');
+			?>
+				<a target="_blank" href="<?php /*echo Mage::getBaseUrl().'?client='.$client->getData('url_param');*/ echo 'http://'.$client->getData('website_link')?>" title="<?php echo $client->getData('name'); ?>" class="logo"/>
+			 		<?php if($client->getData('display_logo') == 1): ?>
+			 			<img class="logo_align_<?= $logo_alignment ?>" src="<?php echo $clientLogo ?>" alt="<?php echo $client->getData('name'); ?>" />
+			 		<?php endif; ?>
+			 		<div class="content_align_<?= $content_alignment ?>"><p style="<?= 'color: #'.$text_color.';' ?>" ><?php echo $client->getData('header')?></p></div>
+				</a>
+
+		</div>
+	</div>
+</div>
+<?php 
+	}
+?>

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+   <event name="sales_order_invoice_pay">
+       <observer name="dolphin_sap_observer_orderplace" instance="Dolphin\Sap\Observer\Orderplace" />
+   </event>
+    <event name="customer_register_success">
+    <observer name="customer_resgister_observer" instance="Dolphin\Sap\Observer\GetCustomerDetails" />
+  </event>
+  <event name="newsletter_subscriber_save_after">
+    <observer name="newsletter_subscriber_observer" instance="Dolphin\Sap\Observer\GetNewsletter" />
+  </event>
+  <event name="sales_order_save_after">
+    <observer name="sales_order_observer" instance="Dolphin\Sap\Observer\GetPurchase" />
+  </event>
+</config>

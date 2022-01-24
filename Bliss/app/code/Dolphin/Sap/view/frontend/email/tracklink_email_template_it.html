@@ -1,0 +1,64 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<!--@subject {{trans "Il tuo ordine è stato spedito"}} @-->
+<!--@vars {
+"var this.getUrl($store, 'customer/account/')":"Customer Account URL",
+"var order.track":"track"
+"var order.customer_name":"customer_name"
+"var order.track_url":"track_url"
+} @-->
+
+{{template config_path="design/email/header_template"}}
+
+<table>
+    <tr class="email-intro">
+        <td>
+            <p class="userregistration_greeting">{{trans "Gentile"}}<span>{{var order.customer_name}}</span></p>
+            <p class="neworder-title">grazie per aver effettuato il tuo ordine su Bliss.</p>
+            <p class="neworder-decs">Ti confermiamo che il tuo ordine è stato spedito all’indirizzo indicato in fase di acquisto.</p>
+            <p class="neworder-subdecs">
+
+                {{trans "Puoi controllare lo stato della spedizione accedendo all’ "}}
+                {{trans '<a href="%account_url">area Profilo > I miei ordini.</a>' account_url=$this.getUrl($store,'customer/account/',[_nosid:1]) |raw}} {{trans "oppure al seguente link:" }} 
+                <a href="{{var order.track_url}}">{{var order.track}}</a>
+            </p>
+            
+            <p class="neworder-subtitle">Se hai domande sul tuo ordine puoi contattare il nostro <a href="{{store url='contact'}}">Servizio Clienti.</a>
+            </p>
+        </td>
+    </tr>
+</table>
+
+             <!-- End Content -->
+                    </td>
+                </tr>
+                <tr>
+                    <td class="footer">
+                        <div class="email_footer_block">
+                            <p><span>BLISS è un marchio C.D. </span><span>S.p.A. - P.IVA 01457570065 - <a href="mailto::info@bliss.it">info@bliss.it</a></span><p>
+                            <p><span> Puoi annullare l’iscrizione in qualsiasi momento <a href="{{store url="customer/account/login"}}"><span style="color: #13294B;display: unset;"> cliccando qui.</span></a></span></p>
+                        </div>
+                        <div class="email_footer_social">
+                            <h3>Seguici su</h3>
+                            <div class="footer_social_images">
+                                <a href="https://www.instagram.com/bliss_gioielli/" target="_blank">
+                                    <img src="{{view url='images/Email_instagram.png'}}" />
+                                </a>
+                                <a href="https://www.facebook.com/blissofficialpage/" target="_blank">
+                                    <img src="{{view url='images/Email_facebook.png'}}" />
+                                </a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+<!-- End wrapper table -->
+</body>
+

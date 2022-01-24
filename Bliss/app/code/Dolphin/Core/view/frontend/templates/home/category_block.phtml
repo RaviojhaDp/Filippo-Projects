@@ -1,0 +1,19 @@
+<?php $categories = $block->getCategories(3);
+$baseUrl = $block->getWebBaseUrl().'media/catalog/category/';
+?>
+		<?php foreach($categories as $cat){ ?>				
+				<div class="cat-item">
+					<div class="cat-image">
+						<a href="<?php echo $cat["url"];?>">
+							<img class="desk-img" src="<?php echo $baseUrl.$cat["image"]; ?>">
+							<?php if($cat["mobileboximage"]) { ?>
+							<img class="mobile-img" src="<?php echo $block->getWebBaseUrl().$cat["mobileboximage"]; ?>">
+						<?php } ?>
+						</a>
+					</div>
+					<div class="cat-link">
+						<a href="<?php echo $cat["url"];?>" class="underline"><?php echo $cat["name"];?></a>
+					</div>
+				</div>
+		<?php } ?>
+		

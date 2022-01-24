@@ -1,0 +1,34 @@
+<?php $blogs = $block->getBlog(); 
+$store = $block->getWebBaseUrl();
+?>
+<div class="category-blog-wrapper">
+	<div class="blog-title">
+		<h1>
+			<?= $escaper->escapeHtml(__('IN EVIDENZA')) ?>
+		</h1>
+	</div>
+	<div class="blog-content">
+		<div class="blog-list">	
+			<?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('insurance_homepage_blog_block')->toHtml(); ?>
+			<?php foreach($blogs as $blog){ ?>
+			<div class="blog-item">
+				<div class="blog-image">
+					<img src="<?php echo $store.'pub/media/mageplaza/blog/post/'.$blog['image']; ?>">
+				</div>
+				<div class="blog-title">
+					<h3><?php echo $blog['name']; ?></h3>
+				</div>
+				<!-- <div class="blog-desc">
+					<p><?php // echo $blog['short_description']; ?></p>
+				</div> -->
+				<div class="blog-link">
+					<a href="<?php echo $this->getUrl("blog/post").$blog['url'].".html"; ?>" class="underline"><?php echo __('ACQUISTA ORA'); ?></a>
+				</div>
+			</div>
+		<?php } 
+
+		?>
+		</div>
+	</div>
+</div>
+

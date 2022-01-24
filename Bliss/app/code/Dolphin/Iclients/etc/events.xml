@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <!-- <event name="checkout_submit_all_after">
+        <observer name="oreder_item" instance="Dolphin\Iclients\Observer\ProcessOrder" />
+    </event>
+    <event name="sales_order_save_after">
+		<observer name="dolphin_iclient_observer_sales_ordersaveafter_sales_order_save_after" instance="Dolphin\Iclients\Observer\Sales\OrderSaveAfter"/>
+	</event>
+	<event name="order_cancel_after">
+		<observer name="dolphin_iclient_observer_order_cancelafter_order_cancel_after" instance="Dolphin\Iclients\Observer\Order\CancelAfter"/>
+	</event>
+	<event name="sales_order_creditmemo_save_after">
+		<observer name="dolphin_iclient_observer_sales_ordercreditmemosaveafter_sales_order_creditmemo_save_after" instance="Dolphin\Iclients\Observer\Sales\OrderCreditmemoSaveAfter"/>
+	</event> -->
+</config>

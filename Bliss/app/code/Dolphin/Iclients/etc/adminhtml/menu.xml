@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+	<menu>
+		<add id="Dolphin_Iclients::iclients" title="E-Corner" module="Dolphin_Iclients" sortOrder="100" resource="Dolphin_Iclients::iclients" parent="Magento_Backend::marketing"/>
+		<!-- <add id="Dolphin_Iclients::iclients" module="Dolphin_Iclients" resource="Dolphin_Iclients::iclients" sortOrder="11" title="Dolphin Iclients" parent="Dolphin_Core::menu" /> -->
+		<add action="dolphin_iclients/iclients/index" id="Dolphin_Iclients::dolphin_iclients_iclients" module="Dolphin_Iclients" parent="Dolphin_Iclients::iclients" resource="Dolphin_Iclients::manage" sortOrder="10" title="Manage iFrame Clients"/>
+	</menu>
+</config>
